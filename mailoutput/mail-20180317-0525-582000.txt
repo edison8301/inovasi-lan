@@ -1,0 +1,24 @@
+To: fauzannoor98@gmail.com
+Subject: Pengisian Review Kajian
+Message-ID: <01936c3432c97b64fd7062c15837c21c@swift.generated>
+Date: Sat, 17 Mar 2018 06:25:54 +0100
+From: adminppi@previewaplikasi.com
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="_=_swift_v4_1521264354_3ba94f5924b3a3edfe66ee805ac7d1bf_=_"
+
+
+--_=_swift_v4_1521264354_3ba94f5924b3a3edfe66ee805ac7d1bf_=_
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Pengisian Review Kajian
+
+--_=_swift_v4_1521264354_3ba94f5924b3a3edfe66ee805ac7d1bf_=_
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+LOREM
+
+--_=_swift_v4_1521264354_3ba94f5924b3a3edfe66ee805ac7d1bf_=_--
+

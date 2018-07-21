@@ -1,0 +1,23 @@
+
+*** These modified files were found in JOE when it aborted on Thu Dec  7 07:49:01 2017
+*** JOE was aborted because the terminal closed
+
+*** File '/var/www/previewaplikasi.com/kajian-lan/.git/MERGE_MSG'
+asdasdMerge branch 'master' of https://bitbucket.org/edison8301/kajian-lan
+
+# Please enter a commit message to explain why this merge is necessary,
+# especially if it merges an updated upstream into a topic branch.
+#
+# Lines starting with '#' will be ignored, and an empty message aborts
+# the commit.
+
+*** File '(Unnamed)'
+/root/.gitconfig
+/var/www/previewaplikasi.com/proper/.git/MERGE_MSG
+/var/www/previewaplikasi.com/kajian-lan/.git/MERGE_MSG
+
+*** File '* Startup Log *'
+Processing '/etc/joe/editorrc'...
+Processing '/etc/joe/ftyperc'...
+Finished processing /etc/joe/ftyperc
+Finished processing /etc/joe/editorrc

@@ -10,6 +10,7 @@ use yii\widgets\ActiveForm;
 $this->title = 'Sistem Informasi Kajian (Siska) LAN';
 
 ?>
+
 <div class="row">
 	<div class="col-md-4">
 		<div class="widget-subject">

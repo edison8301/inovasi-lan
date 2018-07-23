@@ -36,7 +36,8 @@ body {
 }
 
 div#map-inovation {
-    background: #d8d8da;
+    /*background: #d8d8da;*/
+    /*background: #d8d8da33;*/
     min-height: 500px;
     margin-top: -20px;
 }

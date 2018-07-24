@@ -20,12 +20,20 @@ class FrontendAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/frontend.css',
+        'js/jsmaps/jsmaps.css',
         'js/jvectormap/jquery-jvectormap-2.0.3.css'
     ];
     public $js = [
+        'js/raphael.js',
         'js/jvectormap/jquery-jvectormap-2.0.3.min.js',
         'js/jvectormap/jvectormap-asia-mill.js',
-        'js/jvectormap/jvectormap-indonesia.js'
+        'js/jvectormap/jvectormap-indonesia.js',
+        'js/jsmaps/jsmaps.js',
+        'js/jsmaps/jsmaps-libs.js',
+        'js/jsmaps/jsmaps-panzoom.js',
+        'js/jsmaps/jsmaps.min.js',
+        'js/jsmaps/indonesia.js',
+        'js/jsmaps/kabupaten.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',

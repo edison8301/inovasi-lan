@@ -26,6 +26,7 @@ $directoryAsset = Yii::$app->assetManager->getPublishedUrl('@vendor/almasaeed201
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" type="text/javascript"></script>
     <?php $this->head() ?>
 </head>
 

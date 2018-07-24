@@ -9,7 +9,9 @@ use app\models\User;
 
 <?php $this->beginContent('@app/themes/adminlte/views/layouts/frontend/main.php'); ?>
 
-<div id="map-inovation" style="width: 100%; height: 400px"></div>
+<div class="container" style="margin-top: 5%">
+	<div id="map-inovation" class="jsmaps-wrapper" style="width: 100%; height: 400px"></div>
+</div>
 
 	<div class="container" style="margin-top: 3%">
 		<?= $content ?>
@@ -17,13 +19,17 @@ use app\models\User;
 
 	<script type="text/javascript">
 		$(function() {
+			$('#map-inovation').JSMaps({
+				map: 'indonesia'
+			});
+		});
+		/*$(function() {
             $('#map-inovation').vectorMap({
             	map: 'indonesia',
             	backgroundColor: "#b7daff",
-            	zoomMin: 2,
             	panOnDrag: true
             })
-        });
+        });*/
         /*function loadMap() {
 			var script = document.createElement('script');
 			script.type = 'text/javascript';

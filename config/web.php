@@ -1,5 +1,7 @@
 <?php
 
+use yii\web\UrlNormalizer;
+
 $params = require(__DIR__ . '/params.php');
 
 $config = [
@@ -70,17 +72,27 @@ $config = [
             ],
         ],
         'db' => require(__DIR__ . '/db.php'),
-        'queue' => [
+        /*'queue' => [
             'class' => \yii\queue\db\Queue::class,
             'db' => 'db', // DB connection component or its config
             'tableName' => '{{%queue}}', // Table name
             'channel' => 'default', // Queue channel key
             'mutex' => \yii\mutex\MysqlMutex::class, // Mutex that used to sync queries
-        ],
+        ],*/
         
         'urlManager' => [
-            'enablePrettyUrl' => false,
+            'enablePrettyUrl' => true,
             'showScriptName' => false,
+            'rules' => [
+                /*['class' => 'MyUrlRule', 'pattern' => '...', 'route' => 'site/index', ...],*/
+                'post-detail/<id>' => 'site/post-detail',
+                '/<id>' => 'site/map-detail',
+            ],
+            'normalizer' => [
+                'class' => UrlNormalizer::className(),
+                'collapseSlashes' => true,
+                'normalizeTrailingSlash' => true,
+            ],
         ],
         
     ],
@@ -100,12 +112,12 @@ $config = [
 if (YII_ENV_DEV) {
     // configuration adjustments for 'dev' environment
     
-    /*$config['bootstrap'][] = 'debug';
+    $config['bootstrap'][] = 'debug';
     $config['modules']['debug'] = [
         'class' => 'yii\debug\Module',
         // uncomment the following to add your IP if you are not connecting from localhost.
         //'allowedIPs' => ['127.0.0.1', '::1'],
-    ];*/
+    ];
     
 
     $config['bootstrap'][] = 'gii';

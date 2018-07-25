@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\UserRole;
+use app\models\Post;
 
 /**
- * UserRoleSearch represents the model behind the search form of `app\models\UserRole`.
+ * PostSearch represents the model behind the search form of `app\models\Post`.
  */
-class UserRoleSearch extends UserRole
+class PostSearch extends Post
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class UserRoleSearch extends UserRole
     public function rules()
     {
         return [
-            [['id'], 'integer'],
-            [['nama'], 'safe'],
+            [['id', 'post_category_id', 'total_views'], 'integer'],
+            [['title', 'content', 'thumbnail', 'tags', 'created_time'], 'safe'],
         ];
     }
 
@@ -42,7 +42,7 @@ class UserRoleSearch extends UserRole
 
     public function getQuerySearch($params)
     {
-        $query = UserRole::find();
+        $query = Post::find();
 
         $this->load($params);
 
@@ -51,9 +51,15 @@ class UserRoleSearch extends UserRole
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'post_category_id' => $this->post_category_id,
+            'total_views' => $this->total_views,
+            'created_time' => $this->created_time,
         ]);
 
-        $query->andFilterWhere(['like', 'nama', $this->nama]);
+        $query->andFilterWhere(['like', 'title', $this->title])
+            ->andFilterWhere(['like', 'content', $this->content])
+            ->andFilterWhere(['like', 'thumbnail', $this->thumbnail])
+            ->andFilterWhere(['like', 'tags', $this->tags]);
 
         return $query;
     }

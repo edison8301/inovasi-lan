@@ -21,7 +21,7 @@ use app\models\Unit;
                 <img src="<?= Yii::getAlias('@web').'/images/logo.png'; ?>" alt="User Image"/>
             </div>
             <div class="pull-left info">
-                <p><?= ucwords(Yii::$app->user->identity->username) ?></p>
+                <p><?php //ucwords(Yii::$app->user->identity->username) ?></p>
 
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
@@ -38,21 +38,9 @@ use app\models\Unit;
             </div>
         </form> 
         <!-- /.search form -->
-        <?php if (User::isAdmin()) { ?>
+        <?php //if (User::isAdmin()) { ?>
             <?= $this->render('_menu-admin'); ?>
-        <?php } ?>
-
-        <?php  if (User::isPegawai()) { ?>
-            <?= $this->render('_menu-pegawai'); ?>
-        <?php } ?>
-
-        <?php  if (User::isUnit()) { ?>
-            <?= $this->render('_menu-unit'); ?>
-        <?php } ?>
-
-            <?php  if (User::isDeputi()) { ?>
-        <?= $this->render('_menu-deputi'); ?>
-        <?php } ?>
+        <?php //} ?>
 
     </section>
 

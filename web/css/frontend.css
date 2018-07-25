@@ -187,3 +187,34 @@ h3.footer-text {
     color: #ccc;
     margin: 0 0 20px;
 }
+
+div.title-post-detail > h2.title {
+    font-weight: bold;
+    font-size: 265%;
+}
+
+div.create-time-post-detail {
+    font-size: 115%;
+}
+
+div.content {
+    min-height: 250px !important;
+     padding: 0px; 
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+div.create-time-post-detail {
+    margin-bottom: 2%;
+}
+
+div.thumbnail-post-detail > img {
+    margin-bottom: 2%;
+}
+
+div.content > div.post-content {
+    font-size: 137%;
+    line-height: 155%;
+}

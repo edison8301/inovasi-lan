@@ -3,16 +3,17 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\UserRole;
-use app\models\UserRoleSearch;
+use yii\filters\AccessControl;
+use app\models\PostCategory;
+use app\models\PostCategorySearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * UserRoleController implements the CRUD actions for UserRole model.
+ * PostCategoryController implements the CRUD actions for PostCategory model.
  */
-class UserRoleController extends Controller
+class PostCategoryController extends Controller
 {
     /**
      * @inheritdoc
@@ -20,6 +21,16 @@ class UserRoleController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [  
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'actions' => ['index','create','view','update','delete'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -30,12 +41,12 @@ class UserRoleController extends Controller
     }
 
     /**
-     * Lists all UserRole models.
+     * Lists all PostCategory models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new UserRoleSearch();
+        $searchModel = new PostCategorySearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         if(Yii::$app->request->get('export')) {
@@ -49,7 +60,7 @@ class UserRoleController extends Controller
     }
 
     /**
-     * Displays a single UserRole model.
+     * Displays a single PostCategory model.
      * @param integer $id
      * @return mixed
      */
@@ -61,13 +72,13 @@ class UserRoleController extends Controller
     }
 
     /**
-     * Creates a new UserRole model.
+     * Creates a new PostCategory model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new UserRole();
+        $model = new PostCategory();
 
         $referrer = Yii::$app->request->referrer;
 
@@ -92,7 +103,7 @@ class UserRoleController extends Controller
     }
 
     /**
-     * Updates an existing UserRole model.
+     * Updates an existing PostCategory model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -126,7 +137,7 @@ class UserRoleController extends Controller
     }
 
     /**
-     * Deletes an existing UserRole model.
+     * Deletes an existing PostCategory model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -147,15 +158,15 @@ class UserRoleController extends Controller
     }
 
     /**
-     * Finds the UserRole model based on its primary key value.
+     * Finds the PostCategory model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return UserRole the loaded model
+     * @return PostCategory the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = UserRole::findOne($id)) !== null) {
+        if (($model = PostCategory::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
@@ -184,38 +195,41 @@ class UserRoleController extends Controller
 
         $sheet->getColumnDimension('A')->setWidth(10);
         $sheet->getColumnDimension('B')->setWidth(20);
+        $sheet->getColumnDimension('C')->setWidth(20);
 
         $sheet->setCellValue('A3', 'No');
-        $sheet->setCellValue('B3', 'Nama');
+        $sheet->setCellValue('B3', 'Parent ID');
+        $sheet->setCellValue('C3', 'Title');
 
-        $PHPExcel->getActiveSheet()->setCellValue('A1', 'Data UserRole');
+        $PHPExcel->getActiveSheet()->setCellValue('A1', 'Data PostCategory');
 
-        $PHPExcel->getActiveSheet()->mergeCells('A1:B1');
+        $PHPExcel->getActiveSheet()->mergeCells('A1:C1');
 
-        $sheet->getStyle('A1:B3')->getFont()->setBold(true);
-        $sheet->getStyle('A1:B3')->getAlignment()->setHorizontal(\PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+        $sheet->getStyle('A1:C3')->getFont()->setBold(true);
+        $sheet->getStyle('A1:C3')->getAlignment()->setHorizontal(\PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 
         $row = 3;
         $i=1;
 
-        $searchModel = new UserRoleSearch();
+        $searchModel = new PostCategorySearch();
 
         foreach($searchModel->getQuerySearch($params)->all() as $data){
             $row++;
             $sheet->setCellValue('A' . $row, $i);
-            $sheet->setCellValue('B' . $row, $data->nama);
+            $sheet->setCellValue('B' . $row, $data->parent_id);
+            $sheet->setCellValue('C' . $row, $data->title);
             
             $i++;
         }
 
-        $sheet->getStyle('A3:B' . $row)->getAlignment()->setHorizontal(\PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-        $sheet->getStyle('D3:B' . $row)->getAlignment()->setHorizontal(\PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-        $sheet->getStyle('E3:B' . $row)->getAlignment()->setHorizontal(\PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+        $sheet->getStyle('A3:C' . $row)->getAlignment()->setHorizontal(\PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+        $sheet->getStyle('D3:C' . $row)->getAlignment()->setHorizontal(\PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+        $sheet->getStyle('E3:C' . $row)->getAlignment()->setHorizontal(\PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 
 
         $sheet->getStyle('C' . $row)->getAlignment()->setHorizontal(\PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 
-        $sheet->getStyle('A3:B' . $row)->applyFromArray($setBorderArray);
+        $sheet->getStyle('A3:C' . $row)->applyFromArray($setBorderArray);
 
         $path = 'exports/';
         $filename = time() . '_DataPenduduk.xlsx';

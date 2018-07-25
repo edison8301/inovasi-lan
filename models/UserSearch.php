@@ -18,8 +18,8 @@ class UserSearch extends User
     public function rules()
     {
         return [
-            [['id', 'id_user_role'], 'integer'],
-            [['username', 'password','id_pegawai','id_anggota','email'], 'safe'],
+            [['id', 'role_id'], 'integer'],
+            [['username', 'password'], 'safe'],
         ];
     }
 
@@ -40,10 +40,9 @@ class UserSearch extends User
      * @return ActiveDataProvider
      */
 
-    public function getQuerySearch($params,$id_user_role)
+    public function getQuerySearch($params)
     {
-        $query = User::find()
-        ->andWhere(['id_user_role' => $id_user_role]);
+        $query = User::find();
 
         $this->load($params);
 
@@ -52,19 +51,18 @@ class UserSearch extends User
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'id_user_role' => $this->id_user_role,
+            'role_id' => $this->role_id,
         ]);
 
-        $query
-            ->andFilterWhere(['like', 'username', $this->username])
+        $query->andFilterWhere(['like', 'username', $this->username])
             ->andFilterWhere(['like', 'password', $this->password]);
 
         return $query;
     }
     
-    public function search($params,$id_user_role)
+    public function search($params)
     {
-        $query = $this->getQuerySearch($params,$id_user_role);
+        $query = $this->getQuerySearch($params);
 
         if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails

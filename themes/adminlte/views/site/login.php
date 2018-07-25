@@ -19,13 +19,13 @@ $fieldOptions2 = [
 ];
 ?>
 
-<div class="login-box-style">
-    <div class="login-logo" style="color: white">
-        <b>SISTEM INFORMASI KAJIAN</b><span>LAN</span>
+<div class="login-box">
+    <div class="login-logo">
+        <a href="#">INO<b>VASI</b></a>
     </div>
     <!-- /.login-logo -->
-    <div class="login-box-body" style="background: #79797978; color: white">
-        <p class="login-box-msg"><strong>Login</strong></p>
+    <div class="login-box-body">
+        <p class="login-box-msg">Masukkan Nama Pengguna Dan Kata Sandi</p>
 
         <?php $form = ActiveForm::begin(['id' => 'login-form', 'enableClientValidation' => false]); ?>
 
@@ -41,25 +41,32 @@ $fieldOptions2 = [
 
         <div class="row">
             <div class="col-xs-8">
-                <?= $form->field($model, 'rememberMe')->checkbox()->label('Ingat Saya') ?>
+                <?= $form->field($model, 'rememberMe')->checkbox() ?>
             </div>
-
             <div class="col-xs-4">
-                <?= Html::submitButton('Login', ['class' => 'btn btn-primary btn-block btn-flat', 'name' => 'login-button']) ?>
+                <?= Html::submitButton('Sign in', ['class' => 'btn btn-primary btn-block btn-flat', 'name' => 'login-button']) ?>
             </div>
         </div>
 
-        <div class="social-auth-links text-center">
-            <p>- OR -</p>
-            <?= Html::a('<i class="fa fa-unlock"></i> Lupa Password', ['site/lupa-password'], ['class' => 'btn btn-block btn-social btn-google btn-flat']); ?>
-            <?= Html::a('<i class="fa fa-user-plus"></i> Registrasi', ['site/pendaftaran'], ['class' => 'btn btn-block btn-social btn-facebook btn-flat']); ?>
-        </div>
 
-        <?= Html::a('Home', ['site/index'], ['style' => 'color:white']); ?>
-
-        
         <?php ActiveForm::end(); ?>
 
+        <?php /*
+        <div class="social-auth-links text-center">
+            <p>- OR -</p>
+            <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in
+                using Facebook</a>
+            <a href="#" class="btn btn-block btn-social btn-google-plus btn-flat"><i class="fa fa-google-plus"></i> Sign
+                in using Google+</a>
+        </div>
+        <!-- /.social-auth-links -->
+        */ ?>
+
+        <a href="#">Lupa Sandi</a><br>
+
+        <?php /*
+        <a href="register.html" class="text-center">Register a new membership</a>
+        */ ?>
+
     </div>
-    <!-- /.login-box-body -->
-</div><!-- /.login-box -->
+</div>

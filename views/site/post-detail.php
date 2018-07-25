@@ -1,0 +1,49 @@
+<?php
+use app\components\Helper;
+use yii\helpers\Html;
+
+$this->params['breadcrumbs'][] = ['label' => $model->postCategory->title];
+$this->params['breadcrumbs'][] = $model->getTitle();
+?>
+
+<div class="content">
+	<div class="title-post-detail">
+		<h2 class="title">
+			<?= $model->getTitle() ?>
+		</h2>
+	</div>
+
+	<div class="create-time-post-detail">
+		<?= Helper::getTanggalSingkat($model->created_time) ?>
+	</div>
+
+	<div class="icon-sosial-media">
+		
+	</div>
+
+	<div class="row">
+		<div class="col-md-8 col-sm-8 col-xs-12">
+			<div class="thumbnail-post-detail">
+				<?= Html::img("@web/images/banner_nav_left.jpg", ['class' => 'img-responsive']); ?>
+			</div>
+
+			<div class="content">
+				<div class="post-content">
+					<?= $model->content ?>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-4 col-sm-4 col-xs-12">
+			<?= Html::img("@web/images/banner_nav_left.jpg", ['class' => 'img-responsive']); ?>
+		</div>
+	</div>
+</div>
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>

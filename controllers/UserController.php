@@ -8,10 +8,7 @@ use app\models\UserSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use app\models\SetPasswordForm;
-use app\models\Pegawai;
 use yii\filters\AccessControl;
-use app\models\UserRole;
 
 /**
  * UserController implements the CRUD actions for User model.
@@ -24,26 +21,16 @@ class UserController extends Controller
     public function behaviors()
     {
         return [
-            'access' => [  
+            /*'access' => [  
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['set-password-guest'],
-                        'allow' => true,
-                        'roles' => ['?'],
-                    ],
-                    [
-                        'actions' => ['index','create','delete','update','profil','view','set-password','aktif'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                    [
-                        'actions' => ['profil','set-password'],
+                        'actions' => ['index','create','view','update','delete'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
                 ],
-            ],
+            ],*/
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -53,22 +40,20 @@ class UserController extends Controller
         ];
     }
 
-
     /**
      * Lists all User models.
      * @return mixed
      */
-    public function actionIndex($id_user_role)
+    public function actionIndex()
     {
         $searchModel = new UserSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams,$id_user_role);
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         if(Yii::$app->request->get('export')) {
             return $this->exportExcel(Yii::$app->request->queryParams);
         }
 
         return $this->render('index', [
-            'id_user_role' => $id_user_role,
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
@@ -91,138 +76,30 @@ class UserController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate($id_user_role=null)
+    public function actionCreate()
     {
         $model = new User();
 
-        $model->id_user_role = $id_user_role;
-
-        if ($model->id_user_role === UserRole::ADMIN) {
-            $model->model = 'Admin';
-        }
-
-        if ($model->id_user_role === UserRole::UNIT) {
-            $model->model = 'Unit';
-        }
-
-        if ($model->id_user_role === UserRole::DEPUTI) {
-            $model->model = 'Deputi';
-        }
-
         $referrer = Yii::$app->request->referrer;
 
-        if($model->load(Yii::$app->request->post())) {
+        if ($model->load(Yii::$app->request->post())) {
+
             $referrer = $_POST['referrer'];
-
             $model->password = Yii::$app->getSecurity()->generatePasswordHash($model->password);
-            $model->token = Yii::$app->getSecurity()->generateRandomString(50);
 
-            if($model->save(false)) {
+            if($model->save()) {
                 Yii::$app->session->setFlash('success','Data berhasil disimpan.');
-                return $this->redirect($referrer);    
+                return $this->redirect($referrer);
             }
-            
+
+            Yii::$app->session->setFlash('error','Data gagal disimpan. Silahkan periksa kembali isian Anda.');
+
         }
 
         return $this->render('create', [
             'model' => $model,
             'referrer'=>$referrer
         ]);
-
-    }
-
-    public function actionProfil()
-    {
-        $user = User::getIdUser();
-
-        return $this->render('profil', [
-            'model' => $this->findModel($user),
-        ]); 
-    }
-
-    public function actionSetPasswordGuest($id,$token)
-    {
-        $this->layout = '//backend/main-login';
-        $user = $this->findModel($id);
-
-        if ($user->token === $token) {
-            $model = new SetPasswordForm();
-
-            if ($model->load(Yii::$app->request->post()) AND $model->validate()) {
-                $user->password = Yii::$app->getSecurity()->generatePasswordHash($model->password);    
-
-                if ($user->save(false)) {
-                    $user->setToken();
-                    Yii::$app->session->setFlash('success','Password berhasil di simpan');
-                    return $this->redirect(['/site/login']); 
-                } else {
-                    return $this->redirect(['/site/index']);
-                }
-            }
-
-            return $this->render('set-password-guest', [
-                'model' => $model,
-            ]);
-        } else {
-            Yii::$app->session->setFlash('danger','Token tidak valid');
-            return $this->redirect(['/site/index']); 
-        }
-    }
-
-    public function actionSetPassword($id = null)
-    {
-        $model = new SetPasswordForm();
-
-        if ($id !== null) {
-            $user = $this->findModel($id);
-        } else {
-            $user = User::findOne(Yii::$app->user->identity);
-        }
-
-        $referrer = Yii::$app->request->referrer;
-
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-
-            $referrer = $_POST['referrer'];
-
-            $user->password = Yii::$app->getSecurity()->generatePasswordHash($model->password);
-            
-            if ($user->save(false)) {
-                \Yii::$app->session->setFlash('success','Password berhasil disimpan');
-                return $this->redirect($referrer);
-            } else {
-                print_r($user->getErrors());
-            }
-        }
-
-        return $this->render('set-password', [
-            'model' => $model,
-            'referrer'=>$referrer
-        ]);
-    }
-
-    public function actionAktif($id)
-    {
-        $model = $this->findModel($id);
-
-        /*if ($token !== null AND $model->token == $token) {
-            $model->status = User::AKTIF;
-            $model->save();
-        }
-
-        if ($token == null) {
-            $model->status = User::AKTIF;
-            $model->save();
-        }*/
-
-        if ($model !== null) {
-            $model->status = User::AKTIF;
-            $model->save(false);
-            Yii::$app->session->setFlash('success','User berhasil di Aktifkan');
-            return $this->redirect(Yii::$app->request->referrer);
-        } else {
-            return $this->redirect(Yii::$app->request->referrer);
-        }
 
     }
 
@@ -241,8 +118,9 @@ class UserController extends Controller
         if ($model->load(Yii::$app->request->post())) {
 
             $referrer = $_POST['referrer'];
+            $model->password = Yii::$app->getSecurity()->generatePasswordHash($model->password);
 
-            if($model->save(false))
+            if($model->save())
             {
                 Yii::$app->session->setFlash('success','Data berhasil disimpan.');
                 return $this->redirect($referrer);
@@ -321,28 +199,18 @@ class UserController extends Controller
         $sheet->getColumnDimension('B')->setWidth(20);
         $sheet->getColumnDimension('C')->setWidth(20);
         $sheet->getColumnDimension('D')->setWidth(20);
-        $sheet->getColumnDimension('E')->setWidth(20);
-        $sheet->getColumnDimension('F')->setWidth(20);
-        $sheet->getColumnDimension('G')->setWidth(20);
-        $sheet->getColumnDimension('H')->setWidth(20);
-        $sheet->getColumnDimension('I')->setWidth(20);
 
         $sheet->setCellValue('A3', 'No');
-        $sheet->setCellValue('B3', 'Role');
-        $sheet->setCellValue('C3', 'Kode Pegawai');
-        $sheet->setCellValue('D3', 'Username');
-        $sheet->setCellValue('E3', 'Password');
-        $sheet->setCellValue('F3', 'Nama');
-        $sheet->setCellValue('G3', 'Email');
-        $sheet->setCellValue('H3', 'Auth Key');
-        $sheet->setCellValue('I3', 'Access Token');
+        $sheet->setCellValue('B3', 'Username');
+        $sheet->setCellValue('C3', 'Password');
+        $sheet->setCellValue('D3', 'Role ID');
 
         $PHPExcel->getActiveSheet()->setCellValue('A1', 'Data User');
 
-        $PHPExcel->getActiveSheet()->mergeCells('A1:I1');
+        $PHPExcel->getActiveSheet()->mergeCells('A1:D1');
 
-        $sheet->getStyle('A1:I3')->getFont()->setBold(true);
-        $sheet->getStyle('A1:I3')->getAlignment()->setHorizontal(\PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+        $sheet->getStyle('A1:D3')->getFont()->setBold(true);
+        $sheet->getStyle('A1:D3')->getAlignment()->setHorizontal(\PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 
         $row = 3;
         $i=1;
@@ -352,26 +220,21 @@ class UserController extends Controller
         foreach($searchModel->getQuerySearch($params)->all() as $data){
             $row++;
             $sheet->setCellValue('A' . $row, $i);
-            $sheet->setCellValue('B' . $row, $data->role);
-            $sheet->setCellValue('C' . $row, $data->kode_pegawai);
-            $sheet->setCellValue('D' . $row, $data->username);
-            $sheet->setCellValue('E' . $row, $data->password);
-            $sheet->setCellValue('F' . $row, $data->nama);
-            $sheet->setCellValue('G' . $row, $data->email);
-            $sheet->setCellValue('H' . $row, $data->auth_key);
-            $sheet->setCellValue('I' . $row, $data->access_token);
+            $sheet->setCellValue('B' . $row, $data->username);
+            $sheet->setCellValue('C' . $row, $data->password);
+            $sheet->setCellValue('D' . $row, $data->role_id);
             
             $i++;
         }
 
-        $sheet->getStyle('A3:I' . $row)->getAlignment()->setHorizontal(\PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-        $sheet->getStyle('D3:I' . $row)->getAlignment()->setHorizontal(\PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-        $sheet->getStyle('E3:I' . $row)->getAlignment()->setHorizontal(\PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+        $sheet->getStyle('A3:D' . $row)->getAlignment()->setHorizontal(\PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+        $sheet->getStyle('D3:D' . $row)->getAlignment()->setHorizontal(\PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+        $sheet->getStyle('E3:D' . $row)->getAlignment()->setHorizontal(\PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 
 
         $sheet->getStyle('C' . $row)->getAlignment()->setHorizontal(\PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 
-        $sheet->getStyle('A3:I' . $row)->applyFromArray($setBorderArray);
+        $sheet->getStyle('A3:D' . $row)->applyFromArray($setBorderArray);
 
         $path = 'exports/';
         $filename = time() . '_DataPenduduk.xlsx';

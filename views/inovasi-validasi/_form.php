@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\UserRole */
+/* @var $model app\models\InovasiValidasi */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -22,16 +22,20 @@ use yii\bootstrap\ActiveForm;
     ]
 ]); ?>
 
-<div class="user-role-form box box-primary">
+<div class="inovasi-validasi-form box box-primary">
 
     <div class="box-header">
-        <h3 class="box-title">Form User Role</h3>
+        <h3 class="box-title">Form Inovasi Validasi</h3>
     </div>
 	<div class="box-body">
 
         <?= $form->errorSummary($model); ?>
 
-        <?= $form->field($model, 'nama')->textInput(['maxlength' => true]) ?>
+        <?= $form->field($model, 'inovasi_id')->textInput() ?>
+
+        <?= $form->field($model, 'validasi_id')->textInput() ?>
+
+        <?= $form->field($model, 'aktif')->textInput() ?>
 
         <?= Html::hiddenInput('referrer',$referrer); ?>
 

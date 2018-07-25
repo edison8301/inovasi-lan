@@ -1,6 +1,6 @@
 <?php
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+use yii\widgets\ListView;
 
 
 /* @var $this yii\web\View */
@@ -10,7 +10,6 @@ use yii\widgets\ActiveForm;
 $this->title = 'Sistem Informasi Kajian (Siska) LAN';
 
 ?>
-
 <div class="row">
 	<div class="col-md-4">
 		<div class="widget-subject">
@@ -34,80 +33,18 @@ $this->title = 'Sistem Informasi Kajian (Siska) LAN';
 			
 		</div>
 
-		<div class="widget-subject-content">
-			<div class="row">
-				<div class="col-md-3 col-sm-3 col-xs-3">
-					<?= Html::img("@web/images/logo.png", ['style' => 'width:80px;']); ?>
-				</div>
-				<div class="col-md-9 col-sm-9 col-xs-9">
-					<div class="title">
-						<a href="">Layanan Sinergi 3 in 1 Gratis Bagi Keluarga Miskin Pemegang ...</a>
-					</div>
+		<?= ListView::widget([
+			'dataProvider' => $dataProvider,
+			'pager' => [
+		        'firstPageLabel' => 'first',
+		        'lastPageLabel' => 'last',
+		        //'nextPageLabel' => 'next',
+		        //'prevPageLabel' => 'previous',
+		        'maxButtonCount' => 3,
+		    ],
+			'itemView' => 'listview-post'
+		]) ?>
 
-					30 Jun 2018
-				</div>
-			</div>
-		</div>
-
-		<div class="widget-subject-content">
-			<div class="row">
-				<div class="col-md-3 col-sm-3 col-xs-3">
-					<?= Html::img("@web/images/logo.png", ['style' => 'width:80px;']); ?>
-				</div>
-				<div class="col-md-9 col-sm-9 col-xs-9">
-					<div class="title">
-						<a href="">Sistem Informasi Manajemen Pengelolaan Barang Persediaan (SI...</a>
-					</div>
-
-					30 Jun 2018
-				</div>
-			</div>
-		</div>
-
-		<div class="widget-subject-content">
-			<div class="row">
-				<div class="col-md-3 col-sm-3 col-xs-3">
-					<?= Html::img("@web/images/logo.png", ['style' => 'width:80px;']); ?>
-				</div>
-				<div class="col-md-9 col-sm-9 col-xs-9">
-					<div class="title">
-						<a href="">Sistem Informasi Perizinan dan Sertifikasi Bidang Kesehatan ...</a>
-					</div>
-
-					30 Jun 2018
-				</div>
-			</div>
-		</div>
-
-		<div class="widget-subject-content">
-			<div class="row">
-				<div class="col-md-3 col-sm-3 col-xs-3">
-					<?= Html::img("@web/images/logo.png", ['style' => 'width:80px;']); ?>
-				</div>
-				<div class="col-md-9 col-sm-9 col-xs-9">
-					<div class="title">
-						<a href="">Stikerisasi Perizinan dan Tanda Daftar Kesehatan</a>
-					</div>
-
-					30 Jun 2018
-				</div>
-			</div>
-		</div>
-
-		<div class="widget-subject-content">
-			<div class="row">
-				<div class="col-md-3 col-sm-3 col-xs-3">
-					<?= Html::img("@web/images/logo.png", ['style' => 'width:80px;']); ?>
-				</div>
-				<div class="col-md-9 col-sm-9 col-xs-9">
-					<div class="title">
-						<a href="">Gerakan Kampung Panca Tertib</a>
-					</div>
-
-					30 Jun 2018
-				</div>
-			</div>
-		</div>
 	</div>
 
 	<div class="col-md-4">

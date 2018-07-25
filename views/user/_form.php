@@ -2,10 +2,6 @@
 
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
-use app\models\User;
-use app\models\UserRole;
-use kartik\select2\Select2;
-use app\models\Unit;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\User */
@@ -14,6 +10,8 @@ use app\models\Unit;
 
 <?php $form = ActiveForm::begin([
     'layout'=>'horizontal',
+    'enableAjaxValidation'=>false,
+    'enableClientValidation'=>false,
     'fieldConfig' => [
         'horizontalCssClasses' => [
             'label' => 'col-sm-2',
@@ -29,29 +27,19 @@ use app\models\Unit;
     <div class="box-header">
         <h3 class="box-title">Form User</h3>
     </div>
-
 	<div class="box-body">
 
         <?= $form->errorSummary($model); ?>
 
-            <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?> 
-        
-            <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?> 
+        <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
 
-        <?php if ($model->isNewRecord) { ?>
-        
-            <?= $form->field($model, 'password')->passwordInput(['maxlength' => true]) ?> 
-
-            <?= $form->field($model, 'password_konfirmasi')->passwordInput(['maxlength' => true]) ?>
+        <?php //if ($model->isNewRecord): ?>
             
-        <?php } ?>
+            <?= $form->field($model, 'password')->passwordInput(['maxlength' => true]) ?>
         
+        <?php //endif ?>
 
-        <?php if($model->id_user_role == UserRole::UNIT OR User::isAdmin()) { ?>
-
-            <?= $form->field($model, 'id_unit')->dropDownList(Unit::getList(),['prompt'=>'- Pilih Unit -']) ?>
-        
-        <?php } ?>
+        <?= $form->field($model, 'role_id')->textInput() ?>
 
         <?= Html::hiddenInput('referrer',$referrer); ?>
 

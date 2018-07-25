@@ -20,7 +20,7 @@ use app\models\User;
 	<script type="text/javascript">
 		$(function() {
 			$('#map-inovation').JSMaps({
-				map: 'indonesia'
+				map: 'kabupatenAceh'
 			});
 		});
 		/*$(function() {

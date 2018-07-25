@@ -4,17 +4,17 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\UserRoleSearch */
+/* @var $searchModel app\models\InovasiValidasiSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Daftar User Role');
+$this->title = 'Daftar Inovasi Validasi';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="user-role-index box box-primary">
+<div class="inovasi-validasi-index box box-primary">
 
     <div class="box-header">
-        <?= Html::a('<i class="fa fa-plus"></i> Tambah User Role', ['create'], ['class' => 'btn btn-success btn-flat']) ?>
-        <?= Html::a('<i class="fa fa-print"></i> Export Excel User Role', Yii::$app->request->url.'&export=1', ['class' => 'btn btn-success btn-flat']) ?>
+        <?= Html::a('<i class="fa fa-plus"></i> Tambah Inovasi Validasi', ['create'], ['class' => 'btn btn-success btn-flat']) ?>
+        <?= Html::a('<i class="fa fa-print"></i> Export Excel Inovasi Validasi', Yii::$app->request->url.'&export=1', ['class' => 'btn btn-success btn-flat']) ?>
 
     </div>
 
@@ -40,7 +40,19 @@ $this->params['breadcrumbs'][] = $this->title;
                 'contentOptions' => ['style' => 'text-align:center;'],
             ],
             [
-                'attribute' => 'nama',
+                'attribute' => 'inovasi_id',
+                'format' => 'raw',
+                'headerOptions' => ['style' => 'text-align:center;'],
+                'contentOptions' => ['style' => 'text-align:center;'],
+            ],
+            [
+                'attribute' => 'validasi_id',
+                'format' => 'raw',
+                'headerOptions' => ['style' => 'text-align:center;'],
+                'contentOptions' => ['style' => 'text-align:center;'],
+            ],
+            [
+                'attribute' => 'aktif',
                 'format' => 'raw',
                 'headerOptions' => ['style' => 'text-align:center;'],
                 'contentOptions' => ['style' => 'text-align:center;'],

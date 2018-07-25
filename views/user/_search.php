@@ -17,23 +17,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id') ?>
 
-    <?= $form->field($model, 'role') ?>
-
-    <?= $form->field($model, 'kode_pegawai') ?>
-
     <?= $form->field($model, 'username') ?>
 
     <?= $form->field($model, 'password') ?>
 
-    <?php // echo $form->field($model, 'nama') ?>
-
-    <?php // echo $form->field($model, 'email') ?>
-
-    <?php // echo $form->field($model, 'auth_key') ?>
-
-    <?php // echo $form->field($model, 'access_token') ?>
-
-    <?php // echo $form->field($model, 'status_hapus') ?>
+    <?= $form->field($model, 'role_id') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

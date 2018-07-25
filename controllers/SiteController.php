@@ -11,10 +11,9 @@ use PhpOffice\PhpWord\Shared\Converter;
 
 use app\models\LoginForm;
 use app\models\User;
-use app\models\PenelitianSearch;
+use app\models\Post;
 use yii\web\UploadedFile;
 use yii\data\ActiveDataProvider;
-use app\models\LupaPasswordForm;
 
 class SiteController extends Controller
 {
@@ -30,12 +29,12 @@ class SiteController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['index'],
+                        'actions' => ['index','login','post-detail','map-detail'],
                         'allow' => true,
                         'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['index'],
+                        'actions' => ['index','post-detail','map-detail'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -81,7 +80,35 @@ class SiteController extends Controller
         $this->layout = '//frontend/main';
         $this->layout = '//frontend/main-peta';
 
-        return $this->render('index');
+        $dataProvider = new ActiveDataProvider([
+            'query' => Post::findPostProvider(),
+            'pagination' => [
+                'pageSize' => 5
+            ],
+        ]);
+
+        return $this->render('index',[
+            'dataProvider' => $dataProvider
+        ]);
+    }
+
+    public function actionMapDetail($id)
+    {
+        $this->layout = '//frontend/main';
+
+        return $this->render('map-detail');
+    }
+
+    public function actionPostDetail($id)
+    {
+        $this->layout = '//frontend/main';
+        $this->layout = '//frontend/main-detail';
+
+        $model = Post::findOne($id);
+
+        return $this->render('post-detail',[
+            'model' => $model
+        ]);
     }
 
     public function actionLogin()
@@ -94,26 +121,7 @@ class SiteController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
 
-            if (User::isAdmin()) {
-                return $this->redirect(['admin/index']);
-            }
-
-            if (User::isPegawai()) {
-                //if () {
-                    //Yii::$app->session->setFlash('warning','Password pada akun anda masih menggunakan password default');
-                //}
-                return $this->redirect(['admin/pegawai']);
-            }
-
-            if (User::isUnit()) {
-                return $this->redirect(['admin/index']);
-            }
-
-            if (User::isDeputi()) {
-                return $this->redirect(['admin/index']);
-            }
-
-            return $this->redirect(['site/index']);
+            return $this->redirect(['admin/index']);
         }
 
         return $this->render('login', [

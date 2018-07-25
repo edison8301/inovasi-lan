@@ -4,16 +4,16 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\UserRole */
+/* @var $model app\models\Role */
 
-$this->title = "Detail User Role";
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'User Role'), 'url' => ['index']];
+$this->title = "Detail Role";
+$this->params['breadcrumbs'][] = ['label' => 'Role', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="user-role-view box box-primary">
+<div class="role-view box box-primary">
 
     <div class="box-header">
-        <h3 class="box-title">Detail User Role</h3>
+        <h3 class="box-title">Detail Role</h3>
     </div>
 
     <div class="box-body">
@@ -38,8 +38,8 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 
     <div class="box-footer">
-        <?= Html::a('<i class="fa fa-pencil"></i> Sunting User Role', ['update', 'id' => $model->id], ['class' => 'btn btn-success btn-flat']) ?>
-        <?= Html::a('<i class="fa fa-list"></i> Daftar User Role', ['index'], ['class' => 'btn btn-warning btn-flat']) ?>
+        <?= Html::a('<i class="fa fa-pencil"></i> Sunting Role', ['update', 'id' => $model->id], ['class' => 'btn btn-success btn-flat']) ?>
+        <?= Html::a('<i class="fa fa-list"></i> Daftar Role', ['index'], ['class' => 'btn btn-warning btn-flat']) ?>
     </div>
 
 </div>

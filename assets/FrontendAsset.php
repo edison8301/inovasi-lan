@@ -33,7 +33,8 @@ class FrontendAsset extends AssetBundle
         'js/jsmaps/jsmaps-panzoom.js',
         'js/jsmaps/jsmaps.min.js',
         'js/jsmaps/indonesia.js',
-        'js/jsmaps/kabupaten.js'
+        'js/jsmaps/kabupaten.js',
+        'js/jsmaps/kabupaten-aceh.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',

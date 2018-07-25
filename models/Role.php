@@ -3,32 +3,25 @@
 namespace app\models;
 
 use Yii;
-use yii\helpers\ArrayHelper;
 
 /**
- * This is the model class for table "user_role".
+ * This is the model class for table "role".
  *
- * @property integer $id
+ * @property int $id
  * @property string $nama
  */
-class UserRole extends \yii\db\ActiveRecord
+class Role extends \yii\db\ActiveRecord
 {
-    const ADMIN = 1;
-    const PEGAWAI = 2;
-    const ANGGOTA = 3;
-    const UNIT = 4;
-    const DEPUTI = 5;
-
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'user_role';
+        return 'role';
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function rules()
     {
@@ -39,7 +32,7 @@ class UserRole extends \yii\db\ActiveRecord
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function attributeLabels()
     {
@@ -47,10 +40,5 @@ class UserRole extends \yii\db\ActiveRecord
             'id' => 'ID',
             'nama' => 'Nama',
         ];
-    }
-
-    public static function getList()
-    {
-        return ArrayHelper::map(self::find()->all(),'id','nama');
     }
 }

@@ -20,8 +20,8 @@ use app\models\User;
         ['label' => 'Berita','url'=>['site/index']],
         ['label' => 'Artikel','url'=>['site/index']],
         ['label' => 'Kontak Kami','url'=>['site/contact']],
-        //['label' => 'Logout','url' => ['site/logout'], 'options' => ['data-method' => 'post'], 'visible' => !Yii::$app->user->isGuest],
-        //['label' => 'Login','url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
+        ['label' => 'Logout','url' => ['site/logout'], 'options' => ['data-method' => 'post'], 'visible' => !Yii::$app->user->isGuest],
+        ['label' => 'Login','url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
     ],
     'options' => ['class' => 'navbar-nav pull-left'],
 ]); ?>

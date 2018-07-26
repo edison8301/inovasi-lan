@@ -19,6 +19,7 @@ use app\models\User;
         ['label' => 'Tentang Kami','url'=>['site/about']],
         ['label' => 'Berita','url'=>['site/berita']],
         ['label' => 'Artikel','url'=>['site/artikel']],
+        ['label' => 'Publikasi','url'=>['site/index']],
         ['label' => 'Kontak Kami','url'=>['site/contact']],
         ['label' => 'Logout','url' => ['site/logout'], 'options' => ['data-method' => 'post'], 'visible' => !Yii::$app->user->isGuest],
         ['label' => 'Login','url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],

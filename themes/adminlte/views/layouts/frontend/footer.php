@@ -35,12 +35,13 @@ use yii\helpers\Html;
                 <h3 class="footer-text">Kontak Kami</h3>
 
                 <p>
-                    021 386 8201-05
+                    Pusat Promosi Inovasi dan Pengembangan Kapasitas (PROSPEK)<br>
+                    Tel: (021) 3455021 - 5 ext. 127, ext. 128, ext. 130
                     <br>
-                    inspektorat@lan.go.id
+                    Email: p2ipk@lan.go.id, p2ipk.inovasi@gmail.com
                     <br>
                     <br>
-                    Jl. Veteran No.10, Jakarta 10110
+                    Alamat: Jl. Veteran No.10, Jakarta 10110
                 </p>
             </div>
         </div>

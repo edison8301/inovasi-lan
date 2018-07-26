@@ -22,6 +22,9 @@ class SiteController extends Controller
      * Access Roles ? guest bisa action tanpa login
      * Access Roles @ guest diharuskan melakukan login terlebih dahulu sebelum mengakses action tersebut
      */
+
+    public $layout = '//frontend/main';
+
     public function behaviors()
     {
         return [
@@ -29,15 +32,17 @@ class SiteController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['index','login','post-detail','map-detail'],
+                        'actions' => ['index','login','post-detail','map-detail','error'],
                         'allow' => true,
                         'roles' => ['?'],
                     ],
+                    /*
                     [
                         'actions' => ['index','post-detail','map-detail'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
+                    */
                 ],
             ],
             'verbs' => [
@@ -178,6 +183,11 @@ class SiteController extends Controller
     public function actionDev()
     {
         return $this->render('dev');
+    }
+
+    public function actionError()
+    {
+        return $this->render('error');
     }
 
 

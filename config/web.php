@@ -81,7 +81,7 @@ $config = [
         ],*/
         
         'urlManager' => [
-            'enablePrettyUrl' => true,
+            'enablePrettyUrl' => false,
             'showScriptName' => false,
             'rules' => [
                 /*['class' => 'MyUrlRule', 'pattern' => '...', 'route' => 'site/index', ...],*/

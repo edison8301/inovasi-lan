@@ -1,3 +1,9 @@
+<?php
+
+use yii\helpers\Url;
+
+?>
+
 <style type="text/css">
 	.bluerow { background: #b7daff}
 	#map-row { max-width: 1080px; width: 100%; height: 520px; display: block; margin: -20px auto 20px; position: relative; }
@@ -253,7 +259,8 @@ Papua : { cat_id:"94",total:"30",nama:"Papua",path:"M910.85,348.551l0.2,0.1l0.60
                 var prov_array = province_name.split(" ");
                 var province = prov_array.join('-');
 
-				var url = 'http://indonesiaberinovasi.com/berita-inovasi';
+				var url = '<?= Url::to(["site/index"]); ?>';
+				//var url = 'http://indonesiaberinovasi.com/berita-inovasi';
                 
                 window.location.href = url+'/'+province;
           });
@@ -263,9 +270,10 @@ Papua : { cat_id:"94",total:"30",nama:"Papua",path:"M910.85,348.551l0.2,0.1l0.60
                 var prov_array = province_name.split(" ");
                 var province = prov_array.join('-');
 
-				var url = 'http://indonesiaberinovasi.com/berita-inovasi';
+				var url = '<?= Url::to(["site/peta"]); ?>';
+				//var url = 'http://indonesiaberinovasi.com/berita-inovasi';
                 
-                window.location.href = url+'/'+province;
+                window.location.href = url+'&id_provinsi='+province;
       		});            
 
           mapLayer.add(path);

@@ -105,7 +105,7 @@ class SiteController extends Controller
         return $this->render('map-detail');
     }
 
-    public function actionIndexInovasi($id_provinsi)
+    public function actionIndexInovasi($id_provinsi=null)
     {
         $this->layout = '//frontend/main';
         $this->layout = '//frontend/main-peta';

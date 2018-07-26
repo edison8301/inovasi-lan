@@ -1,5 +1,6 @@
 <?php
 use yii\helpers\Html;
+use app\components\Helper;
 ?>
 
 <div class="widget-subject-content">
@@ -12,7 +13,7 @@ use yii\helpers\Html;
 				<?= Html::a($model->getTitleListView(), ['site/post-detail','id' => $model->id], ['option' => 'value']); ?>
 			</div>
 
-			30 Jun 2018
+			<?= Helper::getTanggalSingkat($model->created_time) ?>
 		</div>
 	</div>
 </div>

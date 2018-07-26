@@ -8,7 +8,7 @@ use app\models\User;
 ?>
 
 <?php NavBar::begin([
-	'brandLabel' => 'LEMBAGA ADMINISTRASI NEGARA REPUBLIK INDONESIA',
+	'brandLabel' => '<img src="../images/header-navbar-logo.png" class="img-brand-navbar img-responsive"/>',
 	'brandUrl' => ['site/index'],
 	'options' => ['class' => 'navbar navbar-inverse'],
 ]); ?>

@@ -34,13 +34,13 @@ class SiteController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['index','login','view-post','map-detail','error','index-inovasi','view-inovasi','about','contact','berita','artikel'],
+                        'actions' => ['index','login','post-view','map-detail','error','inovasi-index',
+                            'inovasi-view','about','contact','berita','artikel'],
                         'allow' => true,
                         'roles' => ['?'],
                     ],
-                    
                     [
-                        'actions' => ['index','view-post','map-detail','error','logout','index-inovasi','login','view-inovasi','about','contact','berita','artikel'],
+                        'actions' => ['logout'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -129,31 +129,31 @@ class SiteController extends Controller
         return $this->render('map-detail');
     }
 
-    public function actionIndexInovasi($id_provinsi=null)
+    public function actionInovasiIndex($id_provinsi=null)
     {
         $this->layout = '//frontend/main-peta';
 
         $dataProvider = new ActiveDataProvider([
             'query' => Inovasi::findInovasiProvider(),
             'pagination' => [
-                'pageSize' => 20
+                'pageSize' => 10
             ],
         ]);
 
-        return $this->render('index-inovasi',[
+        return $this->render('inovasi-index',[
             'id_provinsi' => $id_provinsi,
             'dataProvider' => $dataProvider
         ]);
     }
 
-    public function actionViewInovasi($id)
+    public function actionInovasiView($id)
     {
         $this->layout = '//frontend/main';
         $this->layout = '//frontend/main-detail';
 
         $model = Inovasi::findOne($id);
 
-        return $this->render('view-inovasi',[
+        return $this->render('inovasi-view',[
             'model' => $model
         ]);
     }

@@ -983,41 +983,14 @@ Kab_Deiyai : { cat_id:"9436",total:"0",nama:"Kab Deiyai",path:"M418.739,213.093 
 Kota_Jayapura : { cat_id:"9471",total:"4",nama:"Kota Jayapura",path:"M633.055,130.219c0,0,0.707-1.066,1.176-2.04  l5.507,0.775c0,0,2.297-0.392,2.297,1.265c0,1.658-1.044,4.58-1.044,4.58l1.044,1.879c0,0,1.67,0,2.923,0s3.967,0,3.967,0  s2.296-1.252,3.549-1.252s2.506-1.253,2.506-1.253v14.197l-4.176-5.011l-8.561-3.341l-4.176,0.626l-0.377-0.041  c-0.793-0.097-2.668-0.404-3.8-1.212c-1.46-1.044,1.045-0.626,1.671-2.088c0.626-1.461-1.253-1.879-2.088-3.132  c-0.835-1.252-4.384-1.462-4.802-2.505C628.253,130.624,633.055,130.219,633.055,130.219z"},
         };
 
-        
-
 <?php } ?>
 
-<?php if(isset($_GET['id_provinsi']) AND $_GET['id_provinsi']==4) { //ACEH ?>
 
-<?php } ?>
 
-<?php if(isset($_GET['id_provinsi']) AND $_GET['id_provinsi']==4) { //ACEH ?>
-
-<?php } ?>
-
-<?php if(isset($_GET['id_provinsi']) AND $_GET['id_provinsi']==4) { //ACEH ?>
-
-<?php } ?>
-
-<?php if(isset($_GET['id_provinsi']) AND $_GET['id_provinsi']==4) { //ACEH ?>
-
-<?php } ?>
-
-<?php if(isset($_GET['id_provinsi']) AND $_GET['id_provinsi']==4) { //ACEH ?>
-
-<?php } ?>
-
-<?php if(isset($_GET['id_provinsi']) AND $_GET['id_provinsi']==4) { //ACEH ?>
-
-<?php } ?>
-
-<?php if(isset($_GET['id_provinsi']) AND $_GET['id_provinsi']==4) { //ACEH ?>
-
-<?php } ?>
 
         if(!color) {            
-             var color = ['#ffffff','#f7f7f7','#eaeaea','#dddddd','#d0d0d0','#c4c4c4',
-             	'#b7b7b7','#aaaaaa'
+             var color = ['#f6e7e7','#dca2a2','#cb7373','#b94545','#a00000','#9e0000',
+             	'#830000','#7f2222'
              ];
         }
 
@@ -1099,20 +1072,20 @@ Kota_Jayapura : { cat_id:"9471",total:"4",nama:"Kota Jayapura",path:"M633.055,13
                 var prov_array = province_name.split(" ");
                 var province = prov_array.join('-');
                 
-				        var url = '<?= Url::to(["site/index-inovasi"]); ?>';
-				        //var url = 'http://indonesiaberinovasi.com/berita-inovasi';
+				var url = '<?= Url::to(["site/inovasi-index"]); ?>';
+				//var url = 'http://indonesiaberinovasi.com/berita-inovasi';
                 
                 window.location.href = url+'&id_provinsi='+id_provinsi;
           });
 
 		      path.on('touchend', function() {
-        		    var province_name = this.attrs.nama;
+        		var province_name = this.attrs.nama;
                 var id_provinsi = this.attrs.id_provinsi;
                 var prov_array = province_name.split(" ");
                 var province = prov_array.join('-');
 
-				        var url = '<?= Url::to(["site/index-inovasi"]); ?>';
-				        //var url = 'http://indonesiaberinovasi.com/berita-inovasi';
+				var url = '<?= Url::to(["site/inovasi-index"]); ?>';
+				//var url = 'http://indonesiaberinovasi.com/berita-inovasi';
                 window.location.href = url+'&id_provinsi='+id_provinsi;
       		});            
 

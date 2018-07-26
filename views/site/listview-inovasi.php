@@ -1,16 +1,23 @@
-<div class="row">
-	<div class="col-md-3 col-sm-3 col-xs-12">
+<?php 
 
-	</div>
+use app\components\Helper;
+use yii\helpers\Html;
 
-	<div class="col-md-9 col-sm-9 col-xs-12">
-		<div class="widget-subject-content">
+?>
+
+<div class="widget-subject-content">
+	<div class="row">
+		<div class="col-md-4 col-sm-4 col-xs-12">
+			<?= Html::img("@web/images/banner_nav_left.jpg", ['class' => 'img-responsive']); ?>
+		</div>
+
+		<div class="col-md-8 col-sm-8 col-xs-12" style="margin-top: -20px;">
 			<div class="title">
 				<h3>
-					<a href="">Layanan Sinergi 3 in 1 Gratis Bagi Keluarga Miskin Pemegang Kartu Menuju Sejahtera (KMS)</a>
+					<?= Html::a($model->nama_inovasi, ['view-inovasi','id' => $model->id], ['option' => 'value']); ?>
 				</h3>
 			</div>
-			30 Jun 2018
+			<?= Helper::getTanggal($model->waktu_dibuat) ?>
 		</div>
 	</div>
 </div>

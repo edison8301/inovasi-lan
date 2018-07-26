@@ -33,13 +33,13 @@ class SiteController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['index','login','view-post','map-detail','error','index-inovasi'],
+                        'actions' => ['index','login','view-post','map-detail','error','index-inovasi','view-inovasi'],
                         'allow' => true,
                         'roles' => ['?'],
                     ],
                     
                     [
-                        'actions' => ['index','view-post','map-detail','logout','index-inovasi'],
+                        'actions' => ['index','view-post','map-detail','error','logout','index-inovasi','login','view-inovasi'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -113,13 +113,25 @@ class SiteController extends Controller
         $dataProvider = new ActiveDataProvider([
             'query' => Inovasi::findInovasiProvider(),
             'pagination' => [
-                'pageSize' => 5
+                'pageSize' => 10
             ],
         ]);
 
         return $this->render('index-inovasi',[
             'id_provinsi' => $id_provinsi,
             'dataProvider' => $dataProvider
+        ]);
+    }
+
+    public function actionViewInovasi($id)
+    {
+        $this->layout = '//frontend/main';
+        $this->layout = '//frontend/main-detail';
+
+        $model = Inovasi::findOne($id);
+
+        return $this->render('view-inovasi',[
+            'model' => $model
         ]);
     }
 

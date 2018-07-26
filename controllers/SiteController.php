@@ -83,7 +83,6 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $this->layout = '//frontend/main';
-        $this->layout = '//frontend/main-peta';
 
         $dataProvider = new ActiveDataProvider([
             'query' => Post::findPostProvider(),

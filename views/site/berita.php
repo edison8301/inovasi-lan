@@ -9,7 +9,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Berita'];
 <div class="row">
 	<div class="col-md-8 col-sm-8 col-xs-12">
 		<div class="widget-subject">
-			DAFTRA BERITA
+			DAFTAR BERITA
 		</div>
 
 		<?= ListView::widget([

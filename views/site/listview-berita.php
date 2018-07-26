@@ -1,7 +1,6 @@
 <?php 
 use yii\helpers\Html;
 use app\components\Helper;
-use kartik\markdown\Markdown;
 ?>
 
 <div class="widget-subject-content">
@@ -18,7 +17,7 @@ use kartik\markdown\Markdown;
 
 			</div>
 
-				<?=  Html::tag('p',Markdown::convert(substr($model->content, 200, 250))) ?>
+				<?=  Html::tag('p',Html::decode(substr($model->content, 200, 250))) ?>
 
 				<div>&nbsp;</div>
 

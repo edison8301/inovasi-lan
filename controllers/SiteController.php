@@ -107,13 +107,12 @@ class SiteController extends Controller
 
     public function actionIndexInovasi($id_provinsi=null)
     {
-        $this->layout = '//frontend/main';
         $this->layout = '//frontend/main-peta';
 
         $dataProvider = new ActiveDataProvider([
             'query' => Inovasi::findInovasiProvider(),
             'pagination' => [
-                'pageSize' => 10
+                'pageSize' => 20
             ],
         ]);
 

@@ -2,7 +2,7 @@
 use app\components\Helper;
 use yii\helpers\Html;
 
-$this->params['breadcrumbs'][] = ['label' => 'Pemerintah Daerah'];
+$this->params['breadcrumbs'][] = ['label' => 'Detail Inovasi'];
 $this->params['breadcrumbs'][] = $model->nama_inovasi;
 ?>
 

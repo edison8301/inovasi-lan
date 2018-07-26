@@ -16,8 +16,14 @@ use yii\helpers\Html;
 				<h3>
 					<?= Html::a($model->nama_inovasi, ['view-inovasi','id' => $model->id], ['option' => 'value']); ?>
 				</h3>
+
 			</div>
-			<?= Helper::getTanggal($model->waktu_dibuat) ?>
+
+				<?= Html::decode(substr($model->deskripsi, 0, 150)).' ......' ?>
+
+				<div>&nbsp;</div>
+
+				<?= Helper::getTanggal($model->waktu_dibuat) ?>
 		</div>
 	</div>
 </div>

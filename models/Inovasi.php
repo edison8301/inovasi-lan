@@ -104,6 +104,11 @@ class Inovasi extends \yii\db\ActiveRecord
 
     public static function findInovasiProvider()
     {
-        return self::find()->orderBy(['waktu_dibuat' => SORT_DESC]);
+        return self::find();
+    }
+
+    public function getDeskripsiListView()
+    {
+        return substr(strtolower($this->deskripsi), 0, 200);
     }
 }

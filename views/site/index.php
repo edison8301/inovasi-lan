@@ -10,6 +10,13 @@ use yii\widgets\ListView;
 $this->title = 'Sistem Informasi Kajian (Siska) LAN';
 
 ?>
+
+<div class="row">
+
+	<?= $this->render('_peta'); ?>
+
+</div>
+
 <div class="row">
 	<div class="col-md-4">
 		<div class="widget-subject">

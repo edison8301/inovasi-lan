@@ -9,12 +9,22 @@ body {
     background-color: #a50328 !important;
     border-color: #a50328 !important;
     border-radius: 0px !important;
-    height: 68px;
+    height: 68px !important;
+    margin-bottom: 0px !important;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: rgba(255, 255, 255, 0.6) !important;
+    background-color: #08080800 !important;
+    font-size: 18px !important;
+    padding-top: 18px !important;
 }
 
 .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
-    color: rgba(255, 255, 255, 0.6);
-    background-color: #08080800;
+    color: rgba(255, 255, 255, 0.6) !important;
+    background-color: #08080800 !important;
+    font-size: 18px !important;
+    padding-top: 18px !important;
 }
 
 /*.navbar-header .navbar-brand {

@@ -5,15 +5,61 @@ use yii\helpers\Url;
 ?>
 
 <style type="text/css">
-	.bluerow { background: #b7daff}
-	#map-row { max-width: 1080px; width: 100%; height: 520px; display: block; margin: -20px auto 20px; position: relative; }
-	.legend { position: absolute; left: 20px; bottom: 20px; display: block; padding: 10px 20px; background: rgba(255,255,255,0.5); font-size: 12px}
-	#blockcontainer { margin: 0 10px; display: inline-block;}
-	.block-color { float: left; display: block; width: 20px; height: 10px; position: relative;}
-	.boxcontainer { display:none; position: absolute; z-index: 1; background: white; padding: 10px 20px; text-align: center;min-width: 120px; font-size: 12px;}
-	.boxcontainer .titlebox { font-weight: bold; font-size: 16px;text-transform: uppercase;}
-	.boxcontainer .contentbox { font-size: 16px; font-weight: bold}
-	#map-content { width: 300px; height: 250px; display: block; position: relative; overflow: hidden;}
+	.bluerow { 
+        background: #b7daff
+    }
+	#map-row { 
+        max-width: 1080px; 
+        width: 100%; 
+        height: 520px; 
+        display: block; 
+        margin: -20px auto 20px; 
+        position: relative; 
+    }
+	.legend { 
+        position: absolute; 
+        left: 20px; 
+        bottom: 20px; 
+        display: block; 
+        padding: 10px 20px; 
+        background: rgba(255,255,255,0.5); 
+        font-size: 12px
+    }
+	#blockcontainer { 
+        margin: 0 10px; 
+        display: inline-block;
+    }
+	.block-color { 
+        float: left; 
+        display: block; 
+        width: 20px; 
+        height: 10px; 
+        position: relative;
+    }
+	.boxcontainer { 
+        display:none; position: absolute; 
+        z-index: 1; 
+        background: white; 
+        padding: 10px 20px; text-align: center;
+        min-width: 120px; 
+        font-size: 12px;
+    }
+	.boxcontainer .titlebox { 
+        font-weight: bold; 
+        font-size: 16px;
+        text-transform: uppercase;
+    }
+	.boxcontainer .contentbox { 
+        font-size: 16px;
+        font-weight: bold;
+    }
+	#map-content { 
+        width: 300px; 
+        height: 250px; 
+        display: block; 
+        position: relative; 
+        overflow: hidden;
+    }
 </style>
 
 <div class="row bluerow">
@@ -259,10 +305,10 @@ Papua : { cat_id:"94",total:"30",nama:"Papua",path:"M910.85,348.551l0.2,0.1l0.60
                 var prov_array = province_name.split(" ");
                 var province = prov_array.join('-');
 
-				var url = '<?= Url::to(["site/index"]); ?>';
+				var url = '<?= Url::to(["site/index-inovasi"]); ?>';
 				//var url = 'http://indonesiaberinovasi.com/berita-inovasi';
                 
-                window.location.href = url+'/'+province;
+                window.location.href = url+'&id_provinsi='+province;
           });
 
 		  path.on('touchend', function() {
@@ -270,7 +316,7 @@ Papua : { cat_id:"94",total:"30",nama:"Papua",path:"M910.85,348.551l0.2,0.1l0.60
                 var prov_array = province_name.split(" ");
                 var province = prov_array.join('-');
 
-				var url = '<?= Url::to(["site/peta"]); ?>';
+				var url = '<?= Url::to(["site/index-inovasi"]); ?>';
 				//var url = 'http://indonesiaberinovasi.com/berita-inovasi';
                 
                 window.location.href = url+'&id_provinsi='+province;

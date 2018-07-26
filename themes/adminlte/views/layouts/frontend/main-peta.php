@@ -9,21 +9,23 @@ use app\models\User;
 
 <?php $this->beginContent('@app/themes/adminlte/views/layouts/frontend/main.php'); ?>
 
-<div class="container" style="margin-top: 5%">
+<!-- <div class="container" style="margin-top: 5%">
 	<div id="map-inovation" class="jsmaps-wrapper" style="width: 100%; height: 400px"></div>
-</div>
+</div> -->
+
+	<?= $this->render('/site/_peta'); ?>
 
 	<div class="container" style="margin-top: 3%">
 		<?= $content ?>
 	</div>
 
 	<script type="text/javascript">
-		$(function() {
+		/*$(function() {
 			$('#map-inovation').JSMaps({
 				map: 'kabupatenAceh'
 			});
 		});
-		/*$(function() {
+		$(function() {
             $('#map-inovation').vectorMap({
             	map: 'indonesia',
             	backgroundColor: "#b7daff",

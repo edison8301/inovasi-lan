@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][] = $model->getTitle();
 	<div class="row">
 		<div class="col-md-8 col-sm-8 col-xs-12">
 			<div class="thumbnail-post-detail">
-				<?= Html::img("@web/images/banner_nav_left.jpg", ['class' => 'img-responsive']); ?>
+				<?= $model->getThumbnail(); ?>
 			</div>
 
 			<div class="content">
@@ -40,10 +40,4 @@ $this->params['breadcrumbs'][] = $model->getTitle();
 	</div>
 </div>
 
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+<div>&nbsp;</div>

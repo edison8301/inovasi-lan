@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\Html;
 
 /**
  * This is the model class for table "post".
@@ -72,8 +73,19 @@ class Post extends \yii\db\ActiveRecord
         return substr($this->getTitle(), 0, 65)." ...";
     }
 
-    public function findPostProvider()
+    public static function findPostProvider()
     {
         return self::find()->orderBy(['created_time' => SORT_DESC]);
+    }
+
+    public function getThumbnail($htmlOptions=[])
+    {
+        $path = Yii::$app->basePath;
+
+        if ($this->thumbnail !== null AND file_exists($path.'/web/uploads/'.$this->thumbnail)) {
+            return Html::img('@web/uploads/'. $this->thumbnail,$htmlOptions);;
+        } else  {
+            return Html::img("@web/images/banner_nav_left.jpg", ['class' => 'img-responsive']);
+        }
     }
 }

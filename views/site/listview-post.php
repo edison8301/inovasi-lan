@@ -10,7 +10,7 @@ use app\components\Helper;
 		</div>
 		<div class="col-md-9 col-sm-9 col-xs-9">
 			<div class="title">
-				<?= Html::a($model->getTitleListView(), ['site/post-detail','id' => $model->id], ['option' => 'value']); ?>
+				<?= Html::a($model->getTitleListView(), ['site/view-post','id' => $model->id], ['option' => 'value']); ?>
 			</div>
 
 			<?= Helper::getTanggalSingkat($model->created_time) ?>

@@ -11,9 +11,10 @@ use PhpOffice\PhpWord\Shared\Converter;
 
 use app\models\LoginForm;
 use app\models\User;
-use app\models\Post;
 use yii\web\UploadedFile;
 use yii\data\ActiveDataProvider;
+use app\models\Post;
+use app\models\Inovasi;
 
 class SiteController extends Controller
 {
@@ -32,17 +33,17 @@ class SiteController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['index','login','post-detail','map-detail','error'],
+                        'actions' => ['index','login','view-post','map-detail','error','index-inovasi'],
                         'allow' => true,
                         'roles' => ['?'],
                     ],
-                    /*
+                    
                     [
-                        'actions' => ['index','post-detail','map-detail','logout'],
+                        'actions' => ['index','view-post','map-detail','logout','index-inovasi'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
-                    */
+                    
                 ],
             ],
             'verbs' => [
@@ -104,14 +105,32 @@ class SiteController extends Controller
         return $this->render('map-detail');
     }
 
-    public function actionPostDetail($id)
+    public function actionIndexInovasi($id_provinsi)
+    {
+        $this->layout = '//frontend/main';
+        $this->layout = '//frontend/main-peta';
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => Inovasi::findInovasiProvider(),
+            'pagination' => [
+                'pageSize' => 5
+            ],
+        ]);
+
+        return $this->render('index-inovasi',[
+            'id_provinsi' => $id_provinsi,
+            'dataProvider' => $dataProvider
+        ]);
+    }
+
+    public function actionViewPost($id)
     {
         $this->layout = '//frontend/main';
         $this->layout = '//frontend/main-detail';
 
         $model = Post::findOne($id);
 
-        return $this->render('post-detail',[
+        return $this->render('view-post',[
             'model' => $model
         ]);
     }

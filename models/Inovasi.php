@@ -101,4 +101,9 @@ class Inovasi extends \yii\db\ActiveRecord
             'waktu_diubah' => 'Waktu Diubah',
         ];
     }
+
+    public static function findInovasiProvider()
+    {
+        return self::find()->orderBy(['waktu_dibuat' => SORT_DESC]);
+    }
 }

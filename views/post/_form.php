@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use dosamigos\ckeditor\CKEditor;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Post */
@@ -35,7 +36,17 @@ use yii\bootstrap\ActiveForm;
 
         <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
-        <?= $form->field($model, 'content')->textarea(['rows' => 6]) ?>
+        <?= $form->field($model, 'content', [
+            'horizontalCssClasses' => [
+                'label' => 'col-sm-2',
+                'wrapper' => 'col-sm-8',
+                'error' => '',
+                'hint' => '',
+            ]
+        ])->widget(CKEditor::className(), [
+            'options' => ['rows' => 3],
+            'preset' => 'advanced'
+        ]) ?>
 
         <?= $form->field($model, 'thumbnail')->textInput(['maxlength' => true]) ?>
 

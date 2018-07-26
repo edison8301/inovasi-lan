@@ -5,19 +5,19 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "jenis_inovasi".
+ * This is the model class for table "kategori".
  *
  * @property int $id
  * @property string $nama
  */
-class JenisInovasi extends \yii\db\ActiveRecord
+class Kategori extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'jenis_inovasi';
+        return 'kategori';
     }
 
     /**
@@ -44,6 +44,6 @@ class JenisInovasi extends \yii\db\ActiveRecord
 
     public static function getList()
     {
-        return yii\helpers\ArrayHelper::map(JenisInovasi::find()->all(),'id','nama');
+        return yii\helpers\ArrayHelper::map(Kategori::find()->all(),'id','nama');
     }
 }

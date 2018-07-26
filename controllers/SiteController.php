@@ -38,7 +38,7 @@ class SiteController extends Controller
                     ],
                     /*
                     [
-                        'actions' => ['index','post-detail','map-detail'],
+                        'actions' => ['index','post-detail','map-detail','logout'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],

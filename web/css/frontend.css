@@ -9,6 +9,7 @@ body {
     background-color: #a50328 !important;
     border-color: #a50328 !important;
     border-radius: 0px !important;
+    height: 68px;
 }
 
 .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
@@ -16,7 +17,7 @@ body {
     background-color: #08080800;
 }
 
-.navbar-header .navbar-brand {
+/*.navbar-header .navbar-brand {
     display: inline;
     padding-left: 15%;
     background-image: url(../images/logo.png);
@@ -25,6 +26,13 @@ body {
     background-position: 7px 50%;
     transition: color 0.2s ease 0.05s;
     color: #ccc;
+}*/
+
+img.img-brand-navbar {
+    display: inline;
+    vertical-align: top;
+    height: 60px;
+    margin-top: -12px;
 }
 
 .navbar-brand {
@@ -100,7 +108,7 @@ div.widget-subject-content {
 }
 
 @media screen and (max-width: 780px){
-	.navbar-header .navbar-brand {
+	/*.navbar-header .navbar-brand {
 	    padding-left: 9%;
 	    background-image: url(../images/logo.png);
 	    background-size: auto 60%;
@@ -108,12 +116,12 @@ div.widget-subject-content {
 	    background-position: 7px 50%;
 	    transition: color 0.2s ease 0.05s;
 	    color: #ccc;
-	}
+	}*/
 }
 
 @media screen and (max-width: 1280px){
 	div#map-inovation {
-	    background: #d8d8da;
+	    /*background: #d8d8da;*/
 	    min-height: 400px;
 	    margin-top: -20px;
 	}
@@ -121,7 +129,7 @@ div.widget-subject-content {
 
 @media screen and (max-width: 1180px){
 	div#map-inovation {
-	    background: yellow;
+	    /*background: yellow;*/
 	    min-height: 300px;
 	    margin-top: -20px;
 	}
@@ -129,7 +137,7 @@ div.widget-subject-content {
 
 @media screen and (max-width: 980px){
 	div#map-inovation {
-	    background: blue;
+	    /*background: blue;*/
 	    min-height: 230px;
 	    margin-top: -20px;
 	}
@@ -137,7 +145,7 @@ div.widget-subject-content {
 
 @media screen and (max-width: 780px){
 	div#map-inovation {
-	    background: red;
+	    /*background: red;*/
 	    min-height: 230px;
 	    margin-top: -20px;
 	}
@@ -145,12 +153,12 @@ div.widget-subject-content {
 
 @media screen and (max-width: 580px){
 	div#map-inovation {
-	    background: green;
+	    /*background: green;*/
 	    min-height: 230px;
 	    margin-top: -20px;
 	}
 
-	.navbar-header .navbar-brand {
+	/*.navbar-header .navbar-brand {
 		padding-left: 12%;
 	    background-image: url(../images/logo.png);
 	    background-size: auto 60%;
@@ -159,7 +167,7 @@ div.widget-subject-content {
 	    transition: color 0.2s ease 0.05s;
 	    color: #ccc;
 	    font-size: 14px;
-	}
+	}*/
 }
 
 footer.layout-footer {

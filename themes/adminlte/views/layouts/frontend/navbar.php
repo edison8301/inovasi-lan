@@ -21,8 +21,8 @@ use app\models\User;
         ['label' => 'Artikel','url'=>['site/artikel']],
         ['label' => 'Publikasi','url'=>['site/index']],
         ['label' => 'Kontak Kami','url'=>['site/contact']],
+        ['label' => 'Admin','url' => ['admin/index'], 'options' => ['data-method' => 'post'], 'visible' => !Yii::$app->user->isGuest],
         ['label' => 'Logout','url' => ['site/logout'], 'options' => ['data-method' => 'post'], 'visible' => !Yii::$app->user->isGuest],
-        ['label' => 'Login','url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
     ],
     'options' => ['class' => 'navbar-nav pull-left'],
 ]); ?>

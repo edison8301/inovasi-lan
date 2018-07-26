@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use app\models\JenisInovasi;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\InovasiSearch */
@@ -33,23 +34,22 @@ $this->params['breadcrumbs'][] = $this->title;
                 'contentOptions' => ['style' => 'text-align:center']
             ],
             [
-                'attribute' => 'jenis_inovasi_id',
-                'format' => 'raw',
-                'headerOptions' => ['style' => 'text-align:center;'],
-                'contentOptions' => ['style' => 'text-align:center;'],
-            ],
-            [
                 'attribute' => 'nama_inovasi',
                 'format' => 'raw',
                 'headerOptions' => ['style' => 'text-align:center;'],
-                'contentOptions' => ['style' => 'text-align:center;'],
+                'contentOptions' => ['style' => 'text-align:left;'],
             ],
             [
-                'attribute' => 'produk_inovasi',
+                'attribute' => 'jenis_inovasi_id',
                 'format' => 'raw',
-                'headerOptions' => ['style' => 'text-align:center;'],
+                'value'=>function($data) {
+                    return $data->jenisInovasi->nama;
+                },
+                'filter'=>JenisInovasi::getList(),
+                'headerOptions' => ['style' => 'text-align:center; width: 200px'],
                 'contentOptions' => ['style' => 'text-align:center;'],
             ],
+            
             /*[
                 'attribute' => 'penggagas',
                 'format' => 'raw',

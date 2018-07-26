@@ -2,6 +2,11 @@
 
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use dosamigos\ckeditor\CKEditor;
+use kartik\select2\Select2;
+use app\models\Kategori;
+use app\models\JenisInovasi;
+use app\models\KelompokInovator;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Inovasi */
@@ -12,14 +17,14 @@ use yii\bootstrap\ActiveForm;
     'layout'=>'horizontal',
     'enableAjaxValidation'=>false,
     'enableClientValidation'=>false,
-    /*'fieldConfig' => [
+    'fieldConfig' => [
         'horizontalCssClasses' => [
             'label' => 'col-sm-2',
             'wrapper' => 'col-sm-4',
             'error' => '',
             'hint' => '',
         ],
-    ]*/
+    ]
 ]); ?>
 
 <div class="inovasi-form box box-primary">
@@ -31,9 +36,21 @@ use yii\bootstrap\ActiveForm;
 
         <?= $form->errorSummary($model); ?>
 
-        <?= $form->field($model, 'kategori_id')->textInput() ?>
+        <?= $form->field($model, 'kategori_id')->widget(select2::className(), [
+            'data' => Kategori::getList(),
+            'pluginOptions' => ['allowClear' => true],
+            'options' => [
+                'placeholder' => 'Pilih Kategori',
+            ]
+        ]) ?>
 
-        <?= $form->field($model, 'jenis_inovasi_id')->textInput() ?>
+        <?= $form->field($model, 'jenis_inovasi_id')->widget(select2::className(), [
+            'data' => JenisInovasi::getList(),
+            'pluginOptions' => ['allowClear' => true],
+            'options' => [
+                'placeholder' => 'Pilih Kategori',
+            ]
+        ]) ?>
 
         <?= $form->field($model, 'nama_inovasi')->textInput(['maxlength' => true]) ?>
 
@@ -41,9 +58,25 @@ use yii\bootstrap\ActiveForm;
 
         <?= $form->field($model, 'penggagas')->textInput(['maxlength' => true]) ?>
 
-        <?= $form->field($model, 'kelompok_inovator_id')->textInput() ?>
+        <?= $form->field($model, 'kelompok_inovator_id')->widget(select2::className(), [
+            'data' => KelompokInovator::getList(),
+            'pluginOptions' => ['allowClear' => true],
+            'options' => [
+                'placeholder' => 'Pilih Kelompok Inovator',
+            ]
+        ]) ?>
 
-        <?= $form->field($model, 'deskripsi')->textarea(['rows' => 6]) ?>
+        <?= $form->field($model, 'deskripsi', [
+            'horizontalCssClasses' => [
+                'label' => 'col-sm-2',
+                'wrapper' => 'col-sm-8',
+                'error' => '',
+                'hint' => '',
+            ]
+        ])->widget(CKEditor::className(), [
+            'options' => ['rows' => 3],
+            'preset' => 'advanced'
+        ]) ?>
 
         <?= $form->field($model, 'nama_instansi')->textInput(['maxlength' => true]) ?>
 
@@ -53,19 +86,90 @@ use yii\bootstrap\ActiveForm;
 
         <?= $form->field($model, 'tahun_implementasi')->textInput() ?>
 
-        <?= $form->field($model, 'faktor_pendorong')->textarea(['rows' => 6]) ?>
+        <?= $form->field($model, 'faktor_pendorong', [
+            'horizontalCssClasses' => [
+                'label' => 'col-sm-2',
+                'wrapper' => 'col-sm-8',
+                'error' => '',
+                'hint' => '',
+            ]
+        ])->widget(CKEditor::className(), [
+            'options' => ['rows' => 3],
+            'preset' => 'advanced'
+        ]) ?>
 
-        <?= $form->field($model, 'faktor_penghambat')->textarea(['rows' => 6]) ?>
+        <?= $form->field($model, 'faktor_penghambat', [
+            'horizontalCssClasses' => [
+                'label' => 'col-sm-2',
+                'wrapper' => 'col-sm-8',
+                'error' => '',
+                'hint' => '',
+            ]
+        ])->widget(CKEditor::className(), [
+            'options' => ['rows' => 3],
+            'preset' => 'advanced'
+        ]) ?>
 
-        <?= $form->field($model, 'tahapan_proses')->textarea(['rows' => 6]) ?>
+        <?= $form->field($model, 'tahapan_proses', [
+            'horizontalCssClasses' => [
+                'label' => 'col-sm-2',
+                'wrapper' => 'col-sm-8',
+                'error' => '',
+                'hint' => '',
+            ]
+        ])->widget(CKEditor::className(), [
+            'options' => ['rows' => 3],
+            'preset' => 'advanced'
+        ]) ?>
 
-        <?= $form->field($model, 'output')->textarea(['rows' => 6]) ?>
+        <?= $form->field($model, 'output', [
+            'horizontalCssClasses' => [
+                'label' => 'col-sm-2',
+                'wrapper' => 'col-sm-8',
+                'error' => '',
+                'hint' => '',
+            ]
+        ])->widget(CKEditor::className(), [
+            'options' => ['rows' => 3],
+            'preset' => 'advanced'
+        ]) ?>
 
-        <?= $form->field($model, 'outcome')->textarea(['rows' => 6]) ?>
 
-        <?= $form->field($model, 'manfaat')->textarea(['rows' => 6]) ?>
+        <?= $form->field($model, 'outcome', [
+            'horizontalCssClasses' => [
+                'label' => 'col-sm-2',
+                'wrapper' => 'col-sm-8',
+                'error' => '',
+                'hint' => '',
+            ]
+        ])->widget(CKEditor::className(), [
+            'options' => ['rows' => 3],
+            'preset' => 'advanced'
+        ]) ?>
 
-        <?= $form->field($model, 'prasyarat_replikasi')->textarea(['rows' => 6]) ?>
+        <?= $form->field($model, 'manfaat', [
+            'horizontalCssClasses' => [
+                'label' => 'col-sm-2',
+                'wrapper' => 'col-sm-8',
+                'error' => '',
+                'hint' => '',
+            ]
+        ])->widget(CKEditor::className(), [
+            'options' => ['rows' => 3],
+            'preset' => 'advanced'
+        ]) ?>
+
+        <?= $form->field($model, 'prasyarat_replikasi', [
+            'horizontalCssClasses' => [
+                'label' => 'col-sm-2',
+                'wrapper' => 'col-sm-8',
+                'error' => '',
+                'hint' => '',
+            ]
+        ])->widget(CKEditor::className(), [
+            'options' => ['rows' => 3],
+            'preset' => 'advanced'
+        ]) ?>
 
         <?= $form->field($model, 'kontak')->textInput(['maxlength' => true]) ?>
 

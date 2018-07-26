@@ -41,4 +41,9 @@ class KelompokInovator extends \yii\db\ActiveRecord
             'nama' => 'Nama',
         ];
     }
+
+    public static function getList()
+    {
+        return yii\helpers\ArrayHelper::map(KelompokInovator::find()->all(),'id','nama');
+    }
 }

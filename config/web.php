@@ -104,6 +104,10 @@ $config = [
             // message source
             // 'downloadAction' => 'gridview/export/download',
             // 'i18n' => []
+        ],
+        'markdown' => [
+            'class' => 'kartik\markdown\Module',
+            'smartyPants' => true
         ]
     ],
     'params' => $params,

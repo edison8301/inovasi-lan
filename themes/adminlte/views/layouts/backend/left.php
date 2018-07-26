@@ -21,7 +21,7 @@ use app\models\Unit;
                 <img src="<?= Yii::getAlias('@web').'/images/logo.png'; ?>" alt="User Image"/>
             </div>
             <div class="pull-left info">
-                <p><?php //ucwords(Yii::$app->user->identity->username) ?></p>
+                <p><?= ucwords(Yii::$app->user->identity->username) ?></p>
 
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>

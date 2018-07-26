@@ -112,6 +112,11 @@ class Inovasi extends \yii\db\ActiveRecord
         return $this->hasOne(KelompokInovator::className(),['id' => 'kelompok_inovator_id']);
     }
 
+    public function getStatusInovasi()
+    {
+        return $this->hasOne(StatusInovasi::class,['id' => 'status_inovasi_id']);
+    }
+
     public function getTeknikValidasi()
     {
         return $this->hasOne(TeknikValidasi::className(),['id' => 'teknik_validasi_id']);

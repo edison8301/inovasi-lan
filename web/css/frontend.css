@@ -236,3 +236,13 @@ div.content > div.post-content {
     font-size: 137%;
     line-height: 155%;
 }
+
+div.contact-list > h4 {
+    font-weight: bold;
+}
+
+.form-control {
+    border-radius: 5px !important; 
+    box-shadow: none;
+    border-color: #d2d6de;
+}

@@ -16,10 +16,10 @@ use app\models\User;
 
 <?= Nav::widget([
     'items' => [
-        ['label' => 'Tentang Kami','url'=>['site/index']],
+        ['label' => 'Tentang Kami','url'=>['site/about']],
         ['label' => 'Berita','url'=>['site/index']],
         ['label' => 'Artikel','url'=>['site/index']],
-        ['label' => 'Kontak Kami','url'=>['site/index']],
+        ['label' => 'Kontak Kami','url'=>['site/contact']],
         //['label' => 'Logout','url' => ['site/logout'], 'options' => ['data-method' => 'post'], 'visible' => !Yii::$app->user->isGuest],
         //['label' => 'Login','url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
     ],

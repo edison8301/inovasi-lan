@@ -43,12 +43,12 @@ $this->params['breadcrumbs'][] = $model->nama_inovasi;
 				            [
 				                'attribute' => 'jenis_inovasi_id',
 				                'format' => 'raw',
-				                'value' => $model->jenis_inovasi_id,
+				                'value' => $model->jenisInovasi->nama,
 				            ],
 				            [
 				                'attribute' => 'kelompok_inovator_id',
 				                'format' => 'raw',
-				                'value' => $model->kelompok_inovator_id,
+				                'value' => $model->kelompokInovator->nama,
 				            ],
 				            [
 				                'attribute' => 'nama_instansi',
@@ -78,7 +78,7 @@ $this->params['breadcrumbs'][] = $model->nama_inovasi;
 				            [
 				                'attribute' => 'teknik_validasi_id',
 				                'format' => 'raw',
-				                'value' => $model->teknik_validasi_id,
+				                'value' => $model->teknikValidasi->nama,
 				            ],
 				            [
 				                'attribute' => 'tahun_inisiasi',

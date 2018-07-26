@@ -37,7 +37,8 @@
         "kartik-v/yii2-mpdf": "*",
         "machour/yii2-notifications": "*",
         "yiisoft/yii2-queue": "^2.0",
-        "boundstate/yii2-mailgun": "^0.0.3"
+        "boundstate/yii2-mailgun": "^0.0.3",
+        "kartik-v/yii2-tabs-x": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

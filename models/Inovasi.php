@@ -102,6 +102,21 @@ class Inovasi extends \yii\db\ActiveRecord
         ];
     }
 
+    public function getJenisInovasi()
+    {
+        return $this->hasOne(JenisInovasi::className(),['id' => 'jenis_inovasi_id']);
+    }
+
+    public function getKelompokInovator()
+    {
+        return $this->hasOne(KelompokInovator::className(),['id' => 'kelompok_inovator_id']);
+    }
+
+    public function getTeknikValidasi()
+    {
+        return $this->hasOne(TeknikValidasi::className(),['id' => 'teknik_validasi_id']);
+    }
+
     public static function findInovasiProvider()
     {
         return self::find();

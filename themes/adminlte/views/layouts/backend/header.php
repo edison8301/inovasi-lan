@@ -22,7 +22,7 @@ use yii\helpers\Html;
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <img src="<?= Yii::getAlias('@web').'/images/logo.png'; ?>" style="width: 22px" alt="User Image"/>
-                        <span class="hidden-xs"> <?php //ucwords(Yii::$app->user->identity->username) ?></span>
+                        <span class="hidden-xs"> <?= ucwords(Yii::$app->user->identity->username) ?></span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->

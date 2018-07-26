@@ -15,6 +15,7 @@ use yii\web\UploadedFile;
 use yii\data\ActiveDataProvider;
 use app\models\Post;
 use app\models\Inovasi;
+use app\models\ContactForm;
 
 class SiteController extends Controller
 {
@@ -33,13 +34,13 @@ class SiteController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['index','login','view-post','map-detail','error','index-inovasi','view-inovasi'],
+                        'actions' => ['index','login','view-post','map-detail','error','index-inovasi','view-inovasi','about','contact'],
                         'allow' => true,
                         'roles' => ['?'],
                     ],
                     
                     [
-                        'actions' => ['index','view-post','map-detail','error','logout','index-inovasi','login','view-inovasi'],
+                        'actions' => ['index','view-post','map-detail','error','logout','index-inovasi','login','view-inovasi','about','contact'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -142,6 +143,24 @@ class SiteController extends Controller
         $model = Post::findOne($id);
 
         return $this->render('view-post',[
+            'model' => $model
+        ]);
+    }
+
+    public function actionAbout()
+    {
+        $this->layout = '//frontend/main-detail';
+
+        return $this->render('about');
+    }
+
+    public function actionContact()
+    {
+        $this->layout = '//frontend/main-detail';
+
+        $model = new ContactForm();
+
+        return $this->render('contact',[
             'model' => $model
         ]);
     }

@@ -12,14 +12,14 @@ use yii\bootstrap\ActiveForm;
     'layout'=>'horizontal',
     'enableAjaxValidation'=>false,
     'enableClientValidation'=>false,
-    'fieldConfig' => [
+    /*'fieldConfig' => [
         'horizontalCssClasses' => [
             'label' => 'col-sm-2',
             'wrapper' => 'col-sm-4',
             'error' => '',
             'hint' => '',
         ],
-    ]
+    ]*/
 ]); ?>
 
 <div class="inovasi-form box box-primary">

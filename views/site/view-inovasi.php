@@ -2,6 +2,7 @@
 use app\components\Helper;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use kartik\tabs\TabsX;
 
 $this->params['breadcrumbs'][] = ['label' => 'Detail Inovasi'];
 $this->params['breadcrumbs'][] = $model->nama_inovasi;
@@ -99,7 +100,14 @@ $this->params['breadcrumbs'][] = $model->nama_inovasi;
 						Deskripsi
 					</h3>
 
-						<?= $model->deskripsi ?>
+					<?= $model->deskripsi ?>
+
+					<?php /*echo TabsX::widget([
+					    'items'=>$items,
+					    'position'=>TabsX::POS_ABOVE,
+					    'encodeLabels'=>false
+					]);*/ ?>
+					
 				</div>
 			</div>
 		</div>

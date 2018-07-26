@@ -92,4 +92,9 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     {
         return Yii::$app->getSecurity()->validatePassword($password, $this->password);
     }
+
+    public function getRole()
+    {
+        return $this->hasOne(Role::class,['id'=>'role_id']);
+    }
 }

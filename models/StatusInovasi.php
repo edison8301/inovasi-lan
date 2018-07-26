@@ -5,19 +5,19 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "teknik_validasi".
+ * This is the model class for table "status_inovasi".
  *
  * @property int $id
  * @property string $nama
  */
-class TeknikValidasi extends \yii\db\ActiveRecord
+class StatusInovasi extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'teknik_validasi';
+        return 'status_inovasi';
     }
 
     /**

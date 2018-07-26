@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use kartik\select2\Select2;
+use app\models\Role;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\User */
@@ -33,13 +35,19 @@ use yii\bootstrap\ActiveForm;
 
         <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
 
-        <?php //if ($model->isNewRecord): ?>
+        <?php if($model->isNewRecord) { ?>
             
-            <?= $form->field($model, 'password')->passwordInput(['maxlength' => true]) ?>
+        <?= $form->field($model, 'password')->passwordInput(['maxlength' => true]) ?>
         
-        <?php //endif ?>
+        <?php } ?>
 
-        <?= $form->field($model, 'role_id')->textInput() ?>
+        <?= $form->field($model, 'role_id')->widget(Select2::className(), [
+            'data' => Role::getList(),
+            'pluginOptions' => ['allowClear' => true],
+            'options' => [
+                'placeholder' => 'Pilih Kelompok Inovator',
+            ]
+        ]) ?>
 
         <?= Html::hiddenInput('referrer',$referrer); ?>
 

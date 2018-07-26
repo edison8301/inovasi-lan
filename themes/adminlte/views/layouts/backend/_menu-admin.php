@@ -28,6 +28,7 @@ use app\models\User;
 
         ['label' => 'Post Kategori', 'icon' => 'circle-o', 'url' => ['post-category/index']],
         ['label' => 'Post Kategori Map', 'icon' => 'circle-o', 'url' => ['post-category-map/index']],        
+        ['label' => 'Member', 'icon' => 'circle-o', 'url' => ['member/index']],
         ['label' => 'User', 'icon' => 'users', 'items' => [
             [
                 'label' => 'Admin',

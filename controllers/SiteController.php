@@ -34,13 +34,13 @@ class SiteController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['index','login','view-post','map-detail','error','index-inovasi','view-inovasi','about','contact'],
+                        'actions' => ['index','login','view-post','map-detail','error','index-inovasi','view-inovasi','about','contact','berita','artikel'],
                         'allow' => true,
                         'roles' => ['?'],
                     ],
                     
                     [
-                        'actions' => ['index','view-post','map-detail','error','logout','index-inovasi','login','view-inovasi','about','contact'],
+                        'actions' => ['index','view-post','map-detail','error','logout','index-inovasi','login','view-inovasi','about','contact','berita','artikel'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -97,6 +97,29 @@ class SiteController extends Controller
         return $this->render('index',[
             'dataProvider' => $dataProvider
         ]);
+    }
+
+    public function actionBerita()
+    {
+        $this->layout = '//frontend/main-detail';
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => Post::findPostProvider(),
+            'pagination' => [
+                'pageSize' => 20
+            ],
+        ]);
+
+        return $this->render('berita',[
+            'dataProvider' => $dataProvider
+        ]);
+    }
+
+    public function actionArtikel()
+    {
+        $this->layout = '//frontend/main-detail';
+
+        return $this->render('artikel');
     }
 
     public function actionMapDetail($id)

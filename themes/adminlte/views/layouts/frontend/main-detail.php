@@ -6,7 +6,7 @@ use yii\widgets\Breadcrumbs;
 
 <?php $this->beginContent('@app/themes/adminlte/views/layouts/frontend/main.php'); ?>
 
-	<div class="container" style="margin-top: 3%">
+	<div class="container" style="margin-top: 2%">
 		<?=
         Breadcrumbs::widget(
             [

@@ -10,7 +10,7 @@ $this->params['breadcrumbs'][] = ['label' => @$postSearch->postCategory->title];
 
 <div class="row">
 	<div class="col-md-8 col-sm-8 col-xs-12">
-		<div class="widget-title" style="text-transform: uppercase;">
+		<div class="widget-header" style="text-transform: uppercase;">
 			DAFTAR <?= @$postSearch->postCategory->title; ?>
 		</div>
 
@@ -29,6 +29,6 @@ $this->params['breadcrumbs'][] = ['label' => @$postSearch->postCategory->title];
 	</div>
 
 	<div class="col-md-4 col-sm-4 col-xs-12">
-
+		<?= $this->render('block-inovasi-terbaru'); ?>
 	</div>
 </div>

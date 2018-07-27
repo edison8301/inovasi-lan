@@ -4,6 +4,7 @@ use yii\bootstrap\NavBar;
 use yii\bootstrap\Nav;
 use app\models\PenelitianJenis;
 use app\models\User;
+use app\models\PostCategory;
 
 ?>
 
@@ -17,9 +18,9 @@ use app\models\User;
 <?= Nav::widget([
     'items' => [
         ['label' => 'Tentang Kami','url'=>['site/about']],
-        ['label' => 'Berita','url'=>['site/berita']],
-        ['label' => 'Artikel','url'=>['site/artikel']],
-        ['label' => 'Publikasi','url'=>['site/index']],
+        ['label' => 'Berita','url'=>['site/post-index','post_category_id'=>PostCategory::BERITA]],
+        ['label' => 'Artikel','url'=>['site/post-index','post_category_id'=>PostCategory::ARTIKEL]],
+        ['label' => 'Publikasi','url'=>['site/post-index']],
         ['label' => 'Kontak Kami','url'=>['site/contact']],
         ['label' => 'Admin','url' => ['admin/index'], 'options' => ['data-method' => 'post'], 'visible' => !Yii::$app->user->isGuest],
         ['label' => 'Logout','url' => ['site/logout'], 'options' => ['data-method' => 'post'], 'visible' => !Yii::$app->user->isGuest],

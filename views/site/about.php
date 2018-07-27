@@ -1,4 +1,10 @@
-<div class="content" style="margin-top: -3%">
+<?php
+
+$this->params['breadcrumbs'][] = ['label' => 'Tentang Kami'];
+
+?>
+
+<div class="content">
 	<div class="title-post-detail">
 		<h2>
 			Profil Kedeputian Bidang Inovasi Administrasi Negara

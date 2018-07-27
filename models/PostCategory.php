@@ -16,6 +16,10 @@ class PostCategory extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
+
+    CONST BERITA = 1;
+    CONST ARTIKEL = 2;
+
     public static function tableName()
     {
         return 'post_category';
@@ -44,4 +48,5 @@ class PostCategory extends \yii\db\ActiveRecord
             'title' => 'Title',
         ];
     }
+
 }

@@ -40,7 +40,7 @@ class PostSearch extends Post
      * @return ActiveDataProvider
      */
 
-    public function getQuerySearch($params)
+    public function getQuerySearch($params=[])
     {
         $query = Post::find();
 
@@ -64,7 +64,7 @@ class PostSearch extends Post
         return $query;
     }
     
-    public function search($params)
+    public function search($params=[])
     {
         $query = $this->getQuerySearch($params);
 

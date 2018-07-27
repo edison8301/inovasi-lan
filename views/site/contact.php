@@ -3,7 +3,11 @@
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
+$this->params['breadcrumbs'][] = ['label' => 'Kontak Kami'];
+
 ?>
+
+
 
 <?php $form = ActiveForm::begin([
     'layout' => 'inline',
@@ -17,7 +21,7 @@ use yii\bootstrap\ActiveForm;
     ]
 ]); ?>
 
-<div class="content" style="margin-top: -3%">
+<div class="content">
 	<div class="title-post-detail">
 		<h2>Kontak Kami</h2>
 		<h2>Pusat Promosi Inovasi dan Pengembangan Kapasitas</h2>

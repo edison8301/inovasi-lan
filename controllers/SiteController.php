@@ -16,6 +16,7 @@ use yii\data\ActiveDataProvider;
 use app\models\Post;
 use app\models\Inovasi;
 use app\models\ContactForm;
+use app\models\PostSearch;
 
 class SiteController extends Controller
 {
@@ -35,7 +36,7 @@ class SiteController extends Controller
                 'rules' => [
                     [
                         'actions' => ['index','login','post-view','map-detail','error','inovasi-index',
-                            'inovasi-view','about','contact','berita','artikel'],
+                            'inovasi-view','about','contact','berita','artikel','post-index'],
                         'allow' => true,
                         'roles' => ['?'],
                     ],
@@ -99,19 +100,23 @@ class SiteController extends Controller
         ]);
     }
 
-    public function actionBerita()
+    public function actionPostIndex($post_category_id=null)
     {
         $this->layout = '//frontend/main-detail';
 
+        $postSearch = new PostSearch();
+        $postSearch->post_category_id = $post_category_id;
+
         $dataProvider = new ActiveDataProvider([
-            'query' => Post::findPostProvider(),
+            'query' => $postSearch->getQuerySearch(),
             'pagination' => [
-                'pageSize' => 20
+                'pageSize' => 10
             ],
         ]);
 
-        return $this->render('berita',[
-            'dataProvider' => $dataProvider
+        return $this->render('post-index',[
+            'dataProvider' => $dataProvider,
+            'postSearch' => $postSearch
         ]);
     }
 
@@ -158,7 +163,7 @@ class SiteController extends Controller
         ]);
     }
 
-    public function actionViewPost($id)
+    public function actionPostView($id)
     {
         $this->layout = '//frontend/main';
         $this->layout = '//frontend/main-detail';

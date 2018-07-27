@@ -17,6 +17,7 @@ use app\models\Post;
 use app\models\Inovasi;
 use app\models\ContactForm;
 use app\models\PostSearch;
+use app\models\InovasiSearch;
 
 class SiteController extends Controller
 {
@@ -87,8 +88,11 @@ class SiteController extends Controller
     {
         $this->layout = '//frontend/main-peta';
 
+        $inovasiSearch = new InovasiSearch();
+        $inovasiSearch->load(Yii::$app->request->queryParams);
+
         $dataProvider = new ActiveDataProvider([
-            'query' => Post::findPostProvider(),
+            'query' => $inovasiSearch->getQuerySearch(),
             'pagination' => [
                 'pageSize' => 5
             ],
@@ -152,7 +156,7 @@ class SiteController extends Controller
 
     public function actionInovasiView($id)
     {
-        $this->layout = '//frontend/main';
+    
         $this->layout = '//frontend/main-detail';
 
         $model = Inovasi::findOne($id);

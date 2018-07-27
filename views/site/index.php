@@ -45,7 +45,7 @@ $this->title = 'Sistem Informasi Kajian (Siska) LAN';
 			        //'prevPageLabel' => 'previous',
 			        'maxButtonCount' => 3,
 			    ],
-				'itemView' => 'listview-post'
+				'itemView' => 'listview-inovasi-terbaru'
 			]) ?>
 
 		</div>

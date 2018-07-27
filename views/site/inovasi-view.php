@@ -31,6 +31,18 @@ $this->params['breadcrumbs'][] = $model->nama_inovasi;
 			<div class="content">
 				<div class="post-content">
 
+					
+					
+					<h3 class="title">
+						Deskripsi
+					</h3>
+
+					<?= $model->deskripsi ?>
+
+					<h3 class="title">
+						Detil Inovasi
+					</h3>
+
 					<?= DetailView::widget([
 				        'model' => $model,
 				        'template' => '<tr><td width="200px" style="text-align:left">{label}</td><td>{value}</td></tr>',
@@ -94,16 +106,6 @@ $this->params['breadcrumbs'][] = $model->nama_inovasi;
 				    ]) ?>
 					
 					<hr>
-					
-					<h3 class="title">
-						Deskripsi
-					</h3>
-
-					<?= $model->deskripsi ?>
-
-					<h3 class="title">
-						Detil Inovasi
-					</h3>
 
 					<?= $this->render('tabs-inovasi',[
 						'model' => $model
@@ -114,7 +116,7 @@ $this->params['breadcrumbs'][] = $model->nama_inovasi;
 		</div>
 
 		<div class="col-md-4 col-sm-4 col-xs-12">
-			<?= Html::img("@web/images/banner_nav_left.jpg", ['class' => 'img-responsive']); ?>
+			<?= $this->render('block-inovasi-terbaru'); ?>
 		</div>
 	</div>
 </div>

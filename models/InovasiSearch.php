@@ -40,7 +40,7 @@ class InovasiSearch extends Inovasi
      * @return ActiveDataProvider
      */
 
-    public function getQuerySearch($params)
+    public function getQuerySearch($params=[])
     {
         $query = Inovasi::find();
 
@@ -87,7 +87,7 @@ class InovasiSearch extends Inovasi
         return $query;
     }
     
-    public function search($params)
+    public function search($params=[])
     {
         $query = $this->getQuerySearch($params);
 

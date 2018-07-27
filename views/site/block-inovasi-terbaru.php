@@ -1,6 +1,6 @@
 <?php
 
-use app\models\PostSearch;
+use app\models\InovasiSearch;
 use yii\data\ActiveDataProvider;
 use yii\widgets\ListView;
 
@@ -8,7 +8,7 @@ use yii\widgets\ListView;
 
 <?php
 
-$postSearch = new PostSearch();
+$postSearch = new InovasiSearch();
 $query = $postSearch->getQuerySearch();
 $query->limit(5);
 
@@ -35,5 +35,5 @@ $dataProvider = new ActiveDataProvider([
         //'prevPageLabel' => 'previous',
         'maxButtonCount' => 3,
     ],
-	'itemView' => 'listview-post'
+	'itemView' => 'listview-inovasi-terbaru'
 ]) ?>

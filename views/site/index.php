@@ -15,13 +15,13 @@ $this->title = 'Sistem Informasi Kajian (Siska) LAN';
 <div class="container">
 	<div class="row">
 		<div class="col-md-4">
-			<div class="widget-subject">
+			<div class="widget-header">
 				INOVASI TERBARU
 			</div>
 
 			<?= Html::img("@web/images/logo.png", ['style' => 'width:100%; margin-bottom:5%']); ?>
 			
-			<div class="widget-subject-content">
+			<div class="widget-content-list">
 				<div class="title">
 					<h3>
 						<a href="">Layanan Sinergi 3 in 1 Gratis Bagi Keluarga Miskin Pemegang Kartu Menuju Sejahtera (KMS)</a>
@@ -32,8 +32,8 @@ $this->title = 'Sistem Informasi Kajian (Siska) LAN';
 		</div>
 
 		<div class="col-md-4">
-			<div class="widget-subject">
-				
+			<div class="widget-header">
+				&nbsp;
 			</div>
 
 			<?= ListView::widget([
@@ -51,145 +51,154 @@ $this->title = 'Sistem Informasi Kajian (Siska) LAN';
 		</div>
 
 		<div class="col-md-4">
-			<div class="widget-subject">
-				PROVINSI
-			</div>
+			<div class="widget">
+				<div class="widget-header">
+					PROVINSI
+				</div>
 
-			<div class="widget-subject-content">
-				<div class="row">
-					<div class="col-md-10 col-sm-10 col-xs-10">
-						<div class="title">
-							<a href="">JAWA BARAT</a>
+				<div class="widget-content-list">
+					<div class="row">
+						<div class="col-md-10 col-sm-10 col-xs-10">
+							<div class="title">
+								<a href="">JAWA BARAT</a>
+							</div>
+						</div>
+
+						<div class="col-md-2 col-sm-2 col-sm-2">
+							<div class="title">	
+								3
+							</div>
 						</div>
 					</div>
+				</div>
 
-					<div class="col-md-2 col-sm-2 col-sm-2">
-						<div class="title">	
-							3
+				<div class="widget-content-list">
+					<div class="row">
+						<div class="col-md-10 col-sm-10 col-xs-10">
+							<div class="title">
+								<a href="">DKI JAKARTA</a>
+							</div>
+						</div>
+
+						<div class="col-md-2 col-sm-2 col-sm-2">
+							<div class="title">	
+								1
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 
-			<div class="widget-subject-content">
-				<div class="row">
-					<div class="col-md-10 col-sm-10 col-xs-10">
-						<div class="title">
-							<a href="">DKI JAKARTA</a>
+			<div class="widget">
+				<div class="widget-header">
+					KOTA
+				</div>
+
+				<div class="widget-content-list">
+					<div class="row">
+						<div class="col-md-10 col-sm-10 col-xs-10">
+							<div class="title">
+								<a href="">KOTA JAKARTA PUSAT</a>
+							</div>
+						</div>
+
+						<div class="col-md-2 col-sm-2 col-sm-2">
+							<div class="title">	
+								1
+							</div>
 						</div>
 					</div>
+				</div>
 
-					<div class="col-md-2 col-sm-2 col-sm-2">
-						<div class="title">	
-							1
+
+				<div class="widget-content-list">
+					<div class="row">
+						<div class="col-md-10 col-sm-10 col-xs-10">
+							<div class="title">
+								<a href="">KABUPATEN GARUT</a>
+							</div>
+						</div>
+
+						<div class="col-md-2 col-sm-2 col-sm-2">
+							<div class="title">	
+								1
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="widget-content-list">
+					<div class="row">
+						<div class="col-md-10 col-sm-10 col-xs-10">
+							<div class="title">
+								<a href="">KOTA BANDUNG</a>
+							</div>
+						</div>
+
+						<div class="col-md-2 col-sm-2 col-sm-2">
+							<div class="title">	
+								1
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="widget-content-list">
+					<div class="row">
+						<div class="col-md-10 col-sm-10 col-xs-10">
+							<div class="title">
+								<a href="">KOTA DEPOK</a>
+							</div>
+						</div>
+
+						<div class="col-md-2 col-sm-2 col-sm-2">
+							<div class="title">	
+								1
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 
-			<div class="widget-subject">
-				KOTA
-			</div>
+			<div class="widget">
+				<div class="widget-header">
+					JENIS
+				</div>
 
-			<div class="widget-subject-content">
-				<div class="row">
-					<div class="col-md-10 col-sm-10 col-xs-10">
-						<div class="title">
-							<a href="">KOTA JAKARTA PUSAT</a>
+				<div class="widget-content-list">
+					<div class="row">
+						<div class="col-md-10 col-sm-10 col-xs-10">
+							<div class="title">
+								<a href="">Metode</a>
+							</div>
 						</div>
-					</div>
 
-					<div class="col-md-2 col-sm-2 col-sm-2">
-						<div class="title">	
-							1
+						<div class="col-md-2 col-sm-2 col-sm-2">
+							<div class="title">	
+								1
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 
-			<div class="widget-subject-content">
-				<div class="row">
-					<div class="col-md-10 col-sm-10 col-xs-10">
-						<div class="title">
-							<a href="">KABUPATEN GARUT</a>
-						</div>
-					</div>
-
-					<div class="col-md-2 col-sm-2 col-sm-2">
-						<div class="title">	
-							1
-						</div>
-					</div>
+			<div class="widget">
+				<div class="widget-header">
+					KELOMPOK
 				</div>
-			</div>
 
-			<div class="widget-subject-content">
-				<div class="row">
-					<div class="col-md-10 col-sm-10 col-xs-10">
-						<div class="title">
-							<a href="">KOTA BANDUNG</a>
+				<div class="widget-content-list">
+					<div class="row">
+						<div class="col-md-10 col-sm-10 col-xs-10">
+							<div class="title">
+								<a href="">Provinsi / Kabupaten / Kota</a>
+							</div>
 						</div>
-					</div>
 
-					<div class="col-md-2 col-sm-2 col-sm-2">
-						<div class="title">	
-							1
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="widget-subject-content">
-				<div class="row">
-					<div class="col-md-10 col-sm-10 col-xs-10">
-						<div class="title">
-							<a href="">KOTA DEPOK</a>
-						</div>
-					</div>
-
-					<div class="col-md-2 col-sm-2 col-sm-2">
-						<div class="title">	
-							1
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="widget-subject">
-				JENIS
-			</div>
-
-			<div class="widget-subject-content">
-				<div class="row">
-					<div class="col-md-10 col-sm-10 col-xs-10">
-						<div class="title">
-							<a href="">Metode</a>
-						</div>
-					</div>
-
-					<div class="col-md-2 col-sm-2 col-sm-2">
-						<div class="title">	
-							1
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="widget-subject">
-				KELOMPOK
-			</div>
-
-			<div class="widget-subject-content">
-				<div class="row">
-					<div class="col-md-10 col-sm-10 col-xs-10">
-						<div class="title">
-							<a href="">Provinsi / Kabupaten / Kota</a>
-						</div>
-					</div>
-
-					<div class="col-md-2 col-sm-2 col-sm-2">
-						<div class="title">	
-							1
+						<div class="col-md-2 col-sm-2 col-sm-2">
+							<div class="title">	
+								1
+							</div>
 						</div>
 					</div>
 				</div>

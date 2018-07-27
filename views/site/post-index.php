@@ -1,4 +1,5 @@
 <?php 
+
 use yii\widgets\ListView;
 use yii\helpers\Html;
 use app\components\Helper;
@@ -9,7 +10,7 @@ $this->params['breadcrumbs'][] = ['label' => @$postSearch->postCategory->title];
 
 <div class="row">
 	<div class="col-md-8 col-sm-8 col-xs-12">
-		<div class="widget-subject" style="text-transform: uppercase;">
+		<div class="widget-title" style="text-transform: uppercase;">
 			DAFTAR <?= @$postSearch->postCategory->title; ?>
 		</div>
 

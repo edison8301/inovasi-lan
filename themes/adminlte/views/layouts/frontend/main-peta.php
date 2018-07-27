@@ -15,7 +15,7 @@ use app\models\User;
 
 	<?= $this->render('/site/_peta'); ?>
 
-	<div class="container" style="margin-top: 3%">
+	<div class="container" style="margin-top: 20px">
 		<?= $content ?>
 	</div>
 

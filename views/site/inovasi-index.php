@@ -9,7 +9,7 @@ use yii\helpers\Html;
 	<div class="row">
 		<div class="col-md-8 col-sm-8 col-xs-12">
 			<div class="widget-subject">
-				DAFTRA INOVASI
+				DAFTAR INOVASI
 			</div>
 
 			<?= ListView::widget([

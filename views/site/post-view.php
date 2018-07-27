@@ -34,8 +34,8 @@ $this->params['breadcrumbs'][] = $model->getTitle();
 			</div>
 		</div>
 
-		<div class="col-md-4 col-sm-4 col-xs-12">
-			<?= Html::img("@web/images/banner_nav_left.jpg", ['class' => 'img-responsive']); ?>
+		<div class="col-md-4 col-sm-4">
+			<?= $this->render('block-inovasi-terbaru'); ?>
 		</div>
 	</div>
 </div>

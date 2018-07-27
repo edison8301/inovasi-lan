@@ -60,12 +60,16 @@ div#map-inovation {
     margin-top: -20px;
 }
 
-div.widget-subject {
+div.widget {
+    margin-bottom:30px;
+}
+
+div.widget-header {
 	/*float: left;*/
 	border-bottom: 2px solid #000;
-    margin-bottom: 2%;
-	height: 47px;
-    padding-top: 14px;
+    padding-top: 0px;
+    padding-bottom: 12px;
+    margin-bottom:12px;
     color: #a50328;
     text-transform: uppercase;
     font-family: 'Open Sans',Arial,sans-serif;
@@ -111,7 +115,7 @@ div.title > a:hover {
     border-bottom: 1px solid;
 }
 
-div.widget-subject-content {
+div.widget-content-list {
 	margin-bottom : 3%; 
     padding-bottom: 10px;
 	border-bottom: 1px dotted #a9a9a9;

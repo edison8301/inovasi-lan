@@ -85,7 +85,6 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-        $this->layout = '//frontend/main';
         $this->layout = '//frontend/main-peta';
 
         $dataProvider = new ActiveDataProvider([
@@ -170,7 +169,7 @@ class SiteController extends Controller
 
         $model = Post::findOne($id);
 
-        return $this->render('view-post',[
+        return $this->render('post-view',[
             'model' => $model
         ]);
     }

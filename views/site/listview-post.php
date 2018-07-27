@@ -3,7 +3,7 @@ use yii\helpers\Html;
 use app\components\Helper;
 ?>
 
-<div class="widget-subject-content">
+<div class="widget-content-list">
 	<div class="row">
 		<div class="col-md-3 col-sm-3 col-xs-3">
 			<?= Html::img("@web/images/logo.png", ['style' => 'width:80px;']); ?>

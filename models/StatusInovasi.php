@@ -44,6 +44,6 @@ class StatusInovasi extends \yii\db\ActiveRecord
 
     public static function getList()
     {
-        return yii\helpers\ArrayHelper::map(TeknikValidasi::find()->all(),'id','nama');
+        return yii\helpers\ArrayHelper::map(self::find()->all(),'id','nama');
     }
 }

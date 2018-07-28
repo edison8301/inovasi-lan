@@ -8,8 +8,8 @@ use yii\helpers\Html;
 <div class="container">
 	<div class="row">
 		<div class="col-md-8 col-sm-8 col-xs-12">
-			<div class="widget-header">
-				DAFTAR INOVASI
+			<div class="widget-header" style="text-transform: uppercase;">
+				DAFTAR INOVASI <?= $inovasiSearch->provinsi != null ? "Provinsi ".$inovasiSearch->provinsi->nama : ""; ?><?= @$inovasiSearch->kabkota->nama; ?>
 			</div>
 
 			<?= ListView::widget([

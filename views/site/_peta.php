@@ -62,7 +62,7 @@ use yii\helpers\Url;
     }
 </style>
 
-<div class="row bluerow">
+<div class="row bluerow" style="margin-bottom: 30px">
 	<div id="map-row">
 		<div id="map-container">
 
@@ -188,13 +188,16 @@ use yii\helpers\Url;
 
 var TerritoryPathData = {
 
-    <?php if(isset($_GET['id_provinsi'])) { ?>
-    <?php $i=1; foreach(\app\models\Kabkota::find()->andWhere(['id_provinsi'=>'32'])->all() as $kabkota) { ?>
-    Kabkota_<?= $i; ?> : { id_kabkota : "<?= $kabkota->id; ?>", total : "0", nama : "<?= $kabkota->nama; ?>", path : "<?= $kabkota->peta; ?>"},
+    <?php if(isset($_GET['provinsi_id'])) { ?>
+    <?php $i=1; foreach(\app\models\Kabkota::find()->andWhere(['provinsi_id'=>$_GET['provinsi_id']])->all() as $kabkota) { ?>
+    Kabkota_<?= $i; ?> : { kabkota_id : "<?= $kabkota->id; ?>", total : "<?= $kabkota->getCountInovasi(); ?>", nama : "<?= $kabkota->nama; ?>", path : "<?= $kabkota->peta; ?>"},
     <?php $i++; } ?>
+    <?php } elseif(isset($_GET['kabkota_id'])) { ?>
+    <?php $kabkota = \app\models\Kabkota::findOne($_GET['kabkota_id']); ?>
+    Kabkota_1 : { kabkota_id : "<?= $kabkota->id; ?>", total : "<?= $kabkota->getCountInovasi(); ?>", nama : "<?= $kabkota->nama; ?>", path : "<?= $kabkota->peta; ?>"},
     <?php } else { ?>
     <?php $i=1; foreach(\app\models\Provinsi::find()->all() as $provinsi) { ?>
-    Provinsi_<?= $i; ?> : { id_provinsi : "<?= $provinsi->id; ?>", total : "0", nama : "<?= $provinsi->nama; ?>", path : "<?= $provinsi->peta; ?>"},
+    Provinsi_<?= $i; ?> : { provinsi_id : "<?= $provinsi->id; ?>", total : "<?= $provinsi->getCountInovasi(); ?>", nama : "<?= $provinsi->nama; ?>", path : "<?= $provinsi->peta; ?>"},
     <?php $i++; } ?>
     <?php } ?>
 };
@@ -228,17 +231,18 @@ var TerritoryPathData = {
       		var key = id;
 
       		var path = new Kinetic.Path({
-	          data: TerritoryPathData[id].path,
-            id_provinsi: TerritoryPathData[id].id_provinsi,
-	          stroke: '#8b8383',
-	          strokeWidth: .5,
-	          nama: TerritoryPathData[id].nama,
-            id: TerritoryPathData[id].cat_id,
-            total: TerritoryPathData[id].total
+	            data: TerritoryPathData[id].path,
+                provinsi_id: TerritoryPathData[id].provinsi_id,
+                kabkota_id: TerritoryPathData[id].kabkota_id,
+	            stroke: '#8b8383',
+	            strokeWidth: .5,
+	            nama: TerritoryPathData[id].nama,
+                id: TerritoryPathData[id].cat_id,
+                total: TerritoryPathData[id].total
 	        });
 	        
           var province =  path.attrs.nama;
-          var province_id = path.attrs.id;
+          var province_id = path.attrs.provinsi_id;
           var countProvince = path.attrs.total;
 
         if(countProvince == 0 ){
@@ -283,25 +287,39 @@ var TerritoryPathData = {
 
            path.on("mousedown", function (e) {
                 var province_name = this.attrs.nama;
-                var id_provinsi = this.attrs.id_provinsi;
+                var provinsi_id = this.attrs.provinsi_id;
+                var kabkota_id = this.attrs.kabkota_id;
                 var prov_array = province_name.split(" ");
                 var province = prov_array.join('-');
                 
 				var url = '<?= Url::to(["site/inovasi-index"]); ?>';
-				//var url = 'http://indonesiaberinovasi.com/berita-inovasi';
                 
-                window.location.href = url+'&id_provinsi='+id_provinsi;
+                if(provinsi_id!=null) {
+                    window.location.href = url+'&provinsi_id='+provinsi_id;    
+                }
+
+                if(kabkota_id!=null) {
+                    window.location.href = url+'&kabkota_id='+kabkota_id;    
+                }
           });
 
 		      path.on('touchend', function() {
         		var province_name = this.attrs.nama;
-                var id_provinsi = this.attrs.id_provinsi;
+                var provinsi_id = this.attrs.provinsi_id;
+                var kabkota_id = this.attrs.kabkota_id;
                 var prov_array = province_name.split(" ");
                 var province = prov_array.join('-');
 
 				var url = '<?= Url::to(["site/inovasi-index"]); ?>';
-				//var url = 'http://indonesiaberinovasi.com/berita-inovasi';
-                window.location.href = url+'&id_provinsi='+id_provinsi;
+
+                if(provinsi_id!=null) {
+                    window.location.href = url+'&provinsi_id='+provinsi_id;    
+                }
+
+                if(kabkota_id!=null) {
+                    window.location.href = url+'&kabkota_id='+kabkota_id;    
+                }
+                
       		});            
 
           mapLayer.add(path);

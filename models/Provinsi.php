@@ -47,8 +47,18 @@ class Provinsi extends \yii\db\ActiveRecord
         ];
     }
 
+    public function getManyInovasi()
+    {
+        return $this->hasMany(Inovasi::class,['provinsi_id'=>'id']);
+    }
+
     public static function getList()
     {
         return yii\helpers\ArrayHelper::map(Provinsi::find()->all(),'id','nama');
+    }
+
+    public function getCountInovasi()
+    {
+        return $this->getManyInovasi()->count();
     }
 }

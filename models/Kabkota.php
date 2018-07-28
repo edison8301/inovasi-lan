@@ -64,4 +64,14 @@ class Kabkota extends \yii\db\ActiveRecord
     {
         return yii\helpers\ArrayHelper::map(Kabkota::find()->all(),'id','nama');
     }
+
+    public function getManyInovasi()
+    {
+        return $this->hasMany(Inovasi::class,['kabkota_id'=>'id']);
+    }
+
+    public function getCountInovasi()
+    {
+        return $this->getManyInovasi()->count();
+    }
 }

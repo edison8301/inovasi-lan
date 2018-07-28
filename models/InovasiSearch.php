@@ -53,6 +53,8 @@ class InovasiSearch extends Inovasi
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'provinsi_id' => $this->provinsi_id,
+            'kabkota_id' => $this->kabkota_id,
             'kategori_id' => $this->kategori_id,
             'jenis_inovasi_id' => $this->jenis_inovasi_id,
             'kelompok_inovator_id' => $this->kelompok_inovator_id,

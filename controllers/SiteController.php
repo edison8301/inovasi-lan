@@ -42,7 +42,8 @@ class SiteController extends Controller
                         'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['logout'],
+                        'actions' => ['logout','index','about','contact','post-index','post-view',
+                            'inovasi-index','inovasi-view'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -137,20 +138,25 @@ class SiteController extends Controller
         return $this->render('map-detail');
     }
 
-    public function actionInovasiIndex($id_provinsi=null)
+    public function actionInovasiIndex($provinsi_id=null,$kabkota_id=null)
     {
         $this->layout = '//frontend/main-peta';
 
+        $inovasiSearch = new InovasiSearch();
+        $inovasiSearch->provinsi_id = $provinsi_id;
+        $inovasiSearch->kabkota_id = $kabkota_id;
+
         $dataProvider = new ActiveDataProvider([
-            'query' => Inovasi::findInovasiProvider(),
+            'query' => $inovasiSearch->getQuerySearch(),
             'pagination' => [
                 'pageSize' => 10
             ],
         ]);
 
         return $this->render('inovasi-index',[
-            'id_provinsi' => $id_provinsi,
-            'dataProvider' => $dataProvider
+            'provinsi_id' => $provinsi_id,
+            'dataProvider' => $dataProvider,
+            'inovasiSearch' => $inovasiSearch
         ]);
     }
 

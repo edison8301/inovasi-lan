@@ -14,7 +14,7 @@ use yii\helpers\Html;
 		<div class="col-md-8 col-sm-8 col-xs-12" style="margin-top: -20px;">
 			<div class="title">
 				<h3>
-					<?= Html::a($model->nama_inovasi, ['inovasi/view','id' => $model->id], ['option' => 'value']); ?>
+					<?= Html::a($model->nama_inovasi, ['site/inovasi-view','id' => $model->id], ['option' => 'value']); ?>
 				</h3>
 
 			</div>

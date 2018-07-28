@@ -55,7 +55,9 @@ class Inovasi extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['kategori_id', 'jenis_inovasi_id', 'kelompok_inovator_id', 'tahun_inisiasi', 'tahun_implementasi', 'teknik_validasi_id', 'status_inovasi_id', 'jumlah_dilihat', 'jumlah_diunduh', 'member_id'], 'integer'],
+            [['kategori_id', 'jenis_inovasi_id', 'kelompok_inovator_id', 'tahun_inisiasi', 
+                'tahun_implementasi', 'teknik_validasi_id', 'status_inovasi_id', 'jumlah_dilihat', 
+                'jumlah_diunduh', 'member_id', 'provinsi_id','kabkota_id'], 'integer'],
             [['deskripsi', 'faktor_pendorong', 'faktor_penghambat', 'tahapan_proses', 'output', 'outcome', 'manfaat', 'prasyarat_replikasi'], 'string'],
             [['tanggal_inovasi', 'waktu_dibuat', 'waktu_diterbitkan', 'waktu_diubah'], 'safe'],
             [['nama_inovasi', 'produk_inovasi', 'penggagas', 'nama_instansi', 'unit_instansi', 'kontak', 'sumber', 'gambar_ilustrasi'], 'string', 'max' => 255],
@@ -74,6 +76,8 @@ class Inovasi extends \yii\db\ActiveRecord
             'nama_inovasi' => 'Nama Inovasi',
             'produk_inovasi' => 'Produk Inovasi',
             'penggagas' => 'Penggagas',
+            'provinsi_id' => 'Provinsi',
+            'kabkota_id' => 'Kab/Kota',
             'kelompok_inovator_id' => 'Kelompok Inovator',
             'deskripsi' => 'Deskripsi',
             'nama_instansi' => 'Nama Instansi',
@@ -105,6 +109,16 @@ class Inovasi extends \yii\db\ActiveRecord
     public function getJenisInovasi()
     {
         return $this->hasOne(JenisInovasi::className(),['id' => 'jenis_inovasi_id']);
+    }
+
+    public function getProvinsi()
+    {
+        return $this->hasOne(Provinsi::class,['id' => 'provinsi_id']);
+    }
+
+    public function getKabkota()
+    {
+        return $this->hasOne(Kabkota::class,['id' => 'kabkota_id']);
     }
 
     public function getKelompokInovator()

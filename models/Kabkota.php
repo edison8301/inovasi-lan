@@ -30,10 +30,10 @@ class Kabkota extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id', 'id_provinsi', 'nama'], 'required'],
+            [['id', 'provinsi_id', 'nama'], 'required'],
             [['peta'], 'string'],
             [['id'], 'string', 'max' => 4],
-            [['id_provinsi'], 'string', 'max' => 2],
+            [['provinsi_id'], 'string', 'max' => 2],
             [['nama'], 'string', 'max' => 255],
             [['id'], 'unique'],
         ];
@@ -46,7 +46,7 @@ class Kabkota extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'id_provinsi' => 'Id Provinsi',
+            'provinsi_id' => 'Provinsi',
             'nama' => 'Nama',
             'peta' => 'Peta',
         ];
@@ -58,5 +58,10 @@ class Kabkota extends \yii\db\ActiveRecord
     public function getDistricts()
     {
         return $this->hasMany(Districts::className(), ['regency_id' => 'id']);
+    }
+
+    public static function getList()
+    {
+        return yii\helpers\ArrayHelper::map(Kabkota::find()->all(),'id','nama');
     }
 }

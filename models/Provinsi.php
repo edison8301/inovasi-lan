@@ -46,4 +46,9 @@ class Provinsi extends \yii\db\ActiveRecord
             'peta' => 'Peta',
         ];
     }
+
+    public static function getList()
+    {
+        return yii\helpers\ArrayHelper::map(Provinsi::find()->all(),'id','nama');
+    }
 }

@@ -5,6 +5,8 @@ use yii\grid\GridView;
 use app\models\JenisInovasi;
 use app\models\KelompokInovator;
 use app\models\StatusInovasi;
+use app\models\Provinsi;
+use app\models\Kabkota;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\InovasiSearch */
@@ -52,13 +54,23 @@ $this->params['breadcrumbs'][] = $this->title;
                 'contentOptions' => ['style' => 'text-align:center;'],
             ],
             [
-                'attribute' => 'jenis_inovasi_id',
+                'attribute' => 'provinsi_id',
                 'format' => 'raw',
                 'value'=>function($data) {
-                    return $data->jenisInovasi->nama;
+                    return @$data->provinsi->nama;
                 },
-                'filter'=>JenisInovasi::getList(),
-                'headerOptions' => ['style' => 'text-align:center; width: 200px'],
+                'filter'=>Provinsi::getList(),
+                'headerOptions' => ['style' => 'text-align:center; width: 150px'],
+                'contentOptions' => ['style' => 'text-align:center;'],
+            ],
+            [
+                'attribute' => 'kabkota_id',
+                'format' => 'raw',
+                'value'=>function($data) {
+                    return @$data->kabkota->nama;
+                },
+                'filter'=>Kabkota::getList(),
+                'headerOptions' => ['style' => 'text-align:center; width: 150px'],
                 'contentOptions' => ['style' => 'text-align:center;'],
             ],
             [

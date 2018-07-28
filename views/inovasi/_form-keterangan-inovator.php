@@ -33,3 +33,19 @@ use app\models\TeknikValidasi;
 <?= $form->field($model, 'tahun_inisiasi')->textInput() ?>
 
 <?= $form->field($model, 'tahun_implementasi')->textInput() ?>
+
+<?= $form->field($model, 'provinsi_id')->widget(select2::className(), [
+    'data' => \app\models\Provinsi::getList(),
+    'pluginOptions' => ['allowClear' => true],
+    'options' => [
+        'placeholder' => '- Pilih Provinsi -',
+    ]
+]) ?>
+
+<?= $form->field($model, 'kabkota_id')->widget(select2::className(), [
+    'data' => \app\models\Kabkota::getList(),
+    'pluginOptions' => ['allowClear' => true],
+    'options' => [
+        'placeholder' => '- Pilih Kab/Kota -',
+    ]
+]) ?>

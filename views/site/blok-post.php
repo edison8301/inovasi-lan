@@ -1,11 +1,19 @@
 <?php 
 use yii\helpers\Html;
 use app\models\KabKota;
+use app\models\Post;
 use kv4nt\owlcarousel\OwlCarouselWidget;
 ?>
 
+<div>&nbsp;</div>
+
 <div class="box-post">
 	<div class="container">
+		<div class="widget-header-white">
+			<i class="fa fa-th"></i> KOLOM
+			<?= Html::a("Lihat Semua", ['site/post-index'], ['class' => 'pull-right anchor-white']); ?>
+		</div>
+
 		<?php OwlCarouselWidget::begin([
 		    'container' => 'div',
 		    'containerOptions' => [
@@ -17,25 +25,37 @@ use kv4nt\owlcarousel\OwlCarouselWidget;
 		        'autoplayTimeout'   => 3000,
 		        'items'             => 5,
 		        'loop'              => true,
-		        'itemsDesktop'      => [1199, 3],
-		        'itemsDesktopSmall' => [979, 3]
+		        'nav'				=> false,
+		        'responsive'		=> [
+		        	0 => [
+		        		'items' 	=> 2,
+		        		'nav'		=> false
+		        	],
+		        	600 => [
+		        		'items' 	=> 3,
+		        		'nav'		=> false
+		        	],
+		        	1000 => [
+		        		'items' 	=> 5,
+		        		'nav'		=> false,
+		        		'loop'		=> false
+		        	]
+		        ]
 		    ]
 		]); ?>
 
-		<div class="item-class" style="margin: 3%">
-			<img src="../web/images/avatar.jpeg" class="img-responsive" alt="Image 1">
-		</div>
-		<div class="item-class" style="margin: 3%">
-			<img src="../web/images/avatar.jpeg" class="img-responsive" alt="Image 2">
-		</div>
-		<div class="item-class" style="margin: 3%">
-			<img src="../web/images/avatar.jpeg" class="img-responsive" alt="Image 3">
-		</div>
-		<div class="item-class" style="margin: 3%">
-			<img src="../web/images/avatar.jpeg" class="img-responsive" alt="Image 4">
-		</div>
+		<?php foreach (Post::findPostLimit(3,15) as $postSlide) { ?>
+			<div class="item-class" style="margin: 3%">
+				<?= Html::a($postSlide->getThumbnail(['class' => 'img-responsive','style' => 'width:200px']), ['site/post-view','id' => $postSlide->id], ['option' => 'value']); ?>
+				<h4 class="carousel-title">
+					<?= Html::a($postSlide->getTitleSlide()."....", ['site/post-view','id' => $postSlide->id], ['class' => 'anchor-white']); ?>
+				</h4>
+			</div>
+		<?php } ?>
+
 
 		<?php OwlCarouselWidget::end(); ?>
+
 	</div>
 </div>
 
@@ -50,7 +70,7 @@ use kv4nt\owlcarousel\OwlCarouselWidget;
 					<h2 class="box-title-video">
 						<i class="fa fa-play-circle-o"></i> VIDEO
 					</h2>
-						<span class="pull-right">Lihat Semua</span>
+						<?= Html::a("Lihat Semua", $url = null, ['class' => 'pull-right anchor-white']); ?>
 				</div>
 
 				<div class="box-body" style="background: black">
@@ -71,7 +91,7 @@ use kv4nt\owlcarousel\OwlCarouselWidget;
 									<div class="box-small-thumb">
 										<?= Html::img("@web/images/test.png", ['option' => 'value']); ?>
 									</div>
-									<?= Html::a("Lorem Ipsum", $url = null, ['option' => 'value']); ?>
+									<?= Html::a("Lorem Ipsum", $url = null, ['class' => 'anchor-white']); ?>
 								</div>
 							</div>
 							<div class="box-small-vid">
@@ -79,7 +99,7 @@ use kv4nt\owlcarousel\OwlCarouselWidget;
 									<div class="box-small-thumb">
 										<?= Html::img("@web/images/test.png", ['option' => 'value']); ?>
 									</div>
-									<?= Html::a("Lorem Ipsum", $url = null, ['option' => 'value']); ?>
+									<?= Html::a("Lorem Ipsum", $url = null, ['class' => 'anchor-white']); ?>
 								</div>
 							</div>
 							<div class="box-small-vid">
@@ -87,7 +107,7 @@ use kv4nt\owlcarousel\OwlCarouselWidget;
 									<div class="box-small-thumb">
 										<?= Html::img("@web/images/test.png", ['option' => 'value']); ?>
 									</div>
-									<?= Html::a("Lorem Ipsum", $url = null, ['option' => 'value']); ?>
+									<?= Html::a("Lorem Ipsum", $url = null, ['class' => 'anchor-white']); ?>
 								</div>
 							</div>
 							<div class="box-small-vid">
@@ -95,7 +115,7 @@ use kv4nt\owlcarousel\OwlCarouselWidget;
 									<div class="box-small-thumb">
 										<?= Html::img("@web/images/test.png", ['option' => 'value']); ?>
 									</div>
-									<?= Html::a("Lorem Ipsum", $url = null, ['option' => 'value']); ?>
+									<?= Html::a("Lorem Ipsum", $url = null, ['class' => 'anchor-white']); ?>
 								</div>
 							</div>
 						</div>
@@ -104,16 +124,36 @@ use kv4nt\owlcarousel\OwlCarouselWidget;
 			</div>
 
 			<div class="row">
-				<div class="col-md-6">
+				<div class="col-md-6 col-sm-6 col-xs-12">
 					<div class="widget-header">
-						E-LEARNING
+						<i class="fa fa-newspaper-o"></i> BERITA
+						<?= Html::a("Lihat Semua", $url = null, ['class' => 'pull-right anchor-black']); ?>
 					</div>
+
+					<?php $no = 1; ?>
+					<?php foreach (Post::findPostLimit(1,5) as $postBerita) { ?>
+						<?php if ($no == 1) { ?>
+							<?= $postBerita->getMainPost() ?>
+						<?php } else { ?> 
+							<?= $postBerita->getSubPost() ?>
+						<?php } ?>
+					<?php $no++; } ?>
 				</div>
 
-				<div class="col-md-6">
+				<div class="col-md-6 col-sm-6 col-xs-12">
 					<div class="widget-header">
-						ULASAN
+						<i class="fa fa-newspaper-o"></i> ARTIKEL
+						<?= Html::a("Lihat Semua", $url = null, ['class' => 'pull-right anchor-black']); ?>
 					</div>
+
+					<?php $no = 1; ?>
+					<?php foreach (Post::findPostLimit(2,5) as $postBerita) { ?>
+						<?php if ($no == 1) { ?>
+							<?= $postBerita->getMainPost() ?>
+						<?php } else { ?> 
+							<?= $postBerita->getSubPost() ?>
+						<?php } ?>
+					<?php $no++; } ?>
 				</div>
 			</div>
 		</div>
@@ -126,10 +166,10 @@ use kv4nt\owlcarousel\OwlCarouselWidget;
 			<div class="table-responsive">
 				<table class="table table-striped table-bordered">
 					<?php $no = 1; ?>
-					<?php foreach (KabKota::findInovasiTerbesar() as $KabKota) { ?>
+					<?php foreach (KabKota::findInovasiTerbesar() as $kabKota) { ?>
 						<tr class="tr-berita-inovasi">
-							<td class="td-berita-inovasi"><?= $no.'. '.$KabKota->nama ?></td>
-							<td width="20px"><?= $KabKota->getCountInovasi() ?></td>
+							<td class="td-berita-inovasi"><?= $no.'. '.Html::a($kabKota->nama, ['site/inovasi-index','kabkota_id' => $kabKota->id],['class' => 'anchor-black']) ?></td>
+							<td width="20px"><?= $kabKota->getCountInovasi() ?></td>
 						</tr>
 					<?php $no++; } ?> 
 				</table>

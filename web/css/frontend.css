@@ -71,11 +71,34 @@ div.widget-header {
     padding-bottom: 12px;
     margin-bottom:12px;
     color: #a50328;
+    font-family: 'Open Sans',Arial,sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 20px;
+}
+
+.widget-header > a {
+    color: #000;
+    font-size: 12px;
+}
+
+div.widget-header-white {
+    /*float: left;*/
+    border-bottom: 2px solid #fff;
+    padding-top: 0px;
+    padding-bottom: 12px;
+    margin-bottom:12px;
+    color: #fff;
     text-transform: uppercase;
     font-family: 'Open Sans',Arial,sans-serif;
     font-weight: bold;
     font-size: 20px;
     line-height: 20px;
+}
+
+.widget-header-white > a {
+    color: #fff;
+    font-size: 12px;
 }
 
 div.title > h3 > a {
@@ -258,7 +281,7 @@ div.box-post {
     margin: 0 auto;
     width: 100%;
     height: auto;
-    padding: 2% 0 2% 0; 
+    padding: 2% 0 0% 0;
     color: #ffff;
 }
 
@@ -342,4 +365,53 @@ tr.tr-berita-inovasi {
 
 td.td-berita-inovasi {
     font-weight: bold;
+}
+
+div.box-main-post {
+    margin-bottom: 3%;
+    padding-bottom: 10px;
+    border-bottom: 1px dotted #a9a9a9;
+}
+
+.box-main-thumbnail {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+h4.box-main-title {
+    font-size: 22px;
+}
+
+div.date-post {
+    font-size: 13px;
+    color: #9B9B9B;
+}
+
+/*a:hover {
+    outline: none;
+    text-decoration: none;
+    color: #000000 !important;
+}
+
+a {
+    color: #000000 !important;
+}*/
+
+a.anchor-white {
+    color: #FFFFFF !important;
+}
+
+a.anchor-white:hover {
+    border-bottom: 1px solid #FFFF;
+}
+
+a.anchor-black {
+    color: #000000 !important;
+}
+
+a.anchor-black:hover {
+    border-bottom: 1px solid #000000;
 }

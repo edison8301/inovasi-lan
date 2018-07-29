@@ -30,9 +30,6 @@ $this->params['breadcrumbs'][] = $model->nama_inovasi;
 
 			<div class="content">
 				<div class="post-content">
-
-					
-					
 					<h3 class="title">
 						Deskripsi
 					</h3>

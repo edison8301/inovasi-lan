@@ -1,6 +1,6 @@
 web/exports/*
 
-web/uploads/*
+web/uploads/
 
 # phpstorm project files
 .idea

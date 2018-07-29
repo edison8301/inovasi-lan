@@ -74,4 +74,11 @@ class Kabkota extends \yii\db\ActiveRecord
     {
         return $this->getManyInovasi()->count();
     }
+
+    public static function findInovasiTerbesar()
+    {
+        $model = static::find()->limit(10)->all();
+
+        return $model;
+    }
 }

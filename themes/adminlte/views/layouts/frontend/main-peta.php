@@ -15,9 +15,7 @@ use app\models\User;
 
 	<?= $this->render('/site/_peta'); ?>
 
-	<div class="container" style="margin-top: 20px">
-		<?= $content ?>
-	</div>
+	<?= $content ?>
 
 	<script type="text/javascript">
 		/*$(function() {

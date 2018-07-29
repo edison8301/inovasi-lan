@@ -10,8 +10,6 @@ use yii\widgets\ListView;
 $this->title = 'Sistem Informasi Kajian (Siska) LAN';
 
 ?>
-
-
 <div class="container">
 	<div class="row">
 		<div class="col-md-4">
@@ -206,3 +204,5 @@ $this->title = 'Sistem Informasi Kajian (Siska) LAN';
 		</div>
 	</div>
 </div>
+
+<?= $this->render('blok-post') ?>

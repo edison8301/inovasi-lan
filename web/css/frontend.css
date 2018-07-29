@@ -250,3 +250,96 @@ div.contact-list > h4 {
     box-shadow: none;
     border-color: #d2d6de;
 }
+
+div.box-post {
+    background: black;
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+    height: auto;
+    padding: 2% 0 2% 0; 
+    color: #ffff;
+}
+
+div.box-main-vid {
+    max-width: 480px;
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: relative;
+    float: left;
+    overflow: hidden;
+    background-position: center center;
+    background-repeat: none;
+    background-size: cover;
+}
+
+div.box-main-vid > img {
+    width: 100%;
+    display: block;
+    height: auto;
+}
+
+h3.box-main-video-title {
+    position: absolute;
+    bottom: 0px;
+    display: block;
+    background: rgba(0,0,0,0.5);
+    width: 100%;
+    line-height: normal;
+}
+
+.box-main-video-title > a {
+    display: block;
+    color: white;
+    padding: 20px;
+}
+
+div.box-video {
+    background: #D0021B;
+    color: #ffff !important;
+}
+
+h2.box-title-video {
+    display: inline-block;
+    font-size: 24px;
+    margin: 0;
+    line-height: 1;
+}
+
+.box-small-vid-container {
+    padding: 10px 0 10px 0;
+}
+
+.box-small-vid {
+    max-width: 260px;
+    width: 100%;
+    display: block;
+    position: relative;
+    border-bottom: 1px solid white;
+    float: left;
+}
+
+.box-small-thumb {
+    display: block;
+    margin-right: 10px;
+    width: 90px;
+    height: 55px;
+    overflow: hidden;
+    float: left;
+}
+
+.box-small-thumb > img {
+    width: 100%;
+    display: block;
+    height: auto;
+}
+
+tr.tr-berita-inovasi {
+    font-size: 16px;
+}
+
+td.td-berita-inovasi {
+    font-weight: bold;
+}

@@ -1,6 +1,6 @@
 <?php 
 use yii\helpers\Html;
-use app\models\KabKota;
+use app\models\Kabkota;
 use app\models\Post;
 use kv4nt\owlcarousel\OwlCarouselWidget;
 ?>
@@ -166,7 +166,7 @@ use kv4nt\owlcarousel\OwlCarouselWidget;
 			<div class="table-responsive">
 				<table class="table table-striped table-bordered">
 					<?php $no = 1; ?>
-					<?php foreach (KabKota::findInovasiTerbesar() as $kabKota) { ?>
+					<?php foreach (Kabkota::findInovasiTerbesar() as $kabKota) { ?>
 						<tr class="tr-berita-inovasi">
 							<td class="td-berita-inovasi"><?= $no.'. '.Html::a($kabKota->nama, ['site/inovasi-index','kabkota_id' => $kabKota->id],['class' => 'anchor-black']) ?></td>
 							<td width="20px"><?= $kabKota->getCountInovasi() ?></td>

@@ -99,11 +99,10 @@ class Post extends \yii\db\ActiveRecord
     public function getThumbnail($htmlOptions=[])
     {
         $path = Yii::$app->basePath;
-
-        if ($this->thumbnail !== null AND file_exists($path.'/web/uploads/'.$this->thumbnail)) {
-            return Html::img('@web/uploads/'. $this->thumbnail,$htmlOptions);;
-        } else  {
+        if ($this->thumbnail == null OR !file_exists($path.'/web/uploads/post/'.$this->thumbnail)) {
             return Html::img("@web/images/no-image.png", ['class' => 'img-responsive']);
+        } else  {
+            return Html::img('@web/uploads/post/'. $this->thumbnail,$htmlOptions);;
         }
     }
 
@@ -111,7 +110,7 @@ class Post extends \yii\db\ActiveRecord
     {
         return '<div class="box-main-post">
                     <div class="box-main-thumbnail">
-                        '.Html::img("@web/images/banner_nav_left.jpg", ["class" => "img-responsive"]).'
+                        '.$this->getThumbnail(['class' => 'img-responsive']).'
                     </div>
                     <h4 class="box-main-title">
                         '. Html::a($this->title, ['site/post-view','id' => $this->id], ['class' => 'anchor-black']).'
@@ -127,7 +126,7 @@ class Post extends \yii\db\ActiveRecord
         return '<div class="widget-content-list">
                     <div class="row">
                         <div class="col-md-3 col-sm-3 col-xs-3">
-                            '. Html::img("@web/images/logo.png", ['style' => 'width:80px;']).'
+                            '. $this->getThumbnail(['style' => 'width:80px;']).'
                         </div>
                         <div class="col-md-9 col-sm-9 col-xs-9">
                             <div class="title">

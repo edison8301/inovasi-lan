@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][] = $model->getTitle();
 	<div class="row">
 		<div class="col-md-8 col-sm-8 col-xs-12">
 			<div class="thumbnail-post-detail">
-				<?= $model->getThumbnail(); ?>
+				<?= $model->getThumbnail(['class' => 'img-responsive']); ?>
 			</div>
 
 			<div class="content">

@@ -206,3 +206,5 @@ $this->title = 'Sistem Informasi Kajian (Siska) LAN';
 </div>
 
 <?= $this->render('blok-post') ?>
+
+<div>&nbsp;</div>

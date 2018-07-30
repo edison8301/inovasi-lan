@@ -20,7 +20,9 @@ class PostCategory extends \yii\db\ActiveRecord
     CONST ARTIKEL = 2;
     CONST E_BOOK = 3;
     CONST POLICE_BRIEF = 4;
+    CONST TOKOH_INOVASI = 9;
     CONST HASIL_KAJIAN = 11;
+    CONST LABORATORIUM_INOVASI = 23;
 
     public static function tableName()
     {

@@ -45,7 +45,7 @@ class SiteController extends Controller
                         'roles' => ['@'],
                         'allow' => true,
                         'actions' => ['logout','index','about','contact','post-index','post-view',
-                            'inovasi-index','inovasi-view','login','dev'],
+                            'inovasi-index','inovasi-view','login','dev','import'],
                     ],
                     
                 ],
@@ -270,9 +270,9 @@ class SiteController extends Controller
      *
      * @return Response|string
      */
-    public function actionDev()
+    public function actionDev($lorem)
     {
-        print_r(\app\models\Inovasi::getGrafik());
+        echo "string";
     }
 
     public function actionError()
@@ -280,5 +280,9 @@ class SiteController extends Controller
         return $this->render('error');
     }
 
+    public function actionImport()
+    {
+        
+    }
 
 }

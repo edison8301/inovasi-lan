@@ -23,24 +23,19 @@ $this->params['breadcrumbs'][] = $this->title;
         'template' => '<tr><th width="180px" style="text-align:right">{label}</th><td>{value}</td></tr>',
         'attributes' => [
             [
-                'attribute' => 'id',
-                'format' => 'raw',
-                'value' => $model->id,
-            ],
-            [
                 'attribute' => 'post_id',
                 'format' => 'raw',
-                'value' => $model->post_id,
+                'value' => @$model->post->title,
             ],
             [
                 'attribute' => 'post_category_id',
                 'format' => 'raw',
-                'value' => $model->post_category_id,
+                'value' => @$model->postCategory->title,
             ],
             [
                 'attribute' => 'active',
                 'format' => 'raw',
-                'value' => $model->active,
+                'value' => $model->getStatus(),
             ],
         ],
     ]) ?>

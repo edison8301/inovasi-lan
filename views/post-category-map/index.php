@@ -35,18 +35,27 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'post_id',
                 'format' => 'raw',
+                'value' => function($data){
+                    return @$data->post->title;
+                },
                 'headerOptions' => ['style' => 'text-align:center;'],
-                'contentOptions' => ['style' => 'text-align:center;'],
+                'contentOptions' => ['style' => 'text-align:left;'],
             ],
             [
                 'attribute' => 'post_category_id',
                 'format' => 'raw',
+                'value' => function($data){
+                    return @$data->postCategory->title;
+                },
                 'headerOptions' => ['style' => 'text-align:center;'],
                 'contentOptions' => ['style' => 'text-align:center;'],
             ],
             [
                 'attribute' => 'active',
                 'format' => 'raw',
+                'value' => function($data){
+                    return $data->getStatus();
+                },
                 'headerOptions' => ['style' => 'text-align:center;'],
                 'contentOptions' => ['style' => 'text-align:center;'],
             ],

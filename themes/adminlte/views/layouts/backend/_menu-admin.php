@@ -19,8 +19,8 @@ use app\models\User;
         ['label' => 'MENU NAVIGASI', 'options' => ['class' => 'header']],
         ['label' => 'Dashboard', 'icon' => 'dashboard', 'url' => ['admin/index']],
 
-        ['label' => 'Post', 'icon' => 'circle-o', 'url' => ['post/index']],
-        ['label' => 'Inovasi', 'icon' => 'circle-o', 'url' => ['inovasi/index']],
+        ['label' => 'Post', 'icon' => 'newspaper-o', 'url' => ['post/index']],
+        ['label' => 'Inovasi', 'icon' => 'newspaper-o', 'url' => ['inovasi/index']],
 
         ['label' => 'MENU SISTEM', 'options' => ['class' => 'header']],
         ['label' => 'Inovasi Validasi', 'icon' => 'circle-o', 'url' => ['inovasi-validasi/index']],

@@ -2,6 +2,18 @@
 use app\models\KelompokInovator;
 ?>
 
+<!-- <div class="box box-primary">
+    <div class="box-header with-border">
+        <h3 class="box-title">
+            Statistik Inovasi
+        </h3>
+    </div>
+
+    <div class="box-body">
+        <div id="grafik-inovasi-kelompok"> FusionChart XT will load here! </div>
+    </div>
+</div> -->
+
 <script>
 
 FusionCharts.ready(function(){

@@ -14,6 +14,9 @@ use Yii;
  */
 class PostCategoryMap extends \yii\db\ActiveRecord
 {
+    CONST AKTIF = 1;
+    CONST TIDAK_AKTIF = 0;
+
     /**
      * {@inheritdoc}
      */
@@ -44,4 +47,24 @@ class PostCategoryMap extends \yii\db\ActiveRecord
             'active' => 'Active',
         ];
     }
+
+    public function getPost()
+    {
+        return $this->hasOne(Post::class,['id' => 'post_id']);
+    }
+
+    public function getPostCategory()
+    {
+        return $this->hasOne(PostCategory::class,['id' => 'post_category_id']);
+    }
+
+    public function getStatus()
+    {
+        if ($this->active == static::AKTIF) {
+            return "Aktif";
+        } else {
+            return "Tidak Aktif";
+        }
+    }
+
 }

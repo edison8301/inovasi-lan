@@ -11,6 +11,14 @@ $this->title = "Halaman Dashboard";
 
 ?>
 
+<?php /*
+	<?= $this->render('grafik-inovasi-jenis') ?>
+
+	<?= $this->render('grafik-inovasi-kelompok') ?>
+
+	<?= $this->render('grafik-inovasi-tahun') ?>
+*/ ?>
+
 <div class="box box-primary">
 	<div class="box-header with-border">
 		<h3 class="box-title">

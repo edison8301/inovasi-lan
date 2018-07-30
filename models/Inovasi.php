@@ -226,4 +226,18 @@ class Inovasi extends \yii\db\ActiveRecord
         }
     }
 
+    public static function getGrafik($value='')
+    {
+        $chart = null;
+        $tahunKebelakang = date('Y') - 5;
+        $tahunSekarang = date('Y');
+
+        for ($i = $tahunKebelakang; $i <= $tahunSekarang ; $i++) {
+            $data = static::find()->andWhere(['tahun_inisiasi' => $i])->count();
+            $chart .= '{"label":"'.$i.'","value":"'.$data.'"},';
+        }
+
+        return $chart;
+    }
+
 }

@@ -46,4 +46,25 @@ class KelompokInovator extends \yii\db\ActiveRecord
     {
         return yii\helpers\ArrayHelper::map(KelompokInovator::find()->all(),'id','nama');
     }
+
+    public function getManyInovasi()
+    {
+        return $this->hasMany(Inovasi::className(), ['kelompok_inovator_id' => 'id']);
+    }
+
+    public function getCountInovasi()
+    {
+        return $this->getManyInovasi()->count();
+    }
+
+    public static function getGrafik($value='')
+    {
+        $chart = null;
+
+        foreach (self::find()->all() as $data) {
+            $chart .= '{"label":"'.$data->nama.'","value":"'.$data->getCountInovasi().'"},';
+        }
+
+        return $chart;
+    }
 }

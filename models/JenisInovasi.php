@@ -61,8 +61,8 @@ class JenisInovasi extends \yii\db\ActiveRecord
     {
         $chart = null;
 
-        foreach (self::find()->all() as $jenisInovasi) {
-            $chart .= '{"label":"'.$jenisInovasi->nama.'","value":"'.$jenisInovasi->getCountInovasi().'"},';
+        foreach (self::find()->all() as $data) {
+            $chart .= '{"label":"'.$data->nama.'","value":"'.$data->getCountInovasi().'"},';
         }
 
         return $chart;

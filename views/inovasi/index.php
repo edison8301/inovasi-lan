@@ -7,6 +7,7 @@ use app\models\KelompokInovator;
 use app\models\StatusInovasi;
 use app\models\Provinsi;
 use app\models\Kabkota;
+use app\components\Helper;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\InovasiSearch */
@@ -86,6 +87,9 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'waktu_dibuat',
                 'format' => 'raw',
+                'value' => function($data){
+                    return Helper::getWaktuWIB($data->waktu_dibuat);
+                },
                 'headerOptions' => ['style' => 'text-align:center;'],
                 'contentOptions' => ['style' => 'text-align:center;'],
             ],

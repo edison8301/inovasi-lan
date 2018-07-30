@@ -1,0 +1,1 @@
+<div id="grfik-inovasi-kelompok"> FusionChart XT will load here! </div>

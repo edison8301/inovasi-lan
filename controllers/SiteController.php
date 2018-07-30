@@ -39,13 +39,13 @@ class SiteController extends Controller
                         'roles' => ['?'],
                         'allow' => true,
                         'actions' => ['index','login','post-view','map-detail','error','inovasi-index',
-                            'inovasi-view','about','contact','berita','artikel','post-index'],
+                            'inovasi-view','about','contact','berita','artikel','post-index','dev'],
                     ],
                     [
                         'roles' => ['@'],
                         'allow' => true,
                         'actions' => ['logout','index','about','contact','post-index','post-view',
-                            'inovasi-index','inovasi-view','login'],
+                            'inovasi-index','inovasi-view','login','dev'],
                     ],
                     
                 ],
@@ -272,7 +272,7 @@ class SiteController extends Controller
      */
     public function actionDev()
     {
-        return $this->render('dev');
+        print_r(\app\models\Inovasi::getGrafik());
     }
 
     public function actionError()

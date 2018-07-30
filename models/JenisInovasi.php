@@ -46,4 +46,25 @@ class JenisInovasi extends \yii\db\ActiveRecord
     {
         return yii\helpers\ArrayHelper::map(JenisInovasi::find()->all(),'id','nama');
     }
+
+    public function getManyInovasi()
+    {
+        return $this->hasMany(Inovasi::className(), ['jenis_inovasi_id' => 'id']);
+    }
+
+    public function getCountInovasi()
+    {
+        return $this->getManyInovasi()->count();
+    }
+
+    public static function getGrafik($value='')
+    {
+        $chart = null;
+
+        foreach (self::find()->all() as $jenisInovasi) {
+            $chart .= '{"label":"'.$jenisInovasi->nama.'","value":"'.$jenisInovasi->getCountInovasi().'"},';
+        }
+
+        return $chart;
+    }
 }

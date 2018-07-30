@@ -3,7 +3,9 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 use app\models\User;
-use miloschuman\highcharts\Highcharts;
+use app\models\Inovasi;
+use app\models\JenisInovasi;
+use kartik\tabs\TabsX;
 
 $this->title = "Halaman Dashboard";
 
@@ -11,25 +13,33 @@ $this->title = "Halaman Dashboard";
 
 <div class="box box-primary">
 	<div class="box-header with-border">
-		<h3 class="box-title"></h3>
+		<h3 class="box-title">
+			Statistik Inovasi
+		</h3>
 	</div>
 
 	<div class="box-body">
 
-		<?= Highcharts::widget([
-		   'options' => [
-		      	'title' => ['text' => 'Fruit Consumption'],
-		      	'xAxis' => [
-		        	'categories' => ['Apples', 'Bananas', 'Oranges']
-		      	],
-		      	'yAxis' => [
-		        'title' => ['text' => 'Fruit eaten']
-		      	],
-		      	'series' => [
-		        	['name' => 'Jane', 'data' => [1, 0, 4]],
-		        	['name' => 'John', 'data' => [5, 7, 3]]
-		      	]
-		   ]
+		<?php $items = [
+			[
+				'label' => 'Jenis',
+		        'content' => $this->render('grafik-inovasi-jenis'),
+		        'active' => true
+			],
+			[
+				'label' => 'Kelompok',
+		        'content' => $this->render('grafik-inovasi-kelompok')
+			],
+			[
+				'label' => 'Tahun',
+		        'content' => $this->render('grafik-inovasi-tahun')
+			]
+		] ?>
+
+		<?= TabsX::widget([
+		    'items' => $items,
+		    'position' => TabsX::POS_ABOVE,
+		    'encodeLabels' => false
 		]); ?>
 
 	</div>

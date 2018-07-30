@@ -86,6 +86,7 @@ class InovasiController extends Controller
 
             $referrer = $_POST['referrer'];
 
+            $model->saveGambar();
             if($model->save()) {
                 Yii::$app->session->setFlash('success','Data berhasil disimpan.');
                 return $this->redirect($referrer);
@@ -113,10 +114,17 @@ class InovasiController extends Controller
         $model = $this->findModel($id);
 
         $referrer = Yii::$app->request->referrer;
+        $gambar_ilustrasi_lama = $model->gambar_ilustrasi;
 
         if ($model->load(Yii::$app->request->post())) {
 
             $referrer = $_POST['referrer'];
+
+            if ($gambar_ilustrasi_lama !== null) {
+                $model->updateGambar($gambar_ilustrasi_lama);
+            } else {
+                $model->saveGambar();
+            }
 
             if($model->save())
             {
@@ -146,6 +154,11 @@ class InovasiController extends Controller
     {
         $model = $this->findModel($id);
 
+        /*
+        * uncomment if you want to delete picture in directory after delete data 
+        */
+
+        // $model->deletGambar();
         if($model->delete()) {
             Yii::$app->session->setFlash('success','Data berhasil dihapus');
         } else {

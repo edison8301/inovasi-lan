@@ -45,6 +45,7 @@ class InovasiSearch extends Inovasi
     public function getQuerySearch($params=[])
     {
         $query = Inovasi::find();
+        $query->orderBy(['waktu_dibuat' => SORT_DESC]);
 
         $this->load($params);
 

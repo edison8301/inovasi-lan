@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 use yii\helpers\Html;
+use yii\web\UploadedFile;
 
 /**
  * This is the model class for table "inovasi".
@@ -65,6 +66,7 @@ class Inovasi extends \yii\db\ActiveRecord
             [['tanggal_inovasi', 'waktu_dibuat', 'waktu_diterbitkan', 'waktu_diubah'], 'safe'],
             [['nama_inovasi', 'produk_inovasi', 'penggagas', 'nama_instansi', 'unit_instansi', 
                 'kontak', 'sumber', 'gambar_ilustrasi'], 'string', 'max' => 255],
+            ['gambar_ilustrasi','file', 'extensions' => ['png', 'jpg', 'jpeg']]
         ];
     }
 
@@ -171,6 +173,57 @@ class Inovasi extends \yii\db\ActiveRecord
         }
 
         return parent::beforeSave($insert);
+    }
+
+    public function saveGambar()
+    {
+        $gambar_ilustrasi = UploadedFile::getInstance($this, 'gambar_ilustrasi');
+
+        if (is_object($gambar_ilustrasi)) {
+            $this->gambar_ilustrasi = $gambar_ilustrasi->basename;
+            $this->gambar_ilustrasi .= Yii::$app->formatter->asTimestamp(date('Y-d-m h:i:s'));
+            $this->gambar_ilustrasi .= '.' . $gambar_ilustrasi->extension;
+
+            $path = Yii::getAlias('@app').'/web/uploads/inovasi/'.$this->gambar_ilustrasi;
+            $gambar_ilustrasi->saveAs($path, false);
+        } else {
+            $this->gambar_ilustrasi = null;
+        }
+    }
+
+    public function updateGambar($gambar_ilustrasi_lama)
+    {
+        $gambar_ilustrasi = UploadedFile::getInstance($this, 'gambar_ilustrasi');
+
+        if (is_object($gambar_ilustrasi)){
+            $this->gambar_ilustrasi = $gambar_ilustrasi->baseName;
+            $this->gambar_ilustrasi .= Yii::$app->formatter->asTimestamp(date('Y-d-m h:i:s'));
+            $this->gambar_ilustrasi .= '.' . $gambar_ilustrasi->extension;
+
+            $path = Yii::getAlias('@app').'/web/uploads/inovasi/'.$this->gambar_ilustrasi;
+
+            $gambarLama = Yii::getAlias('@app').'/web/uploads/inovasi/'.$gambar_ilustrasi_lama;
+
+            $gambar_ilustrasi->saveAs($path, false);
+
+            if (file_exists($gambarLama) AND $gambar_ilustrasi_lama !== null) {
+                unlink($gambarLama);
+            }
+
+        } else {
+            $this->gambar_ilustrasi = $gambar_ilustrasi_lama;
+        }
+    }
+
+    public function deletGambar()
+    {
+        $gambar = Yii::getAlias('@app').'/web/uploads/inovasi/'.$this->gambar_ilustrasi;
+
+        if (file_exists($gambar) AND $this->gambar_ilustrasi !== null) {
+            unlink($gambar);
+        } else {
+            return false;
+        }
     }
 
 }

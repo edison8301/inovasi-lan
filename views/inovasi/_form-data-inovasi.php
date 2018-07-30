@@ -58,7 +58,7 @@ use app\models\TeknikValidasi;
         ]) ?>
 
 
-        <?= $form->field($model, 'gambar_ilustrasi')->textInput(['maxlength' => true]) ?>
+        <?= $form->field($model, 'gambar_ilustrasi')->fileInput(['maxlength' => true]) ?>
 
 
 

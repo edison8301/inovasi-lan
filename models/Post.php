@@ -5,6 +5,7 @@ namespace app\models;
 use Yii;
 use yii\helpers\Html;
 use app\components\Helper;
+use yii\web\UploadedFile;
 
 /**
  * This is the model class for table "post".
@@ -39,6 +40,7 @@ class Post extends \yii\db\ActiveRecord
             [['content'], 'string'],
             [['created_time'], 'safe'],
             [['title', 'thumbnail', 'tags'], 'string', 'max' => 255],
+            ['thumbnail','file', 'extensions' => ['png', 'jpg', 'jpeg']]
         ];
     }
 
@@ -77,6 +79,15 @@ class Post extends \yii\db\ActiveRecord
     public function getTitleListView()
     {
         return substr($this->getTitle(), 0, 65)." ...";
+    }
+
+    public function beforeSave($insert)
+    {
+        if($this->created_time==null) {
+            $this->created_time = date('Y-m-d H:i:s');
+        }
+
+        return parent::beforeSave($insert);
     }
 
     public static function findPostProvider()
@@ -141,5 +152,56 @@ class Post extends \yii\db\ActiveRecord
                         </div>
                     </div>
                 </div>';
+    }
+
+    public function saveGambar()
+    {
+        $thumbnail = UploadedFile::getInstance($this, 'thumbnail');
+
+        if (is_object($thumbnail)) {
+            $this->thumbnail = $thumbnail->basename;
+            $this->thumbnail .= Yii::$app->formatter->asTimestamp(date('Y-d-m h:i:s'));
+            $this->thumbnail .= '.' . $thumbnail->extension;
+
+            $path = Yii::getAlias('@app').'/web/uploads/post/'.$this->thumbnail;
+            $thumbnail->saveAs($path, false);
+        } else {
+            $this->thumbnail = null;
+        }
+    }
+
+    public function updateGambar($thumbnail_lama)
+    {
+        $thumbnail = UploadedFile::getInstance($this, 'thumbnail');
+
+        if (is_object($thumbnail)){
+            $this->thumbnail = $thumbnail->baseName;
+            $this->thumbnail .= Yii::$app->formatter->asTimestamp(date('Y-d-m h:i:s'));
+            $this->thumbnail .= '.' . $thumbnail->extension;
+
+            $path = Yii::getAlias('@app').'/web/uploads/post/'.$this->thumbnail;
+
+            $thumbnailLama = Yii::getAlias('@app').'/web/uploads/post/'.$thumbnail_lama;
+
+            $thumbnail->saveAs($path, false);
+
+            if (file_exists($thumbnailLama) AND $thumbnail_lama !== null) {
+                unlink($thumbnailLama);
+            }
+
+        } else {
+            $this->thumbnail = $thumbnail_lama;
+        }
+    }
+
+    public function deletGambar()
+    {
+        $gambar = Yii::getAlias('@app').'/web/uploads/post/'.$this->gambar_ilustrasi;
+
+        if (file_exists($gambar) AND $this->gambar_ilustrasi !== null) {
+            unlink($gambar);
+        } else {
+            return false;
+        }
     }
 }

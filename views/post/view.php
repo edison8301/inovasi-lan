@@ -41,7 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'thumbnail',
                 'format' => 'raw',
-                'value' => $model->thumbnail,
+                'value' => $model->getThumbnail(['class' => 'img-responsive','style' => 'width:200px']),
             ],
             [
                 'attribute' => 'tags',

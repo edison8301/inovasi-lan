@@ -48,13 +48,9 @@ use dosamigos\ckeditor\CKEditor;
             'preset' => 'advanced'
         ]) ?>
 
-        <?= $form->field($model, 'thumbnail')->textInput(['maxlength' => true]) ?>
+        <?= $form->field($model, 'thumbnail')->fileInput(['maxlength' => true]) ?>
 
         <?= $form->field($model, 'tags')->textInput(['maxlength' => true]) ?>
-
-        <?= $form->field($model, 'total_views')->textInput() ?>
-
-        <?= $form->field($model, 'created_time')->textInput() ?>
 
         <?= Html::hiddenInput('referrer',$referrer); ?>
 

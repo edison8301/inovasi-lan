@@ -56,7 +56,7 @@ use app\components\Helper;
             [
                 'attribute' => 'gambar_ilustrasi',
                 'format' => 'raw',
-                'value' => $model->getGambar(['class' => 'img-responsive']),
+                'value' => $model->getGambar(['class' => 'img-responsive','style' => 'width:200px']),
             ],
         ],
     ]) ?>

@@ -14,6 +14,10 @@ use Yii;
  */
 class InovasiValidasi extends \yii\db\ActiveRecord
 {
+
+    CONST AKTIF = 1;
+    CONST TIDAK_AKTIF = 0;
+
     /**
      * {@inheritdoc}
      */
@@ -40,9 +44,28 @@ class InovasiValidasi extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'inovasi_id' => 'Inovasi ID',
-            'validasi_id' => 'Validasi ID',
+            'inovasi_id' => 'Inovasi',
+            'validasi_id' => 'Validasi',
             'aktif' => 'Aktif',
         ];
+    }
+
+    public function getInovasi()
+    {
+        return $this->hasOne(Inovasi::class,['id' => 'inovasi_id']);
+    }
+
+    public function getValidasi()
+    {
+        return $this->hasOne(Validasi::class,['id' => 'validasi_id']);
+    }
+
+    public function getStatus()
+    {
+        if ($this->aktif == static::AKTIF) {
+            return "Aktif";
+        } else {
+            return "Tidak Aktif";
+        }
     }
 }

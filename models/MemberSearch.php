@@ -13,7 +13,7 @@ use app\models\Member;
 class MemberSearch extends Member
 {
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function rules()
     {
@@ -24,7 +24,7 @@ class MemberSearch extends Member
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function scenarios()
     {
@@ -39,23 +39,14 @@ class MemberSearch extends Member
      *
      * @return ActiveDataProvider
      */
-    public function search($params)
+
+    public function getQuerySearch($params)
     {
         $query = Member::find();
 
-        // add conditions that should always apply here
-
-        $dataProvider = new ActiveDataProvider([
-            'query' => $query,
-        ]);
-
         $this->load($params);
 
-        if (!$this->validate()) {
-            // uncomment the following line if you do not want to return any records when validation fails
-            // $query->where('0=1');
-            return $dataProvider;
-        }
+        // add conditions that should always apply here
 
         // grid filtering conditions
         $query->andFilterWhere([
@@ -74,6 +65,25 @@ class MemberSearch extends Member
             ->andFilterWhere(['like', 'alamat_instansi', $this->alamat_instansi])
             ->andFilterWhere(['like', 'telepon_instansi', $this->telepon_instansi]);
 
+        return $query;
+    }
+    
+    public function search($params)
+    {
+        $query = $this->getQuerySearch($params);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
+            return $dataProvider;
+        }
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);        
+
         return $dataProvider;
     }
+
+
 }

@@ -13,8 +13,8 @@ FusionCharts.ready(function(){
         "dataFormat": "json",
         "dataSource": {
           "chart": {
-              "caption" : "Grafik Jumlah Inovasi Berdasarkan Kelompok",
-              "xAxisName": "Kelompok Inovasi",
+              "caption" : "Grafik Jumlah Inovasi Berdasarkan Tahun",
+              "xAxisName": "Tahun Inovasi",
               "yAxisName": "Jumlah Inovasi",
               "theme": "fint"
            },

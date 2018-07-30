@@ -53,4 +53,9 @@ class PostCategory extends \yii\db\ActiveRecord
         ];
     }
 
+    public function getParent()
+    {
+        return $this->hasOne(self::class,['parent_id' => 'id']);
+    }
+
 }

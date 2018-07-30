@@ -32,29 +32,31 @@ $this->params['breadcrumbs'][] = $this->title;
                 'headerOptions' => ['style' => 'text-align:center'],
                 'contentOptions' => ['style' => 'text-align:center']
             ],
-
-            [
-                'attribute' => 'id',
-                'format' => 'raw',
-                'headerOptions' => ['style' => 'text-align:center;'],
-                'contentOptions' => ['style' => 'text-align:center;'],
-            ],
             [
                 'attribute' => 'inovasi_id',
                 'format' => 'raw',
+                'value' => function($data) {
+                    return  @$data->inovasi->nama_inovasi;
+                },
                 'headerOptions' => ['style' => 'text-align:center;'],
                 'contentOptions' => ['style' => 'text-align:center;'],
             ],
             [
                 'attribute' => 'validasi_id',
                 'format' => 'raw',
+                'value' => function($data) {
+                    return  @$data->validasi->nama;
+                },
                 'headerOptions' => ['style' => 'text-align:center;'],
                 'contentOptions' => ['style' => 'text-align:center;'],
             ],
             [
                 'attribute' => 'aktif',
                 'format' => 'raw',
-                'headerOptions' => ['style' => 'text-align:center;'],
+                'value' => function($data) {
+                    return  $data->getStatus();
+                },
+                'headerOptions' => ['style' => 'text-align:center; width:100px'],
                 'contentOptions' => ['style' => 'text-align:center;'],
             ],
 

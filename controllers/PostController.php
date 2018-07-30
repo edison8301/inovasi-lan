@@ -86,6 +86,7 @@ class PostController extends Controller
 
             $referrer = $_POST['referrer'];
 
+            $model->saveGambar();
             if($model->save()) {
                 Yii::$app->session->setFlash('success','Data berhasil disimpan.');
                 return $this->redirect($referrer);
@@ -111,6 +112,7 @@ class PostController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $thumbnail_lama = $model->thumbnail;
 
         $referrer = Yii::$app->request->referrer;
 
@@ -118,6 +120,7 @@ class PostController extends Controller
 
             $referrer = $_POST['referrer'];
 
+            $model->updateGambar($thumbnail_lama);
             if($model->save())
             {
                 Yii::$app->session->setFlash('success','Data berhasil disimpan.');

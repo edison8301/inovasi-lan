@@ -56,12 +56,15 @@ class Inovasi extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['nama_inovasi'],'required','message'=>'{attribute} tidak boleh kosong'],
             [['kategori_id', 'jenis_inovasi_id', 'kelompok_inovator_id', 'tahun_inisiasi', 
                 'tahun_implementasi', 'teknik_validasi_id', 'status_inovasi_id', 'jumlah_dilihat', 
                 'jumlah_diunduh', 'member_id', 'provinsi_id','kabkota_id'], 'integer'],
-            [['deskripsi', 'faktor_pendorong', 'faktor_penghambat', 'tahapan_proses', 'output', 'outcome', 'manfaat', 'prasyarat_replikasi'], 'string'],
+            [['deskripsi', 'faktor_pendorong', 'faktor_penghambat', 'tahapan_proses', 'output', 
+                'outcome', 'manfaat', 'prasyarat_replikasi'], 'string'],
             [['tanggal_inovasi', 'waktu_dibuat', 'waktu_diterbitkan', 'waktu_diubah'], 'safe'],
-            [['nama_inovasi', 'produk_inovasi', 'penggagas', 'nama_instansi', 'unit_instansi', 'kontak', 'sumber', 'gambar_ilustrasi'], 'string', 'max' => 255],
+            [['nama_inovasi', 'produk_inovasi', 'penggagas', 'nama_instansi', 'unit_instansi', 
+                'kontak', 'sumber', 'gambar_ilustrasi'], 'string', 'max' => 255],
         ];
     }
 
@@ -155,6 +158,19 @@ class Inovasi extends \yii\db\ActiveRecord
         } else {
             return Html::img('@web/uploads/inovasi/'. $this->gambar_ilustrasi,$htmlOptions);
         }
+    }
+
+    public function beforeSave($insert)
+    {
+        if($this->waktu_dibuat==null) {
+            $this->waktu_dibuat = date('Y-m-d H:i:s');
+        }
+
+        if($this->waktu_diterbitkan==null AND $this->status_inovasi_id == 1) {
+            $this->waktu_diterbitkan = date('Y-m-d H:i:s');
+        }
+
+        return parent::beforeSave($insert);
     }
 
 }

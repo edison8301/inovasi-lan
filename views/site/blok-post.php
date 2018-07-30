@@ -114,7 +114,7 @@ use app\models\PostCategory;
 		</div>
 	</div>
 
-	<div class="row">
+	<!-- <div class="row">
 		<div class="col-md-4 col-sm-4 col-xs-12">
 			<div class="widget-header">
 				<i class="fa fa-newspaper-o"></i> BERITA
@@ -162,7 +162,7 @@ use app\models\PostCategory;
 				<?php } ?>
 			<?php $no++; } ?>
 		</div>
-	</div>
+	</div> -->
 </div>
 
 <div>&nbsp;</div>

@@ -1,24 +1,16 @@
 <?php
 
-use app\models\InovasiSearch;
+use app\models\Inovasi;
 use yii\data\ActiveDataProvider;
+use yii\helpers\Html;
+use app\components\Helper;
 use yii\widgets\ListView;
 
 ?>
 
 <?php
 
-$postSearch = new InovasiSearch();
-$query = $postSearch->getQuerySearch();
-$query->limit(5);
-
-
-$dataProvider = new ActiveDataProvider([
-    'query' => $query,
-    'pagination' => [
-        'pageSize' => 5
-    ],
-]);
+$inovasi = Inovasi::find()->orderBy(['waktu_dibuat' => SORT_DESC])->limit(5)->all();
 
 ?>
 
@@ -26,7 +18,24 @@ $dataProvider = new ActiveDataProvider([
 	INOVASI TERBARU
 </div>
 
-<?= ListView::widget([
+<?php foreach ($inovasi as $inovasi) { ?>
+    <div class="widget-content-list">
+        <div class="row">
+            <div class="col-md-3 col-sm-3 col-xs-3">
+                <?= $inovasi->getGambar(['class' => 'img-responsive']) ?>
+            </div>
+            <div class="col-md-9 col-sm-9 col-xs-9">
+                <div class="title">
+                    <?= Html::a($inovasi->nama_inovasi, ['site/inovasi-view','id' => $inovasi->id], ['option' => 'value']); ?>
+                </div>
+
+                <?= Helper::getTanggalSingkat($inovasi->waktu_dibuat) ?>
+            </div>
+        </div>
+    </div>
+<?php } ?>
+
+<?php /*ListView::widget([
 	'dataProvider' => $dataProvider,
 	'pager' => [
         'firstPageLabel' => 'first',
@@ -36,4 +45,4 @@ $dataProvider = new ActiveDataProvider([
         'maxButtonCount' => 3,
     ],
 	'itemView' => 'listview-inovasi-terbaru'
-]) ?>
+])*/ ?>

@@ -126,7 +126,9 @@ class Post extends \yii\db\ActiveRecord
         return '<div class="widget-content-list">
                     <div class="row">
                         <div class="col-md-3 col-sm-3 col-xs-3">
-                            '. $this->getThumbnail(['style' => 'width:80px;']).'
+                            <div class="box-list-thumbnail">
+                                '. $this->getThumbnail(['style' => 'width:80px;']).'
+                            </div>
                         </div>
                         <div class="col-md-9 col-sm-9 col-xs-9">
                             <div class="title">

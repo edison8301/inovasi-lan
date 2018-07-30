@@ -375,10 +375,29 @@ div.box-main-post {
 
 .box-main-thumbnail {
     max-width: 100%;
-    height: auto;
+    height: 250px;
     display: block;
     position: relative;
-    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.box-main-thumbnail > img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.box-list-thumbnail {
+    max-width: 100%;
+    height: 60px;
+    display: block;
+    position: relative;
+    overflow: hidden;
+}
+
+.box-carousel-thumbnail {
+    height: 170px;
+    overflow: hidden;
 }
 
 h4.box-main-title {

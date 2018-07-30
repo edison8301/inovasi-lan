@@ -47,7 +47,9 @@ use app\models\PostCategory;
 
 		<?php foreach (Post::findPostLimit(PostCategory::E_BOOK,15) as $postSlide) { ?>
 			<div class="item-class" style="margin: 3%">
-				<?= Html::a($postSlide->getThumbnail(['class' => 'img-responsive','style' => 'width:120px']), ['site/post-view','id' => $postSlide->id], ['option' => 'value']); ?>
+				<div class="box-carousel-thumbnail">
+					<?= Html::a($postSlide->getThumbnail(['class' => 'img-responsive','style' => 'width:120px']), ['site/post-view','id' => $postSlide->id], ['option' => 'value']); ?>
+				</div>
 				<h4 class="carousel-title">
 					<?= Html::a($postSlide->getTitleSlide()."....", ['site/post-view','id' => $postSlide->id], ['class' => 'anchor-white']); ?>
 				</h4>

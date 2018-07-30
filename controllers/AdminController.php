@@ -19,14 +19,6 @@ class AdminController extends \yii\web\Controller
                         'allow' => true,
                         'roles' => ['@'],
                     ],
-                    [
-                        'actions' => ['pegawai'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                        'matchCallback' => function() { 
-                            return User::isPegawai() OR User::isAdmin();
-                        },
-                    ],
                 ],
             ],
             'verbs' => [

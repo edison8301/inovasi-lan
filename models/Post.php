@@ -100,7 +100,7 @@ class Post extends \yii\db\ActiveRecord
     {
         $path = Yii::$app->basePath;
         if ($this->thumbnail == null OR !file_exists($path.'/web/uploads/post/'.$this->thumbnail)) {
-            return Html::img("@web/images/no-image.png", ['class' => 'img-responsive']);
+            return Html::img("@web/images/logo.png", ['class' => 'img-responsive']);
         } else  {
             return Html::img('@web/uploads/post/'. $this->thumbnail,$htmlOptions);;
         }
@@ -113,7 +113,7 @@ class Post extends \yii\db\ActiveRecord
                         '.$this->getThumbnail(['class' => 'img-responsive']).'
                     </div>
                     <h4 class="box-main-title">
-                        '. Html::a($this->title, ['site/post-view','id' => $this->id], ['class' => 'anchor-black']).'
+                        '. Html::a(substr($this->title, 0, 30)."....", ['site/post-view','id' => $this->id], ['class' => 'anchor-black']).'
                     </h4>
                     <div class="date-post">
                         '.Helper::getTanggal($this->created_time).'
@@ -130,7 +130,7 @@ class Post extends \yii\db\ActiveRecord
                         </div>
                         <div class="col-md-9 col-sm-9 col-xs-9">
                             <div class="title">
-                                '. Html::a($this->title, ['site/post-view','id' => $this->id], ['class' => 'anchor-black']).'
+                                '. Html::a(substr($this->title, 0, 55)."....", ['site/post-view','id' => $this->id], ['class' => 'anchor-black']).'
                             </div>
 
                             <div class="date-post">

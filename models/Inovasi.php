@@ -154,7 +154,7 @@ class Inovasi extends \yii\db\ActiveRecord
     {
         $path = Yii::$app->basePath;
         if($this->gambar_ilustrasi == null OR !file_exists($path.'/web/uploads/inovasi/'.$this->gambar_ilustrasi)){
-            return Html::img('@web/images/no-image.png',$htmlOptions);
+            return Html::img('@web/images/logo.png',$htmlOptions);
         } else {
             return Html::img('@web/uploads/inovasi/'. $this->gambar_ilustrasi,$htmlOptions);
         }

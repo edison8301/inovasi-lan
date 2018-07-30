@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $model->nama_inovasi;
 	<div class="row">
 		<div class="col-md-8 col-sm-8 col-xs-12">
 			<div class="thumbnail-post-detail">
-				<?= $model->getGambar(['class' => 'img-responsive']) ?>
+				<?= $model->getGambar(['class' => 'img-responsive text-center']) ?>
 			</div>
 
 			<div class="content">

@@ -16,9 +16,11 @@ class PostCategory extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
-
     CONST BERITA = 1;
     CONST ARTIKEL = 2;
+    CONST E_BOOK = 3;
+    CONST POLICE_BRIEF = 4;
+    CONST HASIL_KAJIAN = 11;
 
     public static function tableName()
     {

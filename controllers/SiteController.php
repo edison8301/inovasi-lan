@@ -36,16 +36,16 @@ class SiteController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
+                        'roles' => ['?'],
+                        'allow' => true,
                         'actions' => ['index','login','post-view','map-detail','error','inovasi-index',
                             'inovasi-view','about','contact','berita','artikel','post-index'],
-                        'allow' => true,
-                        'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['logout','index','about','contact','post-index','post-view',
-                            'inovasi-index','inovasi-view'],
-                        'allow' => true,
                         'roles' => ['@'],
+                        'allow' => true,
+                        'actions' => ['logout','index','about','contact','post-index','post-view',
+                            'inovasi-index','inovasi-view','login'],
                     ],
                     
                 ],
@@ -204,6 +204,10 @@ class SiteController extends Controller
 
     public function actionLogin()
     {
+        if(Yii::$app->user->isGuest==false) {
+            return $this->redirect(['admin/index']);            
+        }
+        
         $this->layout = '//backend/main-login';
 
         $model = new LoginForm();

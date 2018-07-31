@@ -12,7 +12,7 @@ use app\models\PostCategory;
 	<div class="container">
 		<div class="widget-header-white">
 			<i class="fa fa-th"></i> KOLOM
-			<?= Html::a("Lihat Semua", ['site/post-index'], ['class' => 'pull-right anchor-white']); ?>
+			<?= Html::a("Lihat Semua", ['site/post-index','post_category_id' => PostCategory::E_BOOK], ['class' => 'pull-right anchor-white']); ?>
 		</div>
 
 		<?php OwlCarouselWidget::begin([

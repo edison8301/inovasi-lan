@@ -9,7 +9,7 @@ use app\models\Post;
 		<div class="col-md-4 col-sm-4 col-xs-12">
 			<div class="widget-header">
 				<i class="fa fa-newspaper-o"></i> BERITA
-				<?= Html::a("Lihat Semua", $url = null, ['class' => 'pull-right anchor-black']); ?>
+				<?= Html::a("Lihat Semua", ['site/post-index','post_category_id' => PostCategory::BERITA], ['class' => 'pull-right anchor-black']); ?>
 			</div>
 
 					<?php $no = 1; ?>
@@ -25,7 +25,7 @@ use app\models\Post;
 		<div class="col-md-4 col-sm-4 col-xs-12">
 			<div class="widget-header">
 				<i class="fa fa-newspaper-o"></i> ARTIKEL
-				<?= Html::a("Lihat Semua", $url = null, ['class' => 'pull-right anchor-black']); ?>
+				<?= Html::a("Lihat Semua", ['site/post-index','post_category_id' => PostCategory::ARTIKEL], ['class' => 'pull-right anchor-black']); ?>
 			</div>
 
 			<?php $no = 1; ?>
@@ -41,7 +41,7 @@ use app\models\Post;
 		<div class="col-md-4 col-sm-4 col-xs-12">
 			<div class="widget-header">
 				<i class="fa fa-newspaper-o"></i> POLICY BRIEF
-				<?= Html::a("Lihat Semua", $url = null, ['class' => 'pull-right anchor-black']); ?>
+				<?= Html::a("Lihat Semua", ['site/post-index','post_category_id' => PostCategory::POLICE_BRIEF], ['class' => 'pull-right anchor-black']); ?>
 			</div>
 
 			<?php $no = 1; ?>
@@ -63,7 +63,7 @@ use app\models\Post;
 		<div class="col-md-4 col-sm-4 col-xs-12">
 			<div class="widget-header">
 				<i class="fa fa-newspaper-o"></i> HASIL KAJIAN
-				<?= Html::a("Lihat Semua", $url = null, ['class' => 'pull-right anchor-black']); ?>
+				<?= Html::a("Lihat Semua", ['site/post-index','post_category_id' => PostCategory::HASIL_KAJIAN], ['class' => 'pull-right anchor-black']); ?>
 			</div>
 
 					<?php $no = 1; ?>
@@ -79,7 +79,7 @@ use app\models\Post;
 		<div class="col-md-4 col-sm-4 col-xs-12">
 			<div class="widget-header">
 				<i class="fa fa-newspaper-o"></i> TOKOH INOVASI
-				<?= Html::a("Lihat Semua", $url = null, ['class' => 'pull-right anchor-black']); ?>
+				<?= Html::a("Lihat Semua", ['site/post-index','post_category_id' => PostCategory::TOKOH_INOVASI], ['class' => 'pull-right anchor-black']); ?>
 			</div>
 
 			<?php $no = 1; ?>
@@ -95,7 +95,7 @@ use app\models\Post;
 		<div class="col-md-4 col-sm-4 col-xs-12">
 			<div class="widget-header">
 				<i class="fa fa-newspaper-o"></i> Laboratorium Inovasi
-				<?= Html::a("Lihat Semua", $url = null, ['class' => 'pull-right anchor-black']); ?>
+				<?= Html::a("Lihat Semua", ['site/post-index','post_category_id' => PostCategory::LABORATORIUM_INOVASI], ['class' => 'pull-right anchor-black']); ?>
 			</div>
 
 			<?php $no = 1; ?>

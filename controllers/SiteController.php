@@ -92,6 +92,8 @@ class SiteController extends Controller
         $inovasiSearch = new InovasiSearch();
         $inovasiSearch->load(Yii::$app->request->queryParams);
 
+        $inovasiTerbaru = Inovasi::findInovasiTerbaru();
+
         $dataProvider = new ActiveDataProvider([
             'query' => $inovasiSearch->getQuerySearch(),
             'pagination' => [
@@ -100,7 +102,8 @@ class SiteController extends Controller
         ]);
 
         return $this->render('index',[
-            'dataProvider' => $dataProvider
+            'dataProvider' => $dataProvider,
+            'inovasiTerbaru' => $inovasiTerbaru
         ]);
     }
 

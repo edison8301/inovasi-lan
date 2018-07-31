@@ -240,4 +240,9 @@ class Inovasi extends \yii\db\ActiveRecord
         return $chart;
     }
 
+    public function findInovasiTerbaru()
+    {
+        return static::find()->orderBy(['waktu_dibuat' => SORT_DESC])->one();
+    }
+
 }

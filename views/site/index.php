@@ -17,12 +17,14 @@ $this->title = 'Sistem Informasi Kajian (Siska) LAN';
 				INOVASI TERBARU
 			</div>
 
-			<?= Html::img("@web/images/logo.png", ['style' => 'width:100%; margin-bottom:5%']); ?>
+			<div class="box-main-thumbnail">
+				<?= $inovasiTerbaru->getGambar(['style' => 'width:100%']) ?>
+			</div>
 			
 			<div class="widget-content-list">
 				<div class="title">
 					<h3>
-						<a href="">Layanan Sinergi 3 in 1 Gratis Bagi Keluarga Miskin Pemegang Kartu Menuju Sejahtera (KMS)</a>
+						<?= Html::a($inovasiTerbaru->nama_inovasi, ['site/inovasi-view','id' => $inovasiTerbaru->id], ['class' => 'anchor-black']); ?>
 					</h3>
 				</div>
 				30 Jun 2018

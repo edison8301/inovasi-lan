@@ -54,7 +54,7 @@ class Provinsi extends \yii\db\ActiveRecord
 
     public static function getList()
     {
-        return yii\helpers\ArrayHelper::map(Provinsi::find()->all(),'id','nama');
+        return yii\helpers\ArrayHelper::map(self::find()->all(),'id','nama');
     }
 
     public function getCountInovasi()

@@ -10,6 +10,8 @@ use app\models\JenisInovasi;
 use app\models\KelompokInovator;
 use app\models\StatusInovasi;
 use app\models\TeknikValidasi;
+use app\models\Provinsi;
+use app\models\Kabkota;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Inovasi */

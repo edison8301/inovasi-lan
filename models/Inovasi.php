@@ -242,7 +242,7 @@ class Inovasi extends \yii\db\ActiveRecord
 
     public function findInovasiTerbaru()
     {
-        return static::find()->orderBy(['waktu_dibuat' => SORT_DESC])->one();
+        return static::find()->orderBy(['waktu_dibuat' => SORT_ASC])->one();
     }
 
 }

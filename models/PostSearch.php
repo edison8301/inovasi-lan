@@ -43,7 +43,7 @@ class PostSearch extends Post
     public function getQuerySearch($params=[])
     {
         $query = Post::find();
-        $query->orderBy(['created_time' => SORT_ASC]);
+        $query->orderBy(['created_time' => SORT_DESC]);
 
         $this->load($params);
 

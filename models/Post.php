@@ -97,7 +97,7 @@ class Post extends \yii\db\ActiveRecord
 
     public static function findPostByCategory($post_category_id)
     {
-        return static::find()->andWhere(['post_category_id' => $post_category_id])->orderBy(['created_time' => SORT_ASC]);
+        return static::find()->andWhere(['post_category_id' => $post_category_id])->orderBy(['created_time' => SORT_DESC]);
     }
 
     public static function findPostLimit($post_category_id,$limit)

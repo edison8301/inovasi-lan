@@ -1,4 +1,5 @@
 <?php
+use app\components\Helper;
 use yii\helpers\Html;
 use yii\widgets\ListView;
 
@@ -27,7 +28,7 @@ $this->title = 'Sistem Informasi Kajian (Siska) LAN';
 						<?= Html::a($inovasiTerbaru->nama_inovasi, ['site/inovasi-view','id' => $inovasiTerbaru->id], ['class' => 'anchor-black']); ?>
 					</h3>
 				</div>
-				30 Jun 2018
+				<?= Helper::getTanggalSingkat($inovasiTerbaru->waktu_dibuat) ?>
 			</div>
 		</div>
 

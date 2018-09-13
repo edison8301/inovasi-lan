@@ -33,25 +33,19 @@ $this->params['breadcrumbs'][] = $this->title;
                 'contentOptions' => ['style' => 'text-align:center']
             ],
             [
+                'attribute' => 'nama',
+                'format' => 'raw',
+                'headerOptions' => ['style' => 'text-align:center;'],
+                'contentOptions' => ['style' => 'text-align:left;'],
+            ],
+            [
                 'attribute' => 'email',
                 'format' => 'raw',
                 'headerOptions' => ['style' => 'text-align:center;'],
                 'contentOptions' => ['style' => 'text-align:center;'],
             ],
             [
-                'attribute' => 'nama',
-                'format' => 'raw',
-                'headerOptions' => ['style' => 'text-align:center;'],
-                'contentOptions' => ['style' => 'text-align:center;'],
-            ],
-            [
                 'attribute' => 'alamat',
-                'format' => 'raw',
-                'headerOptions' => ['style' => 'text-align:center;'],
-                'contentOptions' => ['style' => 'text-align:center;'],
-            ],
-            [
-                'attribute' => 'telepon',
                 'format' => 'raw',
                 'headerOptions' => ['style' => 'text-align:center;'],
                 'contentOptions' => ['style' => 'text-align:center;'],

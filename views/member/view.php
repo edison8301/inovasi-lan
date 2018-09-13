@@ -66,7 +66,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'login_terakhir',
                 'format' => 'raw',
-                'value' => $model->login_terakhir,
+                'value' => Helper::getWaktuWIB($model->login_terakhir),
             ],
             [
                 'attribute' => 'aktif',

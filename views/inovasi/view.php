@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="box-body">
 
-        <?php $items = [
+        <?php /*<?php $items = [
             [
                 'label' => 'Keterangan Inovator',
                 'content' => $this->render('view-keterangan-inovator',['model' => $model]),
@@ -39,7 +39,87 @@ $this->params['breadcrumbs'][] = $this->title;
             'items' => $items,
             'position' => TabsX::POS_ABOVE,
             'encodeLabels' => false
-        ]); ?>
+        ]); ?>*/ ?>
+
+        <?= DetailView::widget([
+            'model' => $model,
+            'template' => '<tr><th width="200px" style="text-align:left">{label}</th><td>{value}</td></tr>',
+            'attributes' => [
+                [
+                    'attribute' => 'nama_inovasi',
+                    'format' => 'raw',
+                    'value' => $model->nama_inovasi,
+                ],
+                [
+                    'attribute' => 'jenis_inovasi_id',
+                    'format' => 'raw',
+                    'value' => @$model->jenisInovasi->nama,
+                ],
+                [
+                    'attribute' => 'kelompok_inovator_id',
+                    'format' => 'raw',
+                    'value' => @$model->kelompokInovator->nama,
+                ],
+                [
+                    'attribute' => 'nama_instansi',
+                    'format' => 'raw',
+                    'value' => $model->nama_instansi,
+                ],
+                [
+                    'attribute' => 'unit_instansi',
+                    'format' => 'raw',
+                    'value' => $model->unit_instansi,
+                ],
+                [
+                    'attribute' => 'penggagas',
+                    'format' => 'raw',
+                    'value' => $model->penggagas,
+                ],
+                [
+                    'attribute' => 'kontak',
+                    'format' => 'raw',
+                    'value' => $model->kontak,
+                ],
+                [
+                    'attribute' => 'sumber',
+                    'format' => 'raw',
+                    'value' => $model->sumber,
+                ],
+                [
+                    'attribute' => 'teknik_validasi_id',
+                    'format' => 'raw',
+                    'value' => @$model->teknikValidasi->nama,
+                ],
+                [
+                    'attribute' => 'tahun_inisiasi',
+                    'format' => 'raw',
+                    'value' => $model->tahun_inisiasi,
+                ],
+                [
+                    'attribute' => 'tahun_implementasi',
+                    'format' => 'raw',
+                    'value' => $model->tahun_implementasi,
+                ],
+            ],
+        ]) ?>
+
+        <hr>
+
+        <?= DetailView::widget([
+            'model' => $model,
+            'template' => '<tr><th width="200px" style="text-align:left">{label}</th><td>{value}</td></tr>',
+            'attributes' => [
+                [
+                    'attribute' => 'deskripsi',
+                    'format' => 'raw',
+                    'value' => $model->deskripsi,
+                ],
+            ],
+        ]) ?>
+
+        <?= $this->render('/site/tabs-inovasi',[
+            'model' => $model
+        ]) ?>
 
     </div>
 

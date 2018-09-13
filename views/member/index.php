@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\BaseStringHelper;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\MemberSearch */
@@ -47,6 +48,9 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'alamat',
                 'format' => 'raw',
+                'value' => function($data) {
+                    return BaseStringHelper::truncate($data->alamat, 50);
+                },
                 'headerOptions' => ['style' => 'text-align:center;'],
                 'contentOptions' => ['style' => 'text-align:center;'],
             ],

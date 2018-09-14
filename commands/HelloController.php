@@ -36,11 +36,9 @@ class HelloController extends Controller
     public function actionDev()
     {
         foreach (Post::find()->all() as $post) {
-            $post->created_by = 1;
-            if ($post->update()) {
-                echo "Sukses </br>";
-            } else {
-                echo "Failed </br>";
+            foreach (User::find()->all() as $user) {
+                $post->created_by = $user->id;
+                $post->save();
             }
         }
     }

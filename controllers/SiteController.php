@@ -275,9 +275,14 @@ class SiteController extends Controller
      *
      * @return Response|string
      */
-    public function actionDev($lorem)
+    public function actionDev()
     {
-        echo "string";
+        foreach (Post::find()->all() as $post) {
+            foreach (User::find()->all() as $user) {
+                $post->created_by = $user->id;
+                $post->save(false);
+            }
+        }
     }
 
     public function actionError()

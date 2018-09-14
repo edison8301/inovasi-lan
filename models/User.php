@@ -103,12 +103,23 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
         return $this->hasMany(Inovasi::className(), ['created_by' => 'id']);
     }
 
-    public static function getGrafik()
+    public function getManyPost()
+    {
+        return $this->hasMany(Post::className(), ['created_by' => 'id']);
+    }
+
+    public static function getGrafik($params)
     {
         $chart = null;
 
         foreach (self::find()->all() as $data) {
-            $chart .= '{"label":"'.$data->username.'","value":"'.$data->manyInovasiCount.'"},';
+            if ($params == 'inovasi') {
+                $value = $data->manyInovasiCount;
+            } else {
+                $value = $data->manyPostCount;
+            }
+
+            $chart .= '{"label":"'.$data->username.'","value":"'.$value.'"},';
         }
 
         return $chart;
@@ -117,5 +128,10 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     public function getManyInovasiCount()
     {
         return count($this->manyInovasi);
+    }
+
+    public function getManyPostCount()
+    {
+        return count($this->manyPost);
     }
 }

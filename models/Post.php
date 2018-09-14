@@ -132,7 +132,7 @@ class Post extends \yii\db\ActiveRecord
                         '.$this->getThumbnail(['class' => 'img-responsive']).'
                     </div>
                     <h4 class="box-main-title">
-                        '. Html::a(BaseStringHelper::truncate($this->title, 30), ['site/post-view','id' => $this->id], ['class' => 'anchor-black']).'
+                        '. Html::a(BaseStringHelper::truncate($this->title, 25), ['site/post-view','id' => $this->id], ['class' => 'anchor-black']).'
                     </h4>
                     <div class="date-post">
                         '.Helper::getTanggal($this->created_time).'

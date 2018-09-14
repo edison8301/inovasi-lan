@@ -7,12 +7,12 @@ use app\models\User;
         <div class="box box-primary">
             <div class="box-header with-border">
                 <h3 class="box-title">
-                    Statistik Inovasi Berdasarkan User Pembuat
+                    Statistik Post Berdasarkan User Pembuat
                 </h3>
             </div>
 
             <div class="box-body">
-                <div id="grafik-user"> FusionChart XT will load here! </div>
+                <div id="grafik-user-post"> FusionChart XT will load here! </div>
             </div>
         </div>
     </div>
@@ -23,19 +23,19 @@ use app\models\User;
 FusionCharts.ready(function(){
       var revenueChart = new FusionCharts({
         "type": "Column3d",
-        "renderAt": "grafik-user",
+        "renderAt": "grafik-user-post",
         "width": "100%",
         "height": "300",
         "dataFormat": "json",
         "dataSource": {
           "chart": {
-              "caption" : "Grafik Jumlah Inovasi Berdasarkan User Pembuat",
+              "caption" : "Grafik Jumlah Post Berdasarkan User Pembuat",
               "xAxisName": "User Pembuat",
-              "yAxisName": "Jumlah Inovasi",
+              "yAxisName": "Jumlah Post",
               "theme": "fint"
            },
           "data":        
-              [ <?php print User::getGrafik('inovasi'); ?> ]
+              [ <?php print User::getGrafik('post'); ?> ]
              
            
         }

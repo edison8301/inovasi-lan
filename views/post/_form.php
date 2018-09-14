@@ -42,7 +42,7 @@ use yii\helpers\Html;
             ]
         ]) ?>
 
-        <?= $form->field($model, 'title')->textArea(['rows' => 5]) ?>
+        <?= $form->field($model, 'title')->textArea(['rows' => 3]) ?>
 
         <?= $form->field($model, 'content', [
             'horizontalCssClasses' => [

@@ -100,6 +100,21 @@ $this->params['breadcrumbs'][] = $this->title;
                     'format' => 'raw',
                     'value' => $model->tahun_implementasi,
                 ],
+                [
+                    'attribute' => 'waktu_dibuat',
+                    'format' => 'raw',
+                    'value' => $model->waktu_dibuat,
+                ],
+                [
+                    'attribute' => 'waktu_diterbitkan',
+                    'format' => 'raw',
+                    'value' => $model->waktu_diterbitkan,
+                ],
+                [
+                    'attribute' => 'waktu_diubah',
+                    'format' => 'raw',
+                    'value' => $model->waktu_diubah,
+                ],
             ],
         ]) ?>
 

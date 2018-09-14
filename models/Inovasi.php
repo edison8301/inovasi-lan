@@ -3,6 +3,8 @@
 namespace app\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
+use yii\db\Expression;
 use yii\helpers\Html;
 use yii\web\UploadedFile;
 
@@ -67,6 +69,18 @@ class Inovasi extends \yii\db\ActiveRecord
             [['nama_inovasi', 'produk_inovasi', 'penggagas', 'nama_instansi', 'unit_instansi', 
                 'kontak', 'sumber', 'gambar_ilustrasi'], 'string', 'max' => 255],
             ['gambar_ilustrasi','file', 'extensions' => ['png', 'jpg', 'jpeg']]
+        ];
+    }
+
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => TimestampBehavior::className(),
+                'createdAtAttribute' => 'waktu_dibuat',
+                'updatedAtAttribute' => 'waktu_diubah',
+                'value' => new Expression('NOW()'),
+            ],
         ];
     }
 
@@ -162,17 +176,47 @@ class Inovasi extends \yii\db\ActiveRecord
         }
     }
 
-    public function beforeSave($insert)
+    public function afterSave($insert, $changedAttributes)
     {
-        if($this->waktu_dibuat==null) {
-            $this->waktu_dibuat = date('Y-m-d H:i:s');
+        if ($insert) {
+            $this->createInovasiValidasi();
         }
 
-        if($this->waktu_diterbitkan==null AND $this->status_inovasi_id == 1) {
-            $this->waktu_diterbitkan = date('Y-m-d H:i:s');
+        if ($changedAttributes) {
+            $this->updateInovasiValidasi();
+        }
+    }
+
+    public function createInovasiValidasi()
+    {
+        $validasi = $_POST['validasi'];
+
+        foreach ($validasi as $key => $value) {
+
+            $inovasiValidasi = InovasiValidasi::find()->andWhere([
+                'inovasi_id' => $this->id,
+                'validasi_id' => $key
+            ])->one();
+
+            if ($inovasiValidasi == null) {
+                $inovasiValidasi = new InovasiValidasi();
+                $inovasiValidasi->inovasi_id = $this->id;
+                $inovasiValidasi->validasi_id = $key;
+                $inovasiValidasi->aktif = $value;
+                $inovasiValidasi->save(false);
+            }
+        }
+    }
+
+    public function updateInovasiValidasi()
+    {
+        $inovasiValidasi = InovasiValidasi::find()->andWhere(['inovasi_id' => $this->id])->all();
+
+        foreach ($inovasiValidasi as $value) {
+            $value->delete();
         }
 
-        return parent::beforeSave($insert);
+        $this->createInovasiValidasi();
     }
 
     public function saveGambar()

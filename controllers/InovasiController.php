@@ -5,10 +5,11 @@ namespace app\controllers;
 use Yii;
 use app\models\Inovasi;
 use app\models\InovasiSearch;
+use yii\db\Expression;
+use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
 
 /**
  * InovasiController implements the CRUD actions for Inovasi model.
@@ -79,6 +80,7 @@ class InovasiController extends Controller
     public function actionCreate()
     {
         $model = new Inovasi();
+        $model->waktu_diterbitkan = new Expression('NOW()');
 
         $referrer = Yii::$app->request->referrer;
 

@@ -42,6 +42,7 @@ class InovasiValidasiSearch extends InovasiValidasi
     public function getQuerySearch($params)
     {
         $query = InovasiValidasi::find();
+        $query->orderBy(['id' => SORT_DESC]);
 
         $this->load($params);
 

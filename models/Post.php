@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 use app\components\Helper;
+use yii\behaviors\BlameableBehavior;
 use yii\behaviors\TimestampBehavior;
 use yii\db\Expression;
 use yii\helpers\Html;
@@ -40,7 +41,7 @@ class Post extends \yii\db\ActiveRecord
             [['post_category_id', 'total_views'], 'integer'],
             [['title'], 'required'],
             [['content'], 'string'],
-            [['created_time'], 'safe'],
+            [['created_time','created_by'], 'safe'],
             [['title', 'thumbnail', 'tags'], 'string', 'max' => 255],
             ['thumbnail','file', 'extensions' => ['png', 'jpg', 'jpeg']]
         ];
@@ -54,6 +55,11 @@ class Post extends \yii\db\ActiveRecord
                 'createdAtAttribute' => 'created_time',
                 'updatedAtAttribute' => 'created_time',
                 'value' => new Expression('NOW()'),
+            ],
+            [
+                'class' => BlameableBehavior::className(),
+                'createdByAttribute' => 'created_by',
+                'updatedByAttribute' => 'created_by',
             ],
         ];
     }
@@ -72,12 +78,18 @@ class Post extends \yii\db\ActiveRecord
             'tags' => 'Tags',
             'total_views' => 'Total Views',
             'created_time' => 'Created Time',
+            'created_by' => 'Dibuat Oleh'
         ];
     }
 
     public function getPostCategory()
     {
         return $this->hasOne(PostCategory::className(),['id' => 'post_category_id']);
+    }
+
+    public function getUser()
+    {
+        return $this->hasOne(User::class,['id' => 'created_by']);
     }
 
     public function getTitle()

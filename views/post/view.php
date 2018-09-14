@@ -58,6 +58,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format' => 'raw',
                 'value' => Helper::getWaktuWIB($model->created_time),
             ],
+            [
+                'attribute' => 'created_by',
+                'format' => 'raw',
+                'value' => @$model->user->username,
+            ],
         ],
     ]) ?>
 

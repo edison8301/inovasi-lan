@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\behaviors\BlameableBehavior;
 use yii\behaviors\TimestampBehavior;
 use yii\db\Expression;
 use yii\helpers\Html;
@@ -65,7 +66,7 @@ class Inovasi extends \yii\db\ActiveRecord
                 'jumlah_diunduh', 'member_id', 'provinsi_id','kabkota_id'], 'integer'],
             [['deskripsi', 'faktor_pendorong', 'faktor_penghambat', 'tahapan_proses', 'output', 
                 'outcome', 'manfaat', 'prasyarat_replikasi'], 'string'],
-            [['tanggal_inovasi', 'waktu_dibuat', 'waktu_diterbitkan', 'waktu_diubah'], 'safe'],
+            [['tanggal_inovasi', 'waktu_dibuat', 'waktu_diterbitkan', 'waktu_diubah','created_by'], 'safe'],
             [['nama_inovasi', 'produk_inovasi', 'penggagas', 'nama_instansi', 'unit_instansi', 
                 'kontak', 'sumber', 'gambar_ilustrasi'], 'string', 'max' => 255],
             ['gambar_ilustrasi','file', 'extensions' => ['png', 'jpg', 'jpeg']]
@@ -80,6 +81,11 @@ class Inovasi extends \yii\db\ActiveRecord
                 'createdAtAttribute' => 'waktu_dibuat',
                 'updatedAtAttribute' => 'waktu_diubah',
                 'value' => new Expression('NOW()'),
+            ],
+            [
+                'class' => BlameableBehavior::className(),
+                'createdByAttribute' => 'created_by',
+                'updatedByAttribute' => 'created_by',
             ],
         ];
     }
@@ -123,12 +129,18 @@ class Inovasi extends \yii\db\ActiveRecord
             'waktu_dibuat' => 'Waktu Dibuat',
             'waktu_diterbitkan' => 'Waktu Diterbitkan',
             'waktu_diubah' => 'Waktu Diubah',
+            'created_by' => 'Dibuat Oleh'
         ];
     }
 
     public function getJenisInovasi()
     {
         return $this->hasOne(JenisInovasi::className(),['id' => 'jenis_inovasi_id']);
+    }
+
+    public function getUser()
+    {
+        return $this->hasOne(User::class,['id' => 'created_by']);
     }
 
     public function getProvinsi()

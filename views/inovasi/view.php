@@ -142,9 +142,9 @@ $this->params['breadcrumbs'][] = $this->title;
                         'value' => Helper::getWaktuWIB($model->waktu_diubah),
                     ],
                     [
-                        'attribute' => 'jumlah_dilihat',
+                        'attribute' => 'created_by',
                         'format' => 'raw',
-                        'value' => $model->jumlah_dilihat,
+                        'value' => @$model->user->username,
                     ],
                 ],
             ]) ?>
@@ -169,6 +169,11 @@ $this->params['breadcrumbs'][] = $this->title;
                         'attribute' => 'status_inovasi',
                         'format' => 'raw',
                         'value' => @$model->statusInovasi->nama,
+                    ],
+                    [
+                        'attribute' => 'jumlah_dilihat',
+                        'format' => 'raw',
+                        'value' => $model->jumlah_dilihat,
                     ],
                 ],
             ]) ?>

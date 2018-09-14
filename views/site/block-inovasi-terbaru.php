@@ -1,9 +1,10 @@
 <?php
 
+use app\components\Helper;
 use app\models\Inovasi;
 use yii\data\ActiveDataProvider;
+use yii\helpers\BaseStringHelper;
 use yii\helpers\Html;
-use app\components\Helper;
 use yii\widgets\ListView;
 
 ?>
@@ -28,7 +29,7 @@ $inovasi = Inovasi::find()->orderBy(['waktu_dibuat' => SORT_DESC])->limit(5)->al
             </div>
             <div class="col-md-9 col-sm-9 col-xs-9">
                 <div class="title">
-                    <?= Html::a($inovasi->nama_inovasi, ['site/inovasi-view','id' => $inovasi->id], ['option' => 'value']); ?>
+                    <?= Html::a(BaseStringHelper::truncate($inovasi->nama_inovasi, 25), ['site/inovasi-view','id' => $inovasi->id], ['option' => 'value']); ?>
                 </div>
 
                 <?= Helper::getTanggalSingkat($inovasi->waktu_dibuat) ?>

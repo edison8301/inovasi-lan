@@ -7,6 +7,7 @@ use app\components\Helper;
 use yii\behaviors\BlameableBehavior;
 use yii\behaviors\TimestampBehavior;
 use yii\db\Expression;
+use yii\helpers\BaseStringHelper;
 use yii\helpers\Html;
 use yii\web\UploadedFile;
 
@@ -94,17 +95,7 @@ class Post extends \yii\db\ActiveRecord
 
     public function getTitle()
     {
-        return ucwords(strtolower($this->title));
-    }
-
-    public function getTitleSlide()
-    {
-        return substr($this->getTitle(), 0, 25);
-    }
-
-    public function getTitleListView()
-    {
-        return substr($this->getTitle(), 0, 65)." ...";
+        return ucwords(strtolower(BaseStringHelper::truncate($this->title, 35)));
     }
 
     public static function findPostProvider()
@@ -141,7 +132,7 @@ class Post extends \yii\db\ActiveRecord
                         '.$this->getThumbnail(['class' => 'img-responsive']).'
                     </div>
                     <h4 class="box-main-title">
-                        '. Html::a(substr($this->title, 0, 30)."....", ['site/post-view','id' => $this->id], ['class' => 'anchor-black']).'
+                        '. Html::a(BaseStringHelper::truncate($this->title, 30), ['site/post-view','id' => $this->id], ['class' => 'anchor-black']).'
                     </h4>
                     <div class="date-post">
                         '.Helper::getTanggal($this->created_time).'
@@ -160,7 +151,7 @@ class Post extends \yii\db\ActiveRecord
                         </div>
                         <div class="col-md-9 col-sm-9 col-xs-9">
                             <div class="title">
-                                '. Html::a(substr($this->title, 0, 55)."....", ['site/post-view','id' => $this->id], ['class' => 'anchor-black']).'
+                                '. Html::a(BaseStringHelper::truncate($this->title, 55), ['site/post-view','id' => $this->id], ['class' => 'anchor-black']).'
                             </div>
 
                             <div class="date-post">

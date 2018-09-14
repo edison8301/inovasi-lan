@@ -1,9 +1,10 @@
 <?php 
-use yii\helpers\Html;
 use app\models\Kabkota;
 use app\models\Post;
-use kv4nt\owlcarousel\OwlCarouselWidget;
 use app\models\PostCategory;
+use kv4nt\owlcarousel\OwlCarouselWidget;
+use yii\helpers\BaseStringHelper;
+use yii\helpers\Html;
 ?>
 
 <div>&nbsp;</div>
@@ -51,7 +52,7 @@ use app\models\PostCategory;
 					<?= Html::a($postSlide->getThumbnail(['class' => 'img-responsive','style' => 'width:120px']), ['site/post-view','id' => $postSlide->id], ['option' => 'value']); ?>
 				</div>
 				<h4 class="carousel-title">
-					<?= Html::a($postSlide->getTitleSlide()."....", ['site/post-view','id' => $postSlide->id], ['class' => 'anchor-white']); ?>
+					<?= Html::a($postSlide->getTitle(), ['site/post-view','id' => $postSlide->id], ['class' => 'anchor-white']); ?>
 				</h4>
 			</div>
 		<?php } ?>

@@ -23,7 +23,7 @@ use app\components\Helper;
 
 				<div>&nbsp;</div>
 
-				<?= Helper::getTanggal($model->created_time) ?>
+				<?= 'Diterbitkan <span class="text-merah">'.Helper::getTanggalSingkat($model->created_time).'</span> Oleh <span class="text-merah">'.@$model->user->username.'</span>' ?>
 		</div>
 	</div>
 </div>

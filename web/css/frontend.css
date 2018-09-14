@@ -460,3 +460,7 @@ a.anchor-black {
 a.anchor-black:hover {
     border-bottom: 1px solid #000000;
 }
+
+.text-merah {
+    color: #a50328;
+}

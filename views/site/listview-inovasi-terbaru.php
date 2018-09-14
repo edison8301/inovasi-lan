@@ -1,6 +1,7 @@
 <?php
-use yii\helpers\Html;
 use app\components\Helper;
+use yii\helpers\BaseStringHelper;
+use yii\helpers\Html;
 ?>
 
 <div class="widget-content-list">
@@ -12,7 +13,7 @@ use app\components\Helper;
 		</div>
 		<div class="col-md-9 col-sm-9 col-xs-9">
 			<div class="title">
-				<?= Html::a(substr($model->nama_inovasi, 0, 45)." ....", ['site/inovasi-view','id' => $model->id], ['option' => 'value']); ?>
+				<?= Html::a(BaseStringHelper::truncate($model->nama_inovasi, 30), ['site/inovasi-view','id' => $model->id], ['option' => 'value']); ?>
 			</div>
 
 			<?= Helper::getTanggalSingkat($model->waktu_dibuat) ?>

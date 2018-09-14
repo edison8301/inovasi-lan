@@ -7,9 +7,10 @@
 
 namespace app\commands;
 
-use app\models\Pegawai;
 use Yii;
-///use app\jobs\EmailJob;
+use app\models\Inovasi;
+use app\models\Pegawai;
+use app\models\Post;
 use yii\console\Controller;
 use yii\helpers\Console;
 
@@ -30,6 +31,18 @@ class HelloController extends Controller
     public function actionIndex($message = 'hello world')
     {
         echo $message . "\n";
+    }
+
+    public function actionDev()
+    {
+        foreach (Post::find()->all() as $post) {
+            $post->created_by = 1;
+            if ($post->update()) {
+                echo "Sukses </br>";
+            } else {
+                echo "Failed </br>";
+            }
+        }
     }
 
     public function actionSend()

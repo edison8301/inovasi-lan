@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $model->getTitle();
 	</div>
 
 	<div class="create-time-post-detail">
-		<?= Helper::getTanggalSingkat($model->created_time) ?>
+		<?= 'Diterbitkan <span class="text-merah">'.Helper::getTanggalSingkat($model->created_time).'</span> Oleh <span class="text-merah">'.@$model->user->username.'</span>' ?>
 	</div>
 
 	<div class="icon-sosial-media">

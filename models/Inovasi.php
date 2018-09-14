@@ -189,21 +189,23 @@ class Inovasi extends \yii\db\ActiveRecord
 
     public function createInovasiValidasi()
     {
-        $validasi = $_POST['validasi'];
+        $validasi = @$_POST['validasi'];
 
-        foreach ($validasi as $key => $value) {
+        if ($validasi !== null) {
+            foreach ($validasi as $key => $value) {
 
-            $inovasiValidasi = InovasiValidasi::find()->andWhere([
-                'inovasi_id' => $this->id,
-                'validasi_id' => $key
-            ])->one();
+                $inovasiValidasi = InovasiValidasi::find()->andWhere([
+                    'inovasi_id' => $this->id,
+                    'validasi_id' => $key
+                ])->one();
 
-            if ($inovasiValidasi == null) {
-                $inovasiValidasi = new InovasiValidasi();
-                $inovasiValidasi->inovasi_id = $this->id;
-                $inovasiValidasi->validasi_id = $key;
-                $inovasiValidasi->aktif = $value;
-                $inovasiValidasi->save(false);
+                if ($inovasiValidasi == null) {
+                    $inovasiValidasi = new InovasiValidasi();
+                    $inovasiValidasi->inovasi_id = $this->id;
+                    $inovasiValidasi->validasi_id = $key;
+                    $inovasiValidasi->aktif = $value;
+                    $inovasiValidasi->save(false);
+                }
             }
         }
     }

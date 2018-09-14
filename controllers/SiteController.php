@@ -169,6 +169,8 @@ class SiteController extends Controller
         $this->layout = '//frontend/main-detail';
 
         $model = Inovasi::findOne($id);
+        $model->jumlah_dilihat += 1;
+        $model->save();
 
         return $this->render('inovasi-view',[
             'model' => $model

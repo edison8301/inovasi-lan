@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\db\Expression;
 
 /**
  * This is the model class for table "provinsi".
@@ -60,5 +61,18 @@ class Provinsi extends \yii\db\ActiveRecord
     public function getCountInovasi()
     {
         return $this->getManyInovasi()->count();
+    }
+
+    public static function findProvinsi()
+    {
+        $model = Provinsi::find()
+        ->joinWith('manyInovasi')
+        ->groupBy('inovasi.provinsi_id')
+        ->andWhere('inovasi.provinsi_id IS NOT NULL')
+        ->orderBy(new Expression('rand()'))
+        ->limit(5)
+        ->all();
+
+        return $model;
     }
 }

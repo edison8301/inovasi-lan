@@ -1,5 +1,9 @@
 <?php
 use app\components\Helper;
+use app\models\JenisInovasi;
+use app\models\Kabkota;
+use app\models\KelompokInovator;
+use app\models\Provinsi;
 use yii\helpers\Html;
 use yii\widgets\ListView;
 
@@ -28,7 +32,8 @@ $this->title = 'Sistem Informasi Kajian (Siska) LAN';
 						<?= Html::a($inovasiTerbaru->nama_inovasi, ['site/inovasi-view','id' => $inovasiTerbaru->id], ['class' => 'anchor-black']); ?>
 					</h3>
 				</div>
-				<?= Helper::getTanggalSingkat($inovasiTerbaru->waktu_dibuat) ?>
+				<?= "Diterbitkan ".Helper::getTanggalSingkat($inovasiTerbaru->waktu_dibuat) ?>
+				<?=  "Oleh ".@$inovasiTerbaru->user->username?>
 			</div>
 		</div>
 
@@ -57,37 +62,23 @@ $this->title = 'Sistem Informasi Kajian (Siska) LAN';
 					PROVINSI
 				</div>
 
-				<div class="widget-content-list">
-					<div class="row">
-						<div class="col-md-10 col-sm-10 col-xs-10">
-							<div class="title">
-								<a href="">JAWA BARAT</a>
+				<?php foreach (Provinsi::findProvinsi() as $provinsi) { ?>
+					<div class="widget-content-list">
+						<div class="row">
+							<div class="col-md-10 col-sm-10 col-xs-10">
+								<div class="title">
+									<?= Html::a($provinsi->nama, ['site/inovasi-index','provinsi_id' => $provinsi->id], ['option' => 'value']); ?>
+								</div>
 							</div>
-						</div>
 
-						<div class="col-md-2 col-sm-2 col-sm-2">
-							<div class="title">	
-								3
+							<div class="col-md-2 col-sm-2 col-sm-2">
+								<div class="title">	
+									<?= $provinsi->getCountInovasi() ?>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-
-				<div class="widget-content-list">
-					<div class="row">
-						<div class="col-md-10 col-sm-10 col-xs-10">
-							<div class="title">
-								<a href="">DKI JAKARTA</a>
-							</div>
-						</div>
-
-						<div class="col-md-2 col-sm-2 col-sm-2">
-							<div class="title">	
-								1
-							</div>
-						</div>
-					</div>
-				</div>
+				<?php } ?>
 			</div>
 
 			<div class="widget">
@@ -95,70 +86,23 @@ $this->title = 'Sistem Informasi Kajian (Siska) LAN';
 					KOTA
 				</div>
 
-				<div class="widget-content-list">
-					<div class="row">
-						<div class="col-md-10 col-sm-10 col-xs-10">
-							<div class="title">
-								<a href="">KOTA JAKARTA PUSAT</a>
+				<?php foreach (Kabkota::findKabkota() as $kabkota) { ?>
+					<div class="widget-content-list">
+						<div class="row">
+							<div class="col-md-10 col-sm-10 col-xs-10">
+								<div class="title">
+									<?= Html::a($kabkota->nama, ['site/inovasi-index','kabkota_id' => $kabkota->id], ['option' => 'value']); ?>
+								</div>
 							</div>
-						</div>
 
-						<div class="col-md-2 col-sm-2 col-sm-2">
-							<div class="title">	
-								1
-							</div>
-						</div>
-					</div>
-				</div>
-
-
-				<div class="widget-content-list">
-					<div class="row">
-						<div class="col-md-10 col-sm-10 col-xs-10">
-							<div class="title">
-								<a href="">KABUPATEN GARUT</a>
-							</div>
-						</div>
-
-						<div class="col-md-2 col-sm-2 col-sm-2">
-							<div class="title">	
-								1
+							<div class="col-md-2 col-sm-2 col-sm-2">
+								<div class="title">	
+									<?= $kabkota->getCountInovasi() ?>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-
-				<div class="widget-content-list">
-					<div class="row">
-						<div class="col-md-10 col-sm-10 col-xs-10">
-							<div class="title">
-								<a href="">KOTA BANDUNG</a>
-							</div>
-						</div>
-
-						<div class="col-md-2 col-sm-2 col-sm-2">
-							<div class="title">	
-								1
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="widget-content-list">
-					<div class="row">
-						<div class="col-md-10 col-sm-10 col-xs-10">
-							<div class="title">
-								<a href="">KOTA DEPOK</a>
-							</div>
-						</div>
-
-						<div class="col-md-2 col-sm-2 col-sm-2">
-							<div class="title">	
-								1
-							</div>
-						</div>
-					</div>
-				</div>
+				<?php } ?>
 			</div>
 
 			<div class="widget">
@@ -166,21 +110,23 @@ $this->title = 'Sistem Informasi Kajian (Siska) LAN';
 					JENIS
 				</div>
 
-				<div class="widget-content-list">
-					<div class="row">
-						<div class="col-md-10 col-sm-10 col-xs-10">
-							<div class="title">
-								<a href="">Metode</a>
+				<?php foreach (JenisInovasi::findJenisInovasi() as $jenisInovasi) { ?>
+					<div class="widget-content-list">
+						<div class="row">
+							<div class="col-md-10 col-sm-10 col-xs-10">
+								<div class="title">
+									<?= Html::a($jenisInovasi->nama, ['site/inovasi-index','jenis_inovasi_id' => $jenisInovasi->id], ['option' => 'value']); ?>
+								</div>
 							</div>
-						</div>
 
-						<div class="col-md-2 col-sm-2 col-sm-2">
-							<div class="title">	
-								1
+							<div class="col-md-2 col-sm-2 col-sm-2">
+								<div class="title">	
+									<?= $jenisInovasi->getCountInovasi() ?>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
+				<?php } ?>
 			</div>
 
 			<div class="widget">
@@ -188,21 +134,23 @@ $this->title = 'Sistem Informasi Kajian (Siska) LAN';
 					KELOMPOK
 				</div>
 
-				<div class="widget-content-list">
-					<div class="row">
-						<div class="col-md-10 col-sm-10 col-xs-10">
-							<div class="title">
-								<a href="">Provinsi / Kabupaten / Kota</a>
+				<?php foreach (KelompokInovator::findKelompokInovator() as $inovator) { ?>
+					<div class="widget-content-list">
+						<div class="row">
+							<div class="col-md-10 col-sm-10 col-xs-10">
+								<div class="title">
+									<?= Html::a($inovator->nama, ['site/inovasi-index','kelompok_inovator_id' => $inovator->id], ['option' => 'value']); ?>
+								</div>
 							</div>
-						</div>
 
-						<div class="col-md-2 col-sm-2 col-sm-2">
-							<div class="title">	
-								1
+							<div class="col-md-2 col-sm-2 col-sm-2">
+								<div class="title">	
+									<?= $inovator->getCountInovasi() ?>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
+				<?php } ?>
 			</div>
 		</div>
 	</div>

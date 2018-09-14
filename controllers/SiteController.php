@@ -2,22 +2,22 @@
 
 namespace app\controllers;
 
+use PhpOffice\PhpWord\Shared\Converter;
 use Yii;
+use app\models\ContactForm;
+use app\models\Inovasi;
+use app\models\InovasiSearch;
+use app\models\LoginForm;
+use app\models\Post;
+use app\models\PostSearch;
+use app\models\Provinsi;
+use app\models\User;
+use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\Response;
-use PhpOffice\PhpWord\Shared\Converter;
-
-use app\models\LoginForm;
-use app\models\User;
 use yii\web\UploadedFile;
-use yii\data\ActiveDataProvider;
-use app\models\Post;
-use app\models\Inovasi;
-use app\models\ContactForm;
-use app\models\PostSearch;
-use app\models\InovasiSearch;
 
 class SiteController extends Controller
 {
@@ -141,13 +141,15 @@ class SiteController extends Controller
         return $this->render('map-detail');
     }
 
-    public function actionInovasiIndex($provinsi_id=null,$kabkota_id=null)
+    public function actionInovasiIndex($provinsi_id=null,$kabkota_id=null,$jenis_inovasi_id=null,$kelompok_inovator_id=null)
     {
         $this->layout = '//frontend/main-peta';
 
         $inovasiSearch = new InovasiSearch();
         $inovasiSearch->provinsi_id = $provinsi_id;
         $inovasiSearch->kabkota_id = $kabkota_id;
+        $inovasiSearch->jenis_inovasi_id = $jenis_inovasi_id;
+        $inovasiSearch->kelompok_inovator_id = $kelompok_inovator_id;
 
         $dataProvider = new ActiveDataProvider([
             'query' => $inovasiSearch->getQuerySearch(),
@@ -277,11 +279,14 @@ class SiteController extends Controller
      */
     public function actionDev()
     {
-        foreach (Post::find()->all() as $post) {
-            foreach (User::find()->all() as $user) {
-                $post->created_by = $user->id;
-                $post->save(false);
-            }
+        $model = Provinsi::find()
+        ->joinWith('manyInovasi')
+        ->groupBy('inovasi.provinsi_id')
+        ->andWhere('inovasi.provinsi_id IS NOT NULL')
+        ->all();
+
+        foreach ($model as $data) {
+            echo $data->nama."</br>";
         }
     }
 

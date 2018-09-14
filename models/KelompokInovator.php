@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\db\Expression;
 
 /**
  * This is the model class for table "kelompok_inovator".
@@ -66,5 +67,18 @@ class KelompokInovator extends \yii\db\ActiveRecord
         }
 
         return $chart;
+    }
+
+    public static function findKelompokInovator()
+    {
+        $model = self::find()
+        ->joinWith('manyInovasi')
+        ->groupBy('inovasi.kelompok_inovator_id')
+        ->andWhere('inovasi.kelompok_inovator_id IS NOT NULL')
+        ->orderBy(new Expression('rand()'))
+        ->limit(5)
+        ->all();
+
+        return $model;
     }
 }

@@ -2,13 +2,16 @@
 
 use app\components\Helper;
 use yii\helpers\Html;
+use yii\helpers\StringHelper;
 
 ?>
 
 <div class="widget-content-list">
 	<div class="row">
 		<div class="col-md-4 col-sm-4 col-xs-12">
-			<?= $model->getGambar(['class' => 'img-responsive']) ?>
+			<div class="box-list-berita-thumbnail">
+				<?= $model->getGambar(['class'=> 'img-responsive']) ?>
+			</div>
 		</div>
 
 		<div class="col-md-8 col-sm-8 col-xs-12" style="margin-top: -20px;">
@@ -19,11 +22,11 @@ use yii\helpers\Html;
 
 			</div>
 
-				<?= Html::decode(substr($model->deskripsi, 0, 150)).' ......' ?>
+				<?=  Html::tag('p',Html::encode(StringHelper::truncate($model->deskripsi, 150))) ?>
 
 				<div>&nbsp;</div>
 
-				<?= Helper::getTanggal($model->waktu_dibuat) ?>
+				<?= 'Diterbitkan <span class="text-merah">'.Helper::getTanggalSingkat($model->waktu_dibuat).'</span> Oleh <span class="text-merah">'.@$model->user->username.'</span>' ?>
 		</div>
 	</div>
 </div>

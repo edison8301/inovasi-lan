@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\db\Expression;
 
 /**
  * This is the model class for table "jenis_inovasi".
@@ -66,5 +67,18 @@ class JenisInovasi extends \yii\db\ActiveRecord
         }
 
         return $chart;
+    }
+
+    public static function findJenisInovasi()
+    {
+        $model = self::find()
+        ->joinWith('manyInovasi')
+        ->groupBy('inovasi.jenis_inovasi_id')
+        ->andWhere('inovasi.jenis_inovasi_id IS NOT NULL')
+        ->orderBy(new Expression('rand()'))
+        ->limit(5)
+        ->all();
+
+        return $model;
     }
 }

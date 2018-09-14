@@ -1,6 +1,7 @@
 <?php 
-use yii\helpers\Html;
 use app\components\Helper;
+use yii\helpers\Html;
+use yii\helpers\StringHelper;
 ?>
 
 <div class="widget-content-list">
@@ -19,7 +20,7 @@ use app\components\Helper;
 
 			</div>
 
-				<?=  Html::tag('p',Html::decode(substr($model->content, 200, 250))) ?>
+				<?=  Html::tag('p',Html::encode(StringHelper::truncate($model->content, 150))) ?>
 
 				<div>&nbsp;</div>
 

@@ -7,7 +7,7 @@ use app\components\Helper;
 use yii\behaviors\BlameableBehavior;
 use yii\behaviors\TimestampBehavior;
 use yii\db\Expression;
-use yii\helpers\BaseStringHelper;
+use yii\helpers\StringHelper;
 use yii\helpers\Html;
 use yii\web\UploadedFile;
 
@@ -95,7 +95,7 @@ class Post extends \yii\db\ActiveRecord
 
     public function getTitle()
     {
-        return ucwords(strtolower(BaseStringHelper::truncate($this->title, 35)));
+        return ucwords(strtolower(StringHelper::truncate($this->title, 35)));
     }
 
     public static function findPostProvider()
@@ -132,10 +132,10 @@ class Post extends \yii\db\ActiveRecord
                         '.$this->getThumbnail(['class' => 'img-responsive']).'
                     </div>
                     <h4 class="box-main-title">
-                        '. Html::a(BaseStringHelper::truncate($this->title, 25), ['site/post-view','id' => $this->id], ['class' => 'anchor-black']).'
+                        '. Html::a(StringHelper::truncate($this->title, 25), ['site/post-view','id' => $this->id], ['class' => 'anchor-black']).'
                     </h4>
                     <div class="date-post">
-                        '.Helper::getTanggal($this->created_time).'
+                        Diterbitkan '.Helper::getTanggalSingkat($this->created_time).' Oleh '.@$this->user->username.'
                     </div>
                 </div>';
     }
@@ -151,11 +151,11 @@ class Post extends \yii\db\ActiveRecord
                         </div>
                         <div class="col-md-9 col-sm-9 col-xs-9">
                             <div class="title">
-                                '. Html::a(BaseStringHelper::truncate($this->title, 55), ['site/post-view','id' => $this->id], ['class' => 'anchor-black']).'
+                                '. Html::a(StringHelper::truncate($this->title, 55), ['site/post-view','id' => $this->id], ['class' => 'anchor-black']).'
                             </div>
 
                             <div class="date-post">
-                                '.Helper::getTanggal($this->created_time).'
+                                Diterbitkan '.Helper::getTanggalSingkat($this->created_time).' Oleh '.@$this->user->username.'
                             </div>
                         </div>
                     </div>

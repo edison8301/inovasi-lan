@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\db\Expression;
 
 /**
  * This is the model class for table "kabkota".
@@ -78,6 +79,19 @@ class Kabkota extends \yii\db\ActiveRecord
     public static function findInovasiTerbesar()
     {
         $model = static::find()->limit(10)->all();
+
+        return $model;
+    }
+
+    public static function findKabkota()
+    {
+        $model = Kabkota::find()
+        ->joinWith('manyInovasi')
+        ->groupBy('inovasi.kabkota_id')
+        ->andWhere('inovasi.kabkota_id IS NOT NULL')
+        ->orderBy(new Expression('rand()'))
+        ->limit(5)
+        ->all();
 
         return $model;
     }

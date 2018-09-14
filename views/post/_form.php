@@ -1,8 +1,10 @@
 <?php
 
-use yii\helpers\Html;
-use yii\bootstrap\ActiveForm;
+use app\models\PostCategory;
 use dosamigos\ckeditor\CKEditor;
+use kartik\select2\Select2;
+use yii\bootstrap\ActiveForm;
+use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Post */
@@ -32,9 +34,15 @@ use dosamigos\ckeditor\CKEditor;
 
         <?= $form->errorSummary($model); ?>
 
-        <?= $form->field($model, 'post_category_id')->textInput() ?>
+        <?= $form->field($model, 'post_category_id')->widget(Select2::className(), [
+            'data' => PostCategory::getList(),
+            'pluginOptions' => ['allowClear' => true],
+            'options' => [
+                'placeholder' => 'Pilih Post Kategori',
+            ]
+        ]) ?>
 
-        <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
+        <?= $form->field($model, 'title')->textArea(['rows' => 5]) ?>
 
         <?= $form->field($model, 'content', [
             'horizontalCssClasses' => [
@@ -44,7 +52,7 @@ use dosamigos\ckeditor\CKEditor;
                 'hint' => '',
             ]
         ])->widget(CKEditor::className(), [
-            'options' => ['rows' => 3],
+            'options' => ['rows' => 5],
             'preset' => 'advanced'
         ]) ?>
 

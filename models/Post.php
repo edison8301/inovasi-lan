@@ -3,8 +3,10 @@
 namespace app\models;
 
 use Yii;
-use yii\helpers\Html;
 use app\components\Helper;
+use yii\behaviors\TimestampBehavior;
+use yii\db\Expression;
+use yii\helpers\Html;
 use yii\web\UploadedFile;
 
 /**
@@ -44,6 +46,18 @@ class Post extends \yii\db\ActiveRecord
         ];
     }
 
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => TimestampBehavior::className(),
+                'createdAtAttribute' => 'created_time',
+                'updatedAtAttribute' => 'created_time',
+                'value' => new Expression('NOW()'),
+            ],
+        ];
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -79,15 +93,6 @@ class Post extends \yii\db\ActiveRecord
     public function getTitleListView()
     {
         return substr($this->getTitle(), 0, 65)." ...";
-    }
-
-    public function beforeSave($insert)
-    {
-        if($this->created_time==null) {
-            $this->created_time = date('Y-m-d H:i:s');
-        }
-
-        return parent::beforeSave($insert);
     }
 
     public static function findPostProvider()

@@ -1,7 +1,8 @@
 <?php
 
-use yii\helpers\Html;
+use app\models\PostCategory;
 use yii\grid\GridView;
+use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\PostSearch */
@@ -44,6 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'post_category_id',
                 'format' => 'raw',
+                'filter' => PostCategory::getList(),
                 'value' => function($data){
                     return $data->postCategory->title;
                 },

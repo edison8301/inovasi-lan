@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "post_category".
@@ -56,6 +57,11 @@ class PostCategory extends \yii\db\ActiveRecord
     public function getParent()
     {
         return $this->hasOne(self::class,['parent_id' => 'id']);
+    }
+
+    public function getList()
+    {
+        return ArrayHelper::map(static::find()->all(), 'id', 'title');
     }
 
 }

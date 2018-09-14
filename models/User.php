@@ -97,4 +97,25 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     {
         return $this->hasOne(Role::class,['id'=>'role_id']);
     }
+
+    public function getManyInovasi()
+    {
+        return $this->hasMany(Inovasi::className(), ['created_by' => 'id']);
+    }
+
+    public static function getGrafik()
+    {
+        $chart = null;
+
+        foreach (self::find()->all() as $data) {
+            $chart .= '{"label":"'.$data->username.'","value":"'.$data->manyInovasiCount.'"},';
+        }
+
+        return $chart;
+    }
+
+    public function getManyInovasiCount()
+    {
+        return count($this->manyInovasi);
+    }
 }

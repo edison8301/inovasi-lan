@@ -9,6 +9,7 @@ $config = [
     'name' => 'INOVASI',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'language' => 'id_ID',
     'timeZone' => 'Asia/Jakarta',
     'components' => [
         'view' => [

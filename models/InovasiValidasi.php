@@ -32,6 +32,7 @@ class InovasiValidasi extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['inovasi_id', 'validasi_id'],'unique', 'targetAttribute' => ['inovasi_id', 'validasi_id']],
             [['inovasi_id', 'validasi_id'], 'required'],
             [['inovasi_id', 'validasi_id', 'aktif'], 'integer'],
         ];
@@ -67,5 +68,13 @@ class InovasiValidasi extends \yii\db\ActiveRecord
         } else {
             return "Tidak Aktif";
         }
+    }
+
+    public static function getListStatus()
+    {
+        return [
+            self::AKTIF => 'Aktif',
+            self::TIDAK_AKTIF => 'Tidak Aktif'
+        ];
     }
 }

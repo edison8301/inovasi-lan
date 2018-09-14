@@ -291,4 +291,9 @@ class Inovasi extends \yii\db\ActiveRecord
         return static::find()->orderBy(['waktu_dibuat' => SORT_DESC])->one();
     }
 
+    public static function getList()
+    {
+        return yii\helpers\ArrayHelper::map(self::find()->all(),'id','nama_inovasi');
+    }
+
 }

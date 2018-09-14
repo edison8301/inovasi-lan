@@ -1,7 +1,11 @@
 <?php
 
-use yii\helpers\Html;
+use app\models\Inovasi;
+use app\models\InovasiValidasi;
+use app\models\Validasi;
+use kartik\select2\Select2;
 use yii\bootstrap\ActiveForm;
+use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\InovasiValidasi */
@@ -31,11 +35,23 @@ use yii\bootstrap\ActiveForm;
 
         <?= $form->errorSummary($model); ?>
 
-        <?= $form->field($model, 'inovasi_id')->textInput() ?>
+        <?= $form->field($model, 'inovasi_id')->widget(Select2::className(), [
+            'data' => Inovasi::getList(),
+            'pluginOptions' => ['allowClear' => true],
+            'options' => [
+                'placeholder' => 'Pilih Inovasi',
+            ]
+        ]) ?>
 
-        <?= $form->field($model, 'validasi_id')->textInput() ?>
+        <?= $form->field($model, 'validasi_id')->widget(Select2::className(), [
+            'data' => Validasi::getList(),
+            'pluginOptions' => ['allowClear' => true],
+            'options' => [
+                'placeholder' => 'Pilih Validasi',
+            ]
+        ]) ?>
 
-        <?= $form->field($model, 'aktif')->textInput() ?>
+        <?= $form->field($model, 'aktif')->dropDownList(InovasiValidasi::getListStatus(), ['option' => 'value']); ?>
 
         <?= Html::hiddenInput('referrer',$referrer); ?>
 

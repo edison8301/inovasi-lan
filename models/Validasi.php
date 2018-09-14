@@ -44,4 +44,9 @@ class Validasi extends \yii\db\ActiveRecord
             'nama' => 'Nama',
         ];
     }
+
+    public static function getList()
+    {
+        return yii\helpers\ArrayHelper::map(self::find()->all(),'id','nama');
+    }
 }

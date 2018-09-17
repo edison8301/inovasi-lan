@@ -60,7 +60,7 @@ class Inovasi extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nama_inovasi','provinsi_id','kabkota_id'],'required','message'=>'{attribute} tidak boleh kosong'],
+            [['nama_inovasi','provinsi_id','kabkota_id','status_inovasi_id'],'required','message'=>'{attribute} tidak boleh kosong'],
             [['kategori_id', 'jenis_inovasi_id', 'kelompok_inovator_id', 'tahun_inisiasi', 
                 'tahun_implementasi', 'teknik_validasi_id', 'status_inovasi_id', 'jumlah_dilihat', 
                 'jumlah_diunduh', 'member_id', 'provinsi_id','kabkota_id'], 'integer'],

@@ -1,7 +1,10 @@
 <?php
 
-use yii\helpers\Html;
+use app\models\Inovasi;
+use app\models\InovasiValidasi;
+use app\models\Validasi;
 use yii\grid\GridView;
+use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\InovasiValidasiSearch */
@@ -35,6 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'inovasi_id',
                 'format' => 'raw',
+                'filter' => Inovasi::getList(),
                 'value' => function($data) {
                     return  @$data->inovasi->nama_inovasi;
                 },
@@ -44,6 +48,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'validasi_id',
                 'format' => 'raw',
+                'filter' => Validasi::getList(),
                 'value' => function($data) {
                     return  @$data->validasi->nama;
                 },
@@ -53,6 +58,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'aktif',
                 'format' => 'raw',
+                'filter' => InovasiValidasi::getListStatus(),
                 'value' => function($data) {
                     return  $data->getStatus();
                 },

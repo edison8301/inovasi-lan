@@ -44,7 +44,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'headerOptions' => ['style' => 'text-align:center;'],
                 'contentOptions' => ['style' => 'text-align:left;'],
             ],
-            [
+            /*[
                 'attribute' => 'kelompok_inovator_id',
                 'format' => 'raw',
                 'value'=>function($data) {
@@ -53,7 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'filter'=>kelompokInovator::getList(),
                 'headerOptions' => ['style' => 'text-align:center; width: 200px'],
                 'contentOptions' => ['style' => 'text-align:center;'],
-            ],
+            ],*/
             [
                 'attribute' => 'provinsi_id',
                 'format' => 'raw',
@@ -85,12 +85,21 @@ $this->params['breadcrumbs'][] = $this->title;
                 'contentOptions' => ['style' => 'text-align:center;'],
             ],
             [
+                'attribute' => 'created_by',
+                'format' => 'raw',
+                'value' => function($data){
+                    return @$data->user->username;
+                },
+                'headerOptions' => ['style' => 'text-align:center;'],
+                'contentOptions' => ['style' => 'text-align:center;'],
+            ],
+            [
                 'attribute' => 'waktu_dibuat',
                 'format' => 'raw',
                 'value' => function($data){
                     return Helper::getWaktuWIB($data->waktu_dibuat);
                 },
-                'headerOptions' => ['style' => 'text-align:center;'],
+                'headerOptions' => ['style' => 'text-align:center; width:150px'],
                 'contentOptions' => ['style' => 'text-align:center;'],
             ],
             [

@@ -19,7 +19,7 @@ class PostSearch extends Post
     {
         return [
             [['id', 'post_category_id', 'total_views'], 'integer'],
-            [['title', 'content', 'thumbnail', 'tags', 'created_time'], 'safe'],
+            [['title', 'content', 'thumbnail', 'tags'], 'safe'],
         ];
     }
 

@@ -1,5 +1,6 @@
 <?php
 
+use app\components\Helper;
 use app\models\PostCategory;
 use yii\grid\GridView;
 use yii\helpers\Html;
@@ -48,6 +49,24 @@ $this->params['breadcrumbs'][] = $this->title;
                 'filter' => PostCategory::getList(),
                 'value' => function($data){
                     return $data->postCategory->title;
+                },
+                'headerOptions' => ['style' => 'text-align:center;'],
+                'contentOptions' => ['style' => 'text-align:center;'],
+            ],
+            [
+                'attribute' => 'created_by',
+                'format' => 'raw',
+                'value' => function($data){
+                    return @$data->user->username;
+                },
+                'headerOptions' => ['style' => 'text-align:center;'],
+                'contentOptions' => ['style' => 'text-align:center;'],
+            ],
+            [
+                'attribute' => 'created_time',
+                'format' => 'raw',
+                'value' => function($data){
+                    return Helper::getWaktuWIB($data->created_time);
                 },
                 'headerOptions' => ['style' => 'text-align:center;'],
                 'contentOptions' => ['style' => 'text-align:center;'],

@@ -21,7 +21,7 @@ class InovasiSearch extends Inovasi
             [['id', 'kategori_id', 'jenis_inovasi_id', 'kelompok_inovator_id', 'tahun_inisiasi', 
                 'tahun_implementasi', 'teknik_validasi_id', 'status_inovasi_id', 'jumlah_dilihat', 
                 'jumlah_diunduh', 'member_id', 'kabkota_id', 'provinsi_id'], 'integer'],
-            [['nama_inovasi', 'produk_inovasi', 'penggagas', 'deskripsi', 'nama_instansi', 'unit_instansi', 'faktor_pendorong', 'faktor_penghambat', 'tahapan_proses', 'output', 'outcome', 'manfaat', 'prasyarat_replikasi', 'kontak', 'sumber', 'gambar_ilustrasi', 'tanggal_inovasi', 'waktu_dibuat', 'waktu_diterbitkan', 'waktu_diubah'], 'safe'],
+            [['nama_inovasi', 'produk_inovasi', 'penggagas', 'deskripsi', 'nama_instansi', 'unit_instansi', 'faktor_pendorong', 'faktor_penghambat', 'tahapan_proses', 'output', 'outcome', 'manfaat', 'prasyarat_replikasi', 'kontak', 'sumber', 'gambar_ilustrasi', 'tanggal_inovasi', 'waktu_diterbitkan', 'waktu_diubah'], 'safe'],
         ];
     }
 

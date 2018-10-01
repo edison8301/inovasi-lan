@@ -18,7 +18,7 @@ class PostSearch extends Post
     public function rules()
     {
         return [
-            [['id', 'post_category_id', 'total_views'], 'integer'],
+            [['id', 'post_category_id', 'total_views','created_by'], 'integer'],
             [['title', 'content', 'thumbnail', 'tags'], 'safe'],
         ];
     }
@@ -60,6 +60,7 @@ class PostSearch extends Post
         $query->andFilterWhere(['like', 'title', $this->title])
             ->andFilterWhere(['like', 'content', $this->content])
             ->andFilterWhere(['like', 'thumbnail', $this->thumbnail])
+            ->andFilterWhere(['like','created_by', $this->created_by])
             ->andFilterWhere(['like', 'tags', $this->tags]);
 
         return $query;

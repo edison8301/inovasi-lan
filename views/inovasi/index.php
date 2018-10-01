@@ -8,6 +8,7 @@ use app\models\StatusInovasi;
 use app\models\Provinsi;
 use app\models\Kabkota;
 use app\components\Helper;
+use app\models\User;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\InovasiSearch */
@@ -74,7 +75,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'headerOptions' => ['style' => 'text-align:center; width: 150px'],
                 'contentOptions' => ['style' => 'text-align:center;'],
             ],
-            [
+            /*[
                 'attribute' => 'status_inovasi_id',
                 'format' => 'raw',
                 'value'=>function($data) {
@@ -83,14 +84,15 @@ $this->params['breadcrumbs'][] = $this->title;
                 'filter'=>StatusInovasi::getList(),
                 'headerOptions' => ['style' => 'text-align:center;'],
                 'contentOptions' => ['style' => 'text-align:center;'],
-            ],
+            ],*/
             [
                 'attribute' => 'created_by',
                 'format' => 'raw',
+                'filter' => User::getList(),
                 'value' => function($data){
                     return @$data->user->username;
                 },
-                'headerOptions' => ['style' => 'text-align:center;'],
+                'headerOptions' => ['style' => 'text-align:center; width: 120px'],
                 'contentOptions' => ['style' => 'text-align:center;'],
             ],
             [
@@ -99,7 +101,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => function($data){
                     return Helper::getWaktuWIB($data->waktu_dibuat);
                 },
-                'headerOptions' => ['style' => 'text-align:center; width:150px'],
+                'headerOptions' => ['style' => 'text-align:center; width:200px'],
                 'contentOptions' => ['style' => 'text-align:center;'],
             ],
             [

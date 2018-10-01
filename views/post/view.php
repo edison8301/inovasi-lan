@@ -26,7 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'post_category_id',
                 'format' => 'raw',
-                'value' => $model->postCategory->title,
+                'value' => @$model->postCategory->title,
             ],
             [
                 'attribute' => 'title',

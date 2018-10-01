@@ -64,6 +64,8 @@ use yii\helpers\Html;
 </div>
 
 <div>&nbsp;</div>
-<div>&nbsp;</div>
+
+
+<?= $this->render('_grafik') ?>
 
 <?= $this->render('blok-post-category') ?>

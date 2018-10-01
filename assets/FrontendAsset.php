@@ -35,7 +35,10 @@ class FrontendAsset extends AssetBundle
         'js/jsmaps/indonesia.js',
         'js/jsmaps/kabupaten.js',
         'js/jsmaps/kabupaten-aceh.js',
-        'js/kinetic/kinetic-v5.1.0.min.js'
+        'js/kinetic/kinetic-v5.1.0.min.js',
+        'js/fusioncharts/js/fusioncharts.js',
+        'js/fusioncharts/js/themes/fusioncharts.theme.fint.js',
+        'js/tooltip-master/js/Tooltip.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

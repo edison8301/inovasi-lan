@@ -78,7 +78,7 @@ class Post extends \yii\db\ActiveRecord
             'thumbnail' => 'Thumbnail',
             'tags' => 'Tags',
             'total_views' => 'Total Views',
-            'created_time' => 'Created Time',
+            'created_time' => 'Waktu Dibuat',
             'created_by' => 'Dibuat Oleh'
         ];
     }
@@ -95,7 +95,7 @@ class Post extends \yii\db\ActiveRecord
 
     public function getTitle()
     {
-        return ucwords(strtolower(StringHelper::truncate($this->title, 35)));
+        return ucwords(strtolower(StringHelper::truncate($this->title, 55)));
     }
 
     public static function findPostProvider()

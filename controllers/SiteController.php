@@ -97,7 +97,7 @@ class SiteController extends Controller
         $dataProvider = new ActiveDataProvider([
             'query' => $inovasiSearch->getQuerySearch(),
             'pagination' => [
-                'pageSize' => 5
+                'pageSize' => 10
             ],
         ]);
 

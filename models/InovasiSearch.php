@@ -20,7 +20,7 @@ class InovasiSearch extends Inovasi
         return [
             [['id', 'kategori_id', 'jenis_inovasi_id', 'kelompok_inovator_id', 'tahun_inisiasi', 
                 'tahun_implementasi', 'teknik_validasi_id', 'status_inovasi_id', 'jumlah_dilihat', 
-                'jumlah_diunduh', 'member_id', 'kabkota_id', 'provinsi_id'], 'integer'],
+                'jumlah_diunduh', 'member_id', 'kabkota_id', 'provinsi_id','created_by'], 'integer'],
             [['nama_inovasi', 'produk_inovasi', 'penggagas', 'deskripsi', 'nama_instansi', 'unit_instansi', 'faktor_pendorong', 'faktor_penghambat', 'tahapan_proses', 'output', 'outcome', 'manfaat', 'prasyarat_replikasi', 'kontak', 'sumber', 'gambar_ilustrasi', 'tanggal_inovasi', 'waktu_diterbitkan', 'waktu_diubah'], 'safe'],
         ];
     }
@@ -69,7 +69,7 @@ class InovasiSearch extends Inovasi
             'member_id' => $this->member_id,
             'waktu_dibuat' => $this->waktu_dibuat,
             'waktu_diterbitkan' => $this->waktu_diterbitkan,
-            'waktu_diubah' => $this->waktu_diubah,
+            'created_by' => $this->created_by,
         ]);
 
         $query->andFilterWhere(['like', 'nama_inovasi', $this->nama_inovasi])
